@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activities — harrisfamphx</title>
+<meta name="description" content="The Harris family after-school activity plan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16211C;
+  --ink-soft:#4A5A52;
+  --paper:#FBFAF5;
+  --shell:#EAEDE4;
+  --line:#D2D8CC;
+
+  --mon:#5E8C3A;
+  --tue:#7D3548;
+  --wed:#C4566B;
+  --thu:#A83A25;
+  --fri:#C68A17;
+  --sat:#35617E;
+  --prep:#4A5A52;
+
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Newsreader", Georgia, serif;
+  --mono:"Space Mono", ui-monospace, monospace;
+
+  --accent:var(--ink);
+  --gut:clamp(1.1rem, 4vw, 2.75rem);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,0.97rem + 0.2vw,1.09rem);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--gut)}
+
+/* masthead */
+.masthead{
+  border-bottom:1.5px solid var(--ink);
+  padding:1.4rem 0 1rem;
+  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 1.5rem;
+}
+.brand{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(1.35rem,1.1rem + 1.4vw,2rem);
+  letter-spacing:-.035em;line-height:1;margin:0;
+}
+.brand span{color:var(--ink-soft);font-weight:400}
+.nav{display:flex;gap:1.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.nav a{color:var(--ink-soft);text-decoration:none;padding-bottom:.2rem;border-bottom:1.5px solid transparent}
+.nav a:hover{color:var(--ink);border-color:var(--line)}
+.nav a[aria-current]{color:var(--ink);border-color:var(--ink)}
+
+/* rail */
+.rail-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.75rem;margin:2.6rem 0 1rem}
+.rail-title{
+  font-family:var(--display);font-weight:800;letter-spacing:-.04em;
+  font-size:clamp(2.1rem,1.4rem + 3.4vw,3.9rem);line-height:.95;margin:0;max-width:15ch;
+}
+.rail-sub{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);max-width:28ch;line-height:1.7;
+}
+.rail{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;background:var(--line);border:1.5px solid var(--ink);margin-bottom:1rem}
+.day{
+  background:var(--paper);border:0;padding:1.15rem 1rem 1.3rem;text-align:left;
+  font:inherit;color:inherit;text-decoration:none;cursor:pointer;
+  display:flex;flex-direction:column;gap:.55rem;position:relative;transition:background .18s ease;
+}
+.day::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--accent)}
+.day:hover{background:var(--shell)}
+.day:focus-visible{outline:2.5px solid var(--ink);outline-offset:-2.5px}
+.day-name{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:.35rem}
+.day-act{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-.02em;line-height:1.12}
+.day-pair{font-size:.86rem;color:var(--ink-soft);line-height:1.35;margin-top:auto}
+.rail-foot{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;align-items:center;padding-bottom:.5rem;
+}
+.printbtn{
+  font:inherit;letter-spacing:.1em;text-transform:uppercase;background:none;
+  border:1.5px solid var(--ink);color:var(--ink);padding:.5rem .9rem;cursor:pointer;
+  transition:background .16s ease,color .16s ease;
+}
+.printbtn:hover{background:var(--ink);color:var(--paper)}
+
+/* the golden rule callout */
+.rule{
+  border:1.5px solid var(--ink);
+  background:var(--shell);
+  padding:clamp(1.3rem,3vw,2rem);
+  margin:2.8rem 0 0;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.4rem 1.5rem;
+  align-items:start;
+}
+.rule-tag{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--paper);background:var(--ink);padding:.32rem .55rem;white-space:nowrap;
+}
+.rule h2{
+  font-family:var(--display);font-weight:800;letter-spacing:-.03em;
+  font-size:clamp(1.15rem,1rem + .8vw,1.5rem);margin:0;line-height:1.2;
+}
+.rule p{grid-column:2;margin:.6rem 0 0;color:var(--ink-soft);max-width:62ch}
+.rule p:first-of-type{margin-top:.7rem}
+
+/* sections */
+.sections{margin-top:4rem;border-top:1.5px solid var(--ink)}
+.block{border-bottom:1.5px solid var(--ink);padding:2.6rem 0 3.2rem;scroll-margin-top:1rem}
+.b-tag{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--paper);background:var(--accent);display:inline-block;padding:.32rem .6rem;margin-bottom:1rem;
+}
+.b-title{
+  font-family:var(--display);font-weight:800;letter-spacing:-.038em;line-height:1.02;
+  font-size:clamp(1.75rem,1.25rem + 2.2vw,2.9rem);margin:0 0 .5rem;max-width:20ch;
+}
+.b-desc{margin:0 0 2.2rem;color:var(--ink-soft);font-size:1.05rem;max-width:58ch}
+
+.cols{display:grid;grid-template-columns:minmax(0,13fr) minmax(0,10fr);gap:clamp(2rem,4vw,4rem)}
+.sub{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-soft);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:0 0 1.15rem;
+}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0}
+.tl li{
+  display:grid;grid-template-columns:4.4rem 1fr;gap:.2rem 1rem;
+  padding:0 0 1.35rem;margin-bottom:1.35rem;border-bottom:1px solid var(--line);
+}
+.tl li:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.tl-time{
+  font-family:var(--mono);font-size:.74rem;font-weight:700;color:var(--accent);
+  padding-top:.3rem;letter-spacing:.02em;
+}
+.tl-t{
+  grid-column:2;font-family:var(--display);font-weight:600;font-size:1.12rem;
+  letter-spacing:-.02em;margin:0;line-height:1.2;
+}
+.tl-b{grid-column:2;margin:.3rem 0 0}
+
+/* checklists */
+.check{list-style:none;margin:0;padding:0}
+.check li{border-bottom:1px solid var(--line)}
+.check label{display:flex;gap:.7rem;align-items:flex-start;padding:.5rem 0;cursor:pointer;line-height:1.4}
+.check input{
+  appearance:none;-webkit-appearance:none;flex:0 0 auto;
+  width:1.05rem;height:1.05rem;margin:.25rem 0 0;
+  border:1.5px solid var(--ink-soft);background:var(--paper);cursor:pointer;display:grid;place-items:center;
+}
+.check input:checked{background:var(--accent);border-color:var(--accent)}
+.check input:checked::after{content:"";width:.28rem;height:.55rem;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(42deg) translateY(-1px)}
+.check input:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+.check input:checked ~ span{opacity:.4;text-decoration:line-through}
+.check span{transition:opacity .16s ease}
+
+/* notes */
+.notes{grid-column:1 / -1;margin-top:2.6rem;border-left:4px solid var(--accent);padding:.15rem 0 .15rem 1.15rem;max-width:68ch}
+.notes p{margin:0 0 .8rem;color:var(--ink-soft);font-size:.98rem}
+.notes p:last-child{margin-bottom:0}
+.notes strong{color:var(--ink)}
+
+/* stopwatch */
+.watch{grid-column:1 / -1;margin-top:2.6rem;border:1.5px solid var(--ink);padding:0}
+.watch-head{
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.6rem 1rem;
+  background:var(--accent);color:var(--paper);padding:.7rem 1.1rem;
+}
+.watch-head h4{font-family:var(--display);font-weight:600;font-size:1.02rem;margin:0;letter-spacing:-.02em}
+.watch-head span{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.watch-body{padding:1.4rem 1.1rem 1.2rem;display:flex;flex-wrap:wrap;gap:1.2rem 1.8rem;align-items:center}
+.clock{font-family:var(--mono);font-weight:700;font-size:clamp(2.2rem,1.5rem + 3vw,3.4rem);letter-spacing:-.03em;line-height:1;min-width:6.5ch}
+.watch-btns{display:flex;gap:.55rem;flex-wrap:wrap}
+.wbtn{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--paper);border:1.5px solid var(--ink);color:var(--ink);
+  padding:.6rem 1rem;cursor:pointer;transition:background .16s ease,color .16s ease;
+}
+.wbtn:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.wbtn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.wbtn.primary:hover{filter:brightness(1.15)}
+.wbtn:disabled{opacity:.3;cursor:not-allowed}
+.wbtn:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+.runs{list-style:none;margin:0;padding:0 1.1rem 1.2rem;border-top:1px solid var(--line)}
+.runs:empty{display:none}
+.runs li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:.5rem 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.86rem;
+}
+.runs li:last-child{border-bottom:0}
+.runs .lbl{letter-spacing:.1em;text-transform:uppercase;font-size:.68rem;color:var(--ink-soft)}
+.runs li.best .lbl,.runs li.best .val{color:var(--accent);font-weight:700}
+.runs li.best .lbl::after{content:" — best";}
+
+/* clue route */
+.clues{grid-column:1 / -1;margin-top:2.6rem}
+.clues ol{list-style:none;margin:0;padding:0;counter-reset:c}
+.clues li{
+  display:grid;grid-template-columns:2.6rem 1fr;gap:.15rem 1rem;
+  padding:.85rem 0;border-bottom:1px solid var(--line);align-items:baseline;
+}
+.clues li::before{
+  counter-increment:c;content:counter(c);
+  font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--accent);
+}
+.clues li.start::before{content:"MAP";font-size:.6rem;letter-spacing:.1em}
+.clues li.end::before{content:"★";font-size:1rem}
+.clue-draw{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.015em}
+.clue-where{grid-column:2;color:var(--ink-soft);font-size:.94rem}
+
+.foot{
+  padding:3rem 0 4rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem 1.5rem;
+}
+.foot a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--line)}
+.foot a:hover{border-color:var(--ink)}
+
+@media (max-width:880px){
+  .rail{grid-template-columns:1fr}
+  .day{padding:1rem 1rem 1rem 1.5rem}
+  .day::before{inset:0 auto 0 0;width:6px;height:auto}
+  .day-name{margin-top:0}
+  .cols{grid-template-columns:1fr;gap:2.6rem}
+  .rule{grid-template-columns:1fr;gap:.9rem}
+  .rule-tag{justify-self:start}
+  .rule p{grid-column:1}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+
+@media print{
+  @page{margin:1.4cm}
+  body{background:#fff;font-size:11pt}
+  .nav,.rail-sub,.rail-foot,.watch,.foot,.rule{display:none !important}
+  .block{break-inside:avoid;padding:1.2rem 0}
+  .cols{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .b-desc{margin-bottom:1rem}
+  .rail{grid-template-columns:1fr;border:2px solid #000;gap:0}
+  .day{border-bottom:1px solid #000;padding:.5rem .5rem .5rem 1rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <h1 class="brand">harrisfamphx<span>/activities</span></h1>
+    <nav class="nav">
+      <a href="index.html">Kitchen</a>
+      <a href="activities.html" aria-current="page">Activities</a>
+    </nav>
+  </header>
+
+  <section class="rail-head">
+    <h2 class="rail-title">After school, planned</h2>
+    <p class="rail-sub">Six days, structured by energy. Monday is the most planned because everyone&rsquo;s fried. Saturday is the payoff.</p>
+  </section>
+
+  <nav class="rail" id="rail" aria-label="Days"></nav>
+
+  <div class="rail-foot">
+    <button class="printbtn" onclick="window.print()">Print the week</button>
+    <span>Prep list lives on each day</span>
+  </div>
+
+  <section class="rule">
+    <span class="rule-tag">The one rule</span>
+    <h2>Two tracks, always. Never one activity for both girls.</h2>
+    <p>A four-year-old gives you 20&ndash;25 minutes of real attention. A two-year-old gives you 8&ndash;12. Every day below has a big-kid job and a little-kid job running side by side. Trying to get them doing the same thing is where these fall apart.</p>
+    <p>Thirty to forty-five minutes is a full block. Plan to be done before they are.</p>
+  </section>
+
+  <main class="sections" id="sections"></main>
+
+  <footer class="foot">
+    <span>harrisfamphx &mdash; family activities</span>
+    <span><a href="index.html">This week&rsquo;s meals &rarr;</a></span>
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   ACTIVITY WEEK
+   Edit this array to change the week.
+   ============================================================ */
+const PREP = {
+  key:"prep", dayName:"Sunday Prep", accent:"var(--prep)",
+  act:"Supply run + setup", pair:"~30 minutes, one pass",
+  title:"Sunday Prep",
+  desc:"Do this once and the week runs itself. The single highest-leverage item is the art bin — one lidded tub that lives in a closet and only comes out on Monday. Scarcity is what keeps it interesting.",
+  leftTitle:"Supply run",
+  left:[
+    "Butcher paper roll or easel pad",
+    "Washable tempera paint — 4 colors max (red, yellow, blue, white)",
+    "Chunky brushes + 1 foam roller",
+    "Dot markers / bingo daubers — this is the 2yo's whole afternoon",
+    "Crayons — triangular or chunky for the 2yo",
+    "Tracing sheets or a name-practice pad for the 4yo",
+    "Painter's tape",
+    "Pool noodles x2, cones or plastic cups x6",
+    "Small treasure prizes — two of everything, identical",
+    "Brown paper bag or tea bags for aging the map",
+    "Index cards for the clues"
+  ],
+  rightTitle:"Setup",
+  right:[
+    "Build the art bin — everything in one lidded tub, stored out of sight",
+    "Cut butcher paper into 6–8 pre-sized sheets",
+    "Set aside a water bin for brush rinsing, store it with the tub",
+    "Pick the art surface and commit: outdoor table, tile floor, or drop cloth",
+    "Draw the treasure map and age it (crumple + tea-stain)",
+    "Draw all 6 picture clues on index cards, numbered on the back",
+    "Assemble the treasure box"
+  ],
+  notes:[
+    "<strong>Write the treasure hunt clues today, not Friday night.</strong> This is the item most likely to get skipped and the one that carries Saturday."
+  ]
+};
+
+const DAYS = [
+{
+  key:"mon", dayName:"Monday", accent:"var(--mon)",
+  act:"Art Stations", pair:"Mahi sandwiches",
+  title:"Art Stations",
+  desc:"Structured and indoor, because Monday is when everyone has the least left. Three short blocks beat one long one — the transitions are what hold their attention.",
+  timeline:[
+    {t:"3:15", h:"Setup — 5 min", b:"Art bin out. Paper taped down. Smocks on. Water bin filled. Do all of this <em>before</em> they sit down."},
+    {t:"3:20", h:"Block 1 — Paint", b:"4yo gets brushes and three colors. 2yo gets the foam roller and one color. One color for the little one isn't a limitation, it's what prevents the brown-sludge meltdown."},
+    {t:"3:35", h:"Block 2 — Trace &amp; Write", b:"4yo traces letters or her name. 2yo gets dot markers on her own sheet — she's writing too. Same table, different job."},
+    {t:"3:50", h:"Block 3 — Free Color", b:"Crayons, no instructions. This is the wind-down and it's where you start disengaging to cook."},
+    {t:"4:00", h:"Cleanup song", b:"Same song every week. They put brushes in the water bin, you handle the rest."}
+  ],
+  prep:[
+    "Paper pre-cut and taped down",
+    "Paint pre-poured into a muffin tin or paper plate",
+    "Water bin filled before you start",
+    "Smocks or old shirts staged",
+    "Wet rag on the table within arm's reach"
+  ],
+  notes:[
+    "<strong>Pre-pouring the paint is non-negotiable.</strong> It's the difference between forty good minutes and a disaster. Never hand over the bottles.",
+    "If the 2yo taps out at ten minutes, that's success. Let her go — the 4yo will keep going another twenty alone and that's your prep window.",
+    "Tape the paper down. Loose paper slides, they chase it, paint goes sideways."
+  ]
+},
+{
+  key:"tue", dayName:"Tuesday", accent:"var(--tue)",
+  act:"Pool", pair:"NY strip — grill early",
+  title:"Pool + Early Grill",
+  desc:"The reason this pairing works: the steaks need 40 minutes on the counter and the pool session is exactly that long. Salt them the second you walk in and the clock runs while you swim.",
+  timeline:[
+    {t:"PICKUP", h:"Grab the steaks on the way home", b:"Straight from school pickup. The resting clock starts the moment you're through the door."},
+    {t:"3:15", h:"Salt the steaks, suits on, sunscreen", b:"In that order. Sunscreen needs about fifteen minutes to bind before water."},
+    {t:"3:25", h:"Preheat to 425°F", b:"For the sweet potato wedges. Do it before you go outside or you'll forget."},
+    {t:"3:30", h:"Pool — 45 to 60 min", b:"Full attention, no phone. This is the decompression day."},
+    {t:"4:30", h:"Out, rinse, dry clothes", b:"Wedges into the oven now."},
+    {t:"4:45", h:"Fire the grill or heat the cast iron", b:""},
+    {t:"5:15", h:"Steaks on", b:"Broccolini goes in the skillet during the eight-minute rest."}
+  ],
+  prep:[
+    "Sunscreen applied 15 min before water",
+    "Towels, dry clothes, and diapers staged poolside before anyone gets in",
+    "Water bottles out — Phoenix pool time dehydrates them fast",
+    "Pool toys already in the water",
+    "Shade check — umbrella or a shaded ledge for the 2yo",
+    "Exit snack ready and visible"
+  ],
+  notes:[
+    "Have the exit snack out <em>before</em> you announce you're getting out. Hunger is what turns the transition into a fight.",
+    "A 3:30 September sun in Phoenix is still brutal. Don't skip the shade check."
+  ]
+},
+{
+  key:"wed", dayName:"Wednesday", accent:"var(--wed)",
+  act:"Kitchen Helpers", pair:"Sockeye bowls",
+  title:"Kitchen Helpers",
+  desc:"The brown rice needs forty minutes, so this is the night to make the cook the activity. The build-your-own bowl at the end is both the payoff and the dinner.",
+  timeline:[
+    {t:"3:20", h:"Rice on first", b:"Before anything else. Once it's simmering you have 45 minutes of freedom."},
+    {t:"3:30", h:"Aprons on, step stool out", b:""},
+    {t:"3:35", h:"4yo jobs", b:"Rinse the rice (before it goes on), tear cilantro leaves, shake the pickled onion jar, sprinkle sesame seeds."},
+    {t:"3:35", h:"2yo jobs", b:"Stir a bowl of nothing important, put cucumber slices in a bowl, hand you things. A real job with zero stakes."},
+    {t:"4:15", h:"Bowl-building station", b:"Everything in small dishes. They build their own. This is the actual activity."},
+    {t:"—", h:"If they lose interest", b:"They're done, you're cooking, that's fine. It was always going to be twenty minutes."}
+  ],
+  prep:[
+    "Rice rinsed and measured Tuesday night for the fastest start",
+    "Step stool out and stable",
+    "Butter knife or kid-safe knife for the 4yo — cucumber only",
+    "Small bowls for the build-your-own station",
+    "Everything sharp and hot pushed to the back of the counter"
+  ],
+  notes:[
+    "<strong>Toddlers eat food they assembled.</strong> That's the whole trick and it works better than any amount of negotiating.",
+    "Don't correct how they build it."
+  ]
+},
+{
+  key:"thu", dayName:"Thursday", accent:"var(--thu)",
+  act:"Obstacle Course", pair:"Spaghetti &amp; sausage",
+  title:"Backyard Obstacle Course",
+  desc:"The sauce simmers twenty minutes unattended and that's your build window. Times go on the outdoor whiteboard — the leaderboard is the entire engine for a four-year-old.",
+  timeline:[
+    {t:"3:20", h:"Sauce on", b:"Brown the sausage and mushrooms, get it simmering. Twenty minutes hands-off starts now."},
+    {t:"3:35", h:"Build the course together", b:"Building it is half the activity. Let the 4yo place the cones."},
+    {t:"3:45", h:"Five stations", b:"Crawl under a chair → jump the pool noodles → weave the cones → balance the tape line → sprint to the fence and back."},
+    {t:"3:50", h:"Run it, time it, post it", b:"Time the 4yo and write every run on the whiteboard. Circle the best time of the day and leave it up — she'll want to beat it next week."},
+    {t:"3:50", h:"2yo track", b:"She runs beside her sister with no timing and no rules. Just following."},
+    {t:"4:15", h:"Back in, pasta water on", b:""}
+  ],
+  prep:[
+    "Cones, noodles, painter's tape staged by the back door",
+    "Whiteboard wiped, marker that actually works",
+    "Last week's best time still posted, if there is one",
+    "Water bottles outside",
+    "Shade or hose ready — hottest hour of the day",
+    "Sauce simmering before you go out"
+  ],
+  watch:true,
+  notes:[
+    "<strong>If it's over 105°F, move it inside.</strong> Couch cushions and tape lines on the floor. Same activity, no heat risk — and a 2yo overheats much faster than a 4yo.",
+    "Announce times out loud with fanfare. The whiteboard only works if the posting is a ceremony."
+  ]
+},
+{
+  key:"fri", dayName:"Friday", accent:"var(--fri)",
+  act:"Fort Night", pair:"Turkey tacos",
+  title:"Fort Night",
+  desc:"Everyone's spent, including you. They direct the build, you hand over materials, and the fort stays up overnight because it's a treasure hunt location tomorrow.",
+  timeline:[
+    {t:"3:15", h:"Fort build", b:"Couch cushions, dining chairs, a fitted sheet. Let them direct it."},
+    {t:"3:45", h:"Fort is done", b:"Books, flashlights, stuffed animals inside. They'll play in it unprompted for a long time."},
+    {t:"5:00", h:"Taco assembly line", b:"Same build-your-own move as Wednesday."},
+    {t:"5:45", h:"Movie in the fort", b:"If you want the night to fully coast."}
+  ],
+  prep:[
+    "Fitted sheet plus clips or clothespins",
+    "Two flashlights — this is 80% of the appeal",
+    "Fort stays up through Saturday morning",
+    "Crema check — if it's gone, remake it Friday afternoon (2 min in the blender)",
+    "After bedtime: place all six treasure clues"
+  ],
+  notes:[
+    "The fort staying up is the link between Friday and Saturday. Don't tear it down."
+  ]
+},
+{
+  key:"sat", dayName:"Saturday AM", accent:"var(--sat)",
+  act:"Treasure Hunt", pair:"The payoff",
+  title:"The Treasure Hunt",
+  desc:"Neither girl can read, so every clue is a picture — you draw the location, that's it. Six clues maximum. Attention runs out around twenty minutes and it's better to end early than drag it.",
+  timeline:[
+    {t:"FRI PM", h:"Place all clues after bedtime", b:"Map goes somewhere they'll find it immediately — taped to their door or on the kitchen table."},
+    {t:"7:00", h:"They wake and find the map", b:""},
+    {t:"—", h:"You follow, you don't lead", b:"Read nothing. Point at nothing. The 4yo will crack clue one in about ninety seconds and the momentum carries from there."},
+    {t:"—", h:"Give the 2yo a job", b:"She carries the treasure box, or she's the one who pulls each clue from its hiding spot. Otherwise she's just chasing her sister and she'll melt down by clue three."},
+    {t:"~7:25", h:"Treasure", b:"Open it together."}
+  ],
+  clues:[
+    {c:"The map", w:"Hand-drawn house and yard, big X on clue 1. Crumple and tea-stain it Sunday.", cls:"start"},
+    {c:"Draw the fridge", w:"Taped to the fridge door"},
+    {c:"Draw the fort", w:"Inside Friday night's fort"},
+    {c:"Draw a shoe", w:"In the shoe pile by the door"},
+    {c:"Draw the pool", w:"In a bucket or on a lounger — get the outdoor legs done early"},
+    {c:"Draw a plant", w:"Tucked into a pot in the yard"},
+    {c:"Draw the bathtub", w:"In the tub — final clue points to the treasure"},
+    {c:"The treasure", w:"Shoebox wrapped in foil, or a small tin", cls:"end"}
+  ],
+  prep:[
+    "Map drawn and aged (Sunday)",
+    "Six picture clues drawn on index cards (Sunday)",
+    "Clues numbered on the back so you place them in order",
+    "Treasure assembled — TWO of everything, identical",
+    "Treasure container wrapped",
+    "Clues placed Friday night after bedtime",
+    "Phone charged"
+  ],
+  notes:[
+    "<strong>Two of every prize, identical.</strong> This is the single highest-risk failure point in the entire week.",
+    "Keep the outdoor legs early. Seven in the morning is the only comfortable hour you get here in September."
+  ]
+}
+];
+
+/* ---------- rail ---------- */
+const ALL=[PREP,...DAYS];
+const rail=document.getElementById("rail");
+ALL.forEach(d=>{
+  const a=document.createElement("a");
+  a.className="day"; a.href="#"+d.key;
+  a.style.setProperty("--accent",d.accent);
+  a.innerHTML='<span class="day-name">'+d.dayName+'</span>'+
+              '<span class="day-act">'+d.act+'</span>'+
+              '<span class="day-pair">'+d.pair+'</span>';
+  rail.appendChild(a);
+});
+
+/* ---------- sections ---------- */
+const host=document.getElementById("sections");
+const cb=(txt,accent)=>'<li><label><input type="checkbox"><span>'+txt+'</span></label></li>';
+
+/* Sunday prep — two checklists */
+(function(){
+  const s=document.createElement("section");
+  s.className="block"; s.id=PREP.key;
+  s.style.setProperty("--accent",PREP.accent);
+  s.innerHTML=
+    '<span class="b-tag">'+PREP.dayName+'</span>'+
+    '<h3 class="b-title">'+PREP.title+'</h3>'+
+    '<p class="b-desc">'+PREP.desc+'</p>'+
+    '<div class="cols">'+
+      '<div><h4 class="sub">'+PREP.leftTitle+'</h4><ul class="check">'+PREP.left.map(x=>cb(x)).join("")+'</ul></div>'+
+      '<div><h4 class="sub">'+PREP.rightTitle+'</h4><ul class="check">'+PREP.right.map(x=>cb(x)).join("")+'</ul></div>'+
+      '<div class="notes">'+PREP.notes.map(n=>'<p>'+n+'</p>').join("")+'</div>'+
+    '</div>';
+  host.appendChild(s);
+})();
+
+/* Days */
+DAYS.forEach(d=>{
+  const s=document.createElement("section");
+  s.className="block"; s.id=d.key;
+  s.style.setProperty("--accent",d.accent);
+
+  const tl=d.timeline.map(x=>
+    '<li><span class="tl-time">'+x.t+'</span><h4 class="tl-t">'+x.h+'</h4>'+
+    (x.b?'<div class="tl-b">'+x.b+'</div>':'')+'</li>'
+  ).join("");
+
+  const prep=d.prep.map(x=>cb(x)).join("");
+  const notes=d.notes.map(n=>'<p>'+n+'</p>').join("");
+
+  const clues=d.clues ? '<div class="clues"><h4 class="sub">The clue route — draw each one</h4><ol>'+
+    d.clues.map(c=>'<li class="'+(c.cls||'')+'"><span class="clue-draw">'+c.c+'</span><span class="clue-where">'+c.w+'</span></li>').join("")+
+    '</ol></div>' : '';
+
+  const watch = d.watch ? (
+    '<div class="watch">'+
+      '<div class="watch-head"><h4>Course timer</h4><span>Post the best time on the whiteboard</span></div>'+
+      '<div class="watch-body">'+
+        '<span class="clock">0:00.0</span>'+
+        '<div class="watch-btns">'+
+          '<button class="wbtn primary" data-a="start">Start</button>'+
+          '<button class="wbtn" data-a="record" disabled>Record run</button>'+
+          '<button class="wbtn" data-a="clear">Clear</button>'+
+        '</div>'+
+      '</div>'+
+      '<ul class="runs"></ul>'+
+    '</div>') : '';
+
+  s.innerHTML=
+    '<span class="b-tag">'+d.dayName+'</span>'+
+    '<h3 class="b-title">'+d.title+'</h3>'+
+    '<p class="b-desc">'+d.desc+'</p>'+
+    '<div class="cols">'+
+      '<div><h4 class="sub">Execution</h4><ul class="tl">'+tl+'</ul></div>'+
+      '<div><h4 class="sub">Prep</h4><ul class="check">'+prep+'</ul></div>'+
+      clues+watch+
+      '<div class="notes">'+notes+'</div>'+
+    '</div>';
+
+  host.appendChild(s);
+
+  /* stopwatch wiring */
+  const w=s.querySelector(".watch");
+  if(!w) return;
+  const clock=w.querySelector(".clock");
+  const bStart=w.querySelector('[data-a="start"]');
+  const bRec=w.querySelector('[data-a="record"]');
+  const bClear=w.querySelector('[data-a="clear"]');
+  const list=w.querySelector(".runs");
+  let t0=0, raf=null, running=false, elapsed=0, runs=[];
+
+  const fmt=ms=>{
+    const m=Math.floor(ms/60000);
+    const sec=Math.floor((ms%60000)/1000);
+    const t=Math.floor((ms%1000)/100);
+    return m+":"+String(sec).padStart(2,"0")+"."+t;
+  };
+  const loop=()=>{
+    elapsed=performance.now()-t0;
+    clock.textContent=fmt(elapsed);
+    raf=requestAnimationFrame(loop);
+  };
+  bStart.addEventListener("click",()=>{
+    if(running){
+      cancelAnimationFrame(raf); running=false;
+      bStart.textContent="Start"; bStart.classList.add("primary");
+      bRec.disabled = elapsed<100;
+    }else{
+      t0=performance.now()-0; elapsed=0; running=true;
+      bStart.textContent="Stop"; bStart.classList.remove("primary");
+      bRec.disabled=true; loop();
+    }
+  });
+  bRec.addEventListener("click",()=>{
+    if(elapsed<100) return;
+    runs.push(elapsed);
+    bRec.disabled=true;
+    clock.textContent="0:00.0"; elapsed=0;
+    const best=Math.min(...runs);
+    list.innerHTML=runs.map((r,i)=>
+      '<li class="'+(r===best?"best":"")+'"><span class="lbl">Run '+(i+1)+'</span><span class="val">'+fmt(r)+'</span></li>'
+    ).join("");
+  });
+  bClear.addEventListener("click",()=>{
+    cancelAnimationFrame(raf); running=false; elapsed=0; runs=[];
+    clock.textContent="0:00.0"; list.innerHTML="";
+    bStart.textContent="Start"; bStart.classList.add("primary"); bRec.disabled=true;
+  });
+});
+</script>
+</body>
+</html>
