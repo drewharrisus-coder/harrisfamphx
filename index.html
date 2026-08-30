@@ -69,6 +69,10 @@ body{
   text-transform:uppercase;
   color:var(--ink-soft);
 }
+.nav{display:flex;gap:1.4rem;align-items:baseline;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.nav a{color:var(--ink-soft);text-decoration:none;padding-bottom:.2rem;border-bottom:1.5px solid transparent}
+.nav a:hover{color:var(--ink);border-color:var(--line)}
+.nav a[aria-current]{color:var(--ink);border-color:var(--ink)}
 
 /* ---------- the week rail ---------- */
 .rail-head{
@@ -419,7 +423,11 @@ html{scroll-behavior:smooth}
 
   <header class="masthead">
     <h1 class="brand">harrisfamphx<span>/kitchen</span></h1>
-    <p class="dateline" id="dateline"></p>
+    <nav class="nav">
+      <a href="index.html" aria-current="page">Kitchen</a>
+      <a href="activities.html">Activities</a>
+      <span class="dateline" id="dateline"></span>
+    </nav>
   </header>
 
   <section class="rail-head">
