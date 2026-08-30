@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitchen — harrisfamphx</title>
+<meta name="description" content="The Harris family weekly meal menu and recipes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16211C;
+  --ink-soft:#4A5A52;
+  --paper:#FBFAF5;
+  --shell:#EAEDE4;
+  --line:#D2D8CC;
+
+  --mon:#5E8C3A;
+  --tue:#7D3548;
+  --wed:#C4566B;
+  --thu:#A83A25;
+  --fri:#C68A17;
+
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Newsreader", Georgia, serif;
+  --mono:"Space Mono", ui-monospace, monospace;
+
+  --accent:var(--ink);
+  --gut:clamp(1.1rem, 4vw, 2.75rem);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,0.97rem + 0.2vw,1.09rem);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--gut)}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1.5px solid var(--ink);
+  padding:1.4rem 0 1rem;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.4rem 1.5rem;
+}
+.brand{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(1.35rem,1.1rem + 1.4vw,2rem);
+  letter-spacing:-.035em;
+  line-height:1;
+  margin:0;
+}
+.brand span{color:var(--ink-soft);font-weight:400}
+.dateline{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+/* ---------- the week rail ---------- */
+.rail-head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.75rem;
+  margin:2.6rem 0 1rem;
+}
+.rail-title{
+  font-family:var(--display);
+  font-weight:800;
+  letter-spacing:-.04em;
+  font-size:clamp(2.1rem,1.4rem + 3.4vw,3.9rem);
+  line-height:.95;
+  margin:0;
+  max-width:14ch;
+}
+.rail-sub{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  max-width:26ch;
+  line-height:1.7;
+}
+
+.rail{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:2px;
+  background:var(--line);
+  border:1.5px solid var(--ink);
+  margin-bottom:1rem;
+}
+.day{
+  background:var(--paper);
+  border:0;
+  padding:1.15rem 1rem 1.3rem;
+  text-align:left;
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;
+  min-height:100%;
+  position:relative;
+  transition:background .18s ease;
+}
+.day::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:6px;
+  background:var(--accent);
+}
+.day:hover,.day:focus-visible{background:var(--shell)}
+.day:focus-visible{outline:2.5px solid var(--ink);outline-offset:-2.5px}
+.day-name{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-top:.35rem;
+}
+.day-dish{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.12rem;
+  letter-spacing:-.02em;
+  line-height:1.12;
+}
+.day-side{
+  font-size:.9rem;
+  color:var(--ink-soft);
+  line-height:1.35;
+  margin-top:auto;
+}
+.rail-foot{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem 1.4rem;
+  align-items:center;
+  padding-bottom:.5rem;
+}
+.printbtn{
+  font:inherit;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  background:none;
+  border:1.5px solid var(--ink);
+  color:var(--ink);
+  padding:.5rem .9rem;
+  cursor:pointer;
+  transition:background .16s ease,color .16s ease;
+}
+.printbtn:hover{background:var(--ink);color:var(--paper)}
+.printbtn:focus-visible{outline:2.5px solid var(--ink);outline-offset:3px}
+
+/* ---------- recipes ---------- */
+.recipes{margin-top:4.5rem;border-top:1.5px solid var(--ink)}
+.recipe{
+  border-bottom:1.5px solid var(--ink);
+  padding:2.6rem 0 3.2rem;
+  scroll-margin-top:1rem;
+}
+.r-tag{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--paper);
+  background:var(--accent);
+  display:inline-block;
+  padding:.32rem .6rem;
+  margin-bottom:1rem;
+}
+.r-title{
+  font-family:var(--display);
+  font-weight:800;
+  letter-spacing:-.038em;
+  line-height:1.02;
+  font-size:clamp(1.75rem,1.25rem + 2.2vw,2.9rem);
+  margin:0 0 .5rem;
+  max-width:20ch;
+}
+.r-desc{
+  margin:0 0 1.6rem;
+  color:var(--ink-soft);
+  font-size:1.05rem;
+  max-width:56ch;
+}
+
+/* serving stepper */
+.serves{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  flex-wrap:wrap;
+  border:1.5px solid var(--ink);
+  padding:.55rem .55rem .55rem .95rem;
+  margin-bottom:2.4rem;
+  width:fit-content;
+}
+.serves-label{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.step-btn{
+  width:2.1rem;height:2.1rem;
+  border:1.5px solid var(--ink);
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:1.3rem;
+  font-weight:600;
+  line-height:1;
+  cursor:pointer;
+  display:grid;place-items:center;
+  transition:background .16s ease,color .16s ease;
+}
+.step-btn:hover:not(:disabled){background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.step-btn:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+.step-btn:disabled{opacity:.28;cursor:not-allowed}
+.serves-n{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:1.15rem;
+  min-width:1.6ch;
+  text-align:center;
+}
+
+.cols{display:grid;grid-template-columns:minmax(0,10fr) minmax(0,13fr);gap:clamp(2rem,4vw,4rem)}
+
+.sub{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  border-bottom:1px solid var(--line);
+  padding-bottom:.5rem;
+  margin:0 0 1rem;
+}
+
+/* ingredients */
+.ing-list{list-style:none;margin:0;padding:0}
+.ing{
+  display:flex;
+  gap:.7rem;
+  align-items:flex-start;
+  padding:.42rem 0;
+  border-bottom:1px solid var(--line);
+  cursor:pointer;
+  line-height:1.4;
+}
+.ing input{
+  appearance:none;
+  -webkit-appearance:none;
+  flex:0 0 auto;
+  width:1.05rem;height:1.05rem;
+  margin:.25rem 0 0;
+  border:1.5px solid var(--ink-soft);
+  background:var(--paper);
+  cursor:pointer;
+  display:grid;place-items:center;
+}
+.ing input:checked{background:var(--accent);border-color:var(--accent)}
+.ing input:checked::after{content:"";width:.28rem;height:.55rem;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(42deg) translateY(-1px)}
+.ing input:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+.ing input:checked ~ .ing-text{opacity:.4;text-decoration:line-through}
+.ing-text{transition:opacity .16s ease}
+.qty{font-family:var(--mono);font-weight:700;font-size:.92em}
+.qty.tick{background:var(--accent);color:var(--paper);border-radius:2px;padding:0 .18em;margin:0 -.18em}
+
+/* steps */
+.step-list{list-style:none;margin:0;padding:0;counter-reset:s}
+.st{
+  display:grid;
+  grid-template-columns:2.15rem 1fr;
+  gap:.35rem 1rem;
+  padding:0 0 1.55rem;
+  margin-bottom:1.55rem;
+  border-bottom:1px solid var(--line);
+}
+.st:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.st-n{
+  counter-increment:s;
+  font-family:var(--mono);
+  font-size:.78rem;
+  font-weight:700;
+  color:var(--accent);
+  padding-top:.28rem;
+}
+.st-n::before{content:counter(s,decimal-leading-zero)}
+.st-title{
+  grid-column:2;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.14rem;
+  letter-spacing:-.02em;
+  margin:0;
+  line-height:1.2;
+}
+.st-body{grid-column:2;margin:.35rem 0 0}
+.st-body p{margin:0}
+.timer{
+  grid-column:2;
+  justify-self:start;
+  margin-top:.7rem;
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  background:none;
+  border:1.5px solid var(--line);
+  color:var(--ink-soft);
+  padding:.4rem .7rem;
+  cursor:pointer;
+  transition:border-color .16s ease,color .16s ease,background .16s ease;
+}
+.timer:hover{border-color:var(--accent);color:var(--accent)}
+.timer:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+.timer.running{border-color:var(--accent);color:var(--accent);font-weight:700}
+.timer.done{background:var(--accent);border-color:var(--accent);color:var(--paper);font-weight:700}
+
+/* notes */
+.notes{
+  grid-column:1 / -1;
+  margin-top:2.6rem;
+  border-left:4px solid var(--accent);
+  padding:.15rem 0 .15rem 1.15rem;
+  max-width:68ch;
+}
+.notes p{margin:0 0 .8rem;color:var(--ink-soft);font-size:.98rem}
+.notes p:last-child{margin-bottom:0}
+
+.foot{
+  padding:3rem 0 4rem;
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:.6rem 1.5rem;
+}
+.foot a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--line)}
+.foot a:hover{border-color:var(--ink)}
+
+@media (max-width:820px){
+  .rail{grid-template-columns:1fr}
+  .day{min-height:0;padding:1rem}
+  .day::before{inset:0 auto 0 0;width:6px;height:auto}
+  .day{padding-left:1.5rem}
+  .day-name{margin-top:0}
+  .cols{grid-template-columns:1fr;gap:2.6rem}
+  .notes{margin-top:2rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;scroll-behavior:auto !important}
+}
+html{scroll-behavior:smooth}
+
+/* ---------- fridge print sheet ---------- */
+@media print{
+  @page{margin:1.5cm}
+  body{background:#fff;font-size:12pt}
+  .rail-sub,.rail-foot,.recipes,.foot,.dateline{display:none !important}
+  .masthead{border-bottom:2px solid #000;padding-top:0}
+  .rail-head{margin:1.4rem 0 .8rem}
+  .rail{border:2px solid #000;grid-template-columns:1fr;gap:0}
+  .day{
+    border-bottom:1px solid #000;
+    padding:.65rem .65rem .65rem 1.1rem;
+    display:grid;
+    grid-template-columns:5.5rem 1fr;
+    align-items:baseline;
+    gap:.15rem 1rem;
+    break-inside:avoid;
+  }
+  .day:last-child{border-bottom:0}
+  .day::before{width:8px}
+  .day-name{margin:0;font-size:9pt}
+  .day-dish{font-size:13pt}
+  .day-side{grid-column:2;margin:0;font-size:10pt}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <h1 class="brand">harrisfamphx<span>/kitchen</span></h1>
+    <p class="dateline" id="dateline"></p>
+  </header>
+
+  <section class="rail-head">
+    <h2 class="rail-title">This week we&rsquo;re eating</h2>
+    <p class="rail-sub">Five nights. Tap a day for the full recipe, timers, and serving sizes you can dial up or down.</p>
+  </section>
+
+  <nav class="rail" id="rail" aria-label="Days of the week"></nav>
+
+  <div class="rail-foot">
+    <button class="printbtn" onclick="window.print()">Print the fridge menu</button>
+    <span>Recipes below &mdash; or on your phone at the stove</span>
+  </div>
+
+  <main class="recipes" id="recipes"></main>
+
+  <footer class="foot">
+    <span>harrisfamphx &mdash; family kitchen</span>
+    <span><a href="#top">Back to the week</a></span>
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   WEEK DATA
+   To change next week's menu, edit this array only.
+   Amounts are for `base` servings and scale automatically.
+   ============================================================ */
+const WEEK = [
+{
+  key:"mon", dayName:"Monday", accent:"var(--mon)",
+  dish:"Mahi Sandwiches", side:"Cilantro crema, sourdough, lime cabbage",
+  title:"Mahi Sandwiches with Cilantro Crema",
+  desc:"Pan-seared mahi on toasted sourdough. The fish stays plain salt-and-pepper so the crema can do the heavy lifting.",
+  base:2, unitLabel:"sandwiches",
+  ing:[
+    {id:"1", a:2, u:"", n:"mahi mahi filets (about 6 oz each)"},
+    {id:"2", a:4, u:"", n:"sourdough slices, thick-cut"},
+    {id:"3", a:2, u:"tbsp", n:"neutral oil (avocado or canola)"},
+    {id:"4", a:1, u:"tbsp", n:"butter, softened"},
+    {id:"5", a:0.75, u:"tsp", n:"kosher salt"},
+    {id:"6", a:0.5, u:"tsp", n:"black pepper"},
+    {id:"7", a:1, u:"cup", n:"shredded green cabbage"},
+    {id:"8", a:0.5, u:"cup", n:"sour cream"},
+    {id:"9", a:0.25, u:"cup", n:"mayonnaise"},
+    {id:"10", a:1, u:"cup", n:"cilantro, packed (leaves and tender stems)"},
+    {id:"11", a:1, u:"", n:"jalapeño, seeded"},
+    {id:"12", a:1, u:"", n:"garlic clove"},
+    {id:"13", a:1, u:"", n:"lime, juiced"},
+    {id:"14", a:0.5, u:"tsp", n:"ground cumin"}
+  ],
+  steps:[
+    {t:"Blend the crema", s:45, b:"Combine {8}, {9}, {10}, {11}, {12}, {13}, and {14} in a blender with a pinch of salt. Blend until completely smooth and bright green — 30 to 45 seconds. It should be pourable but thick enough to cling to a spoon. Taste and push it further with more lime or salt; this is the whole flavor of the sandwich, so don't be timid."},
+    {t:"Dress the cabbage", b:"Toss {7} with a squeeze of lime and a pinch of salt. Set aside — it softens slightly while you cook and gives the sandwich its crunch."},
+    {t:"Prep the fish", b:"Pat {1} completely dry with paper towels — this is the difference between a sear and a steam. Season both sides with {5} and {6}."},
+    {t:"Sear the mahi", s:210, b:"Heat {3} in a heavy skillet over medium-high until it shimmers. Lay the filets in and don't move them. Cook 3–4 minutes until the underside is golden, flip, and cook 2–3 minutes more. Mahi is done at 137°F and turns dry fast past that — pull it when the center just turns opaque."},
+    {t:"Toast the bread", s:90, b:"Butter {2} with {4} and toast in the same pan, 1–2 minutes per side, until crisp and golden at the edges."},
+    {t:"Build", b:"Spread crema generously on both slices — more than feels reasonable. Add the fish, pile on the cabbage, and close it up. Serve with extra crema on the side."}
+  ],
+  notes:[
+    "Seed the jalapeño fully, or drop it to half, if the girls are eating these. The crema stays bold on cilantro, lime, and cumin alone.",
+    "Leftover crema keeps four days. It's the sauce for Friday's tacos and it's excellent on Tuesday's sweet potatoes, so make the full batch even at two servings."
+  ]
+},
+{
+  key:"tue", dayName:"Tuesday", accent:"var(--tue)",
+  dish:"NY Strip", side:"Charred broccolini, sweet potato wedges",
+  title:"NY Strip with Broccolini and Sweet Potato Wedges",
+  desc:"Cast-iron strips, butter-basted. The sides carry the vitamin K and beta-carotene the rest of the week is short on.",
+  base:4, unitLabel:"servings",
+  ing:[
+    {id:"1", a:2, u:"", n:"NY strip steaks (about 12 oz each, 1.25\" thick)"},
+    {id:"2", a:2, u:"tsp", n:"kosher salt"},
+    {id:"3", a:1, u:"tsp", n:"black pepper, coarse"},
+    {id:"4", a:1, u:"tbsp", n:"neutral oil, high smoke point"},
+    {id:"5", a:3, u:"tbsp", n:"butter"},
+    {id:"6", a:3, u:"", n:"garlic cloves, smashed"},
+    {id:"7", a:3, u:"", n:"thyme sprigs"},
+    {id:"8", a:2, u:"", n:"medium sweet potatoes"},
+    {id:"9", a:2, u:"tbsp", n:"olive oil"},
+    {id:"10", a:0.5, u:"tsp", n:"smoked paprika"},
+    {id:"11", a:1, u:"", n:"bunch broccolini, trimmed"},
+    {id:"12", a:1, u:"tbsp", n:"olive oil (for broccolini)"},
+    {id:"13", a:2, u:"", n:"garlic cloves, sliced thin"},
+    {id:"14", a:0.5, u:"", n:"lemon, juiced"},
+    {id:"15", a:0.25, u:"tsp", n:"red pepper flakes"}
+  ],
+  steps:[
+    {t:"Salt the steaks early", s:2400, b:"Take {1} out of the fridge and salt both sides generously with {2}. Leave on the counter 40 minutes while the oven heats to 425°F. Room-temperature steak cooks evenly; cold steak gives you a gray band under the crust."},
+    {t:"Roast the sweet potatoes", s:2100, b:"Cut {8} into wedges about 3/4\" thick at the widest point. Toss with {9}, {10}, and a good pinch of salt. Spread on a sheet pan cut-side down with space between them — crowded wedges steam instead of caramelizing. Roast 30–35 minutes, flipping once at the 20-minute mark."},
+    {t:"Sear the steaks", s:240, b:"Pat {1} completely dry and season with {3}. Heat {4} in a cast-iron skillet over high until it's just starting to smoke. Lay the steaks down away from you and don't touch them for 4 minutes. Flip and go 3 more."},
+    {t:"Butter baste", s:90, b:"Drop the heat to medium. Add {5}, {6}, and {7} to the pan. Tilt it toward you and spoon the foaming butter over the steaks continuously for about 90 seconds. Pull at 130°F for medium-rare — it climbs another 5 degrees while resting."},
+    {t:"Rest", s:480, b:"Move the steaks to a board and let them sit at least 8 minutes. This is not optional — cut early and the juice ends up on the cutting board instead of in the meat. Use this window for the broccolini."},
+    {t:"Char the broccolini", s:180, b:"Wipe the skillet, add {12}, and get it hot. Lay {11} in a single layer and leave it alone for 3 minutes until the stems blister and blacken in spots. Add {13} and {15}, toss 60 seconds until the garlic is fragrant but not brown, then hit it with {14} and salt off the heat."},
+    {t:"Slice and serve", b:"Slice the steaks against the grain into 1/2\" strips — look for the direction the muscle fibers run and cut across them. Spoon the resting juices back over the top. Plate with the wedges and broccolini."}
+  ],
+  notes:[
+    "Two 12 oz strips feed four here because the sides are substantial. Buy one large steak per two adults and slice it to share.",
+    "Serve Monday's leftover crema alongside the sweet potatoes — it's the best use for the last of it.",
+    "Short on time? Skip the wedges and do arugula with lemon, olive oil, and shaved parmesan. Three minutes, and the acid cuts the steak just as well."
+  ]
+},
+{
+  key:"wed", dayName:"Wednesday", accent:"var(--wed)",
+  dish:"Sockeye Bowls", side:"Jasmine brown rice, pickled onion, avocado",
+  title:"Sockeye Salmon Bowls",
+  desc:"Glazed sockeye over jasmine brown rice. Start the rice first — it takes forty minutes and everything else takes ten.",
+  base:4, unitLabel:"bowls",
+  ing:[
+    {id:"1", a:1.5, u:"cup", n:"jasmine brown rice"},
+    {id:"2", a:3, u:"cup", n:"water"},
+    {id:"3", a:1, u:"lb", n:"sockeye salmon strips, skin removed"},
+    {id:"4", a:3, u:"tbsp", n:"soy sauce"},
+    {id:"5", a:1.5, u:"tbsp", n:"honey"},
+    {id:"6", a:1, u:"tbsp", n:"rice vinegar"},
+    {id:"7", a:2, u:"tsp", n:"toasted sesame oil"},
+    {id:"8", a:1, u:"tbsp", n:"fresh ginger, grated"},
+    {id:"9", a:2, u:"", n:"garlic cloves, grated"},
+    {id:"10", a:1, u:"tbsp", n:"neutral oil"},
+    {id:"11", a:0.5, u:"", n:"red onion, thinly sliced"},
+    {id:"12", a:0.33, u:"cup", n:"rice vinegar (for pickling)"},
+    {id:"13", a:1, u:"tsp", n:"sugar"},
+    {id:"14", a:1, u:"", n:"English cucumber, sliced"},
+    {id:"15", a:2, u:"", n:"avocados, sliced"},
+    {id:"16", a:3, u:"", n:"scallions, sliced"},
+    {id:"17", a:1, u:"tbsp", n:"toasted sesame seeds"},
+    {id:"18", a:0.5, u:"tsp", n:"kosher salt"}
+  ],
+  steps:[
+    {t:"Start the rice", s:2100, b:"Rinse {1} under cold water until it runs mostly clear. Combine with {2} and a pinch of salt in a pot, bring to a boil, then cover and drop to the lowest simmer. Cook 35 minutes, then pull it off the heat and let it sit covered 10 more minutes before fluffing."},
+    {t:"Pickle the onion", b:"Pack {11} into a jar. Warm {12} with {13} and a pinch of salt until dissolved, pour it over the onion, and let it sit. It'll be bright pink and ready by the time the rice is done."},
+    {t:"Mix the glaze", s:600, b:"Whisk {4}, {5}, {6}, {7}, {8}, and {9} together. Pour half over {3} and let it sit 10 minutes — no longer, or the salt starts curing the fish. Reserve the other half for finishing."},
+    {t:"Prep the toppings", b:"While the rice finishes, slice {14}, {15}, and {16}. Season the cucumber and avocado lightly with {18}."},
+    {t:"Sear the salmon", s:120, b:"Heat {10} in a skillet over medium-high. Shake excess marinade off the strips and lay them in a single layer. Sear 2 minutes, flip, and go 1–2 minutes more. Sockeye is lean and very red — it goes from perfect to chalky in about 60 seconds, so pull it while the center is still slightly translucent."},
+    {t:"Glaze and assemble", b:"Pour the reserved glaze into the hot pan off the heat and swirl it around the fish for 15 seconds until it thickens and coats. Build the bowls: rice on the bottom, salmon, then cucumber, avocado, and pickled onion in sections. Finish with {16} and {17}."}
+  ],
+  notes:[
+    "If Wednesday is a rough night, cook the rice Monday alongside the mahi and reheat it with a splash of water. That drops this to about fifteen minutes.",
+    "Thinned-out cilantro crema works as the bowl sauce if you'd rather skip the glaze. Cilantro, lime, and salmon are a good match."
+  ]
+},
+{
+  key:"thu", dayName:"Thursday", accent:"var(--thu)",
+  dish:"Spaghetti &amp; Sausage", side:"Cremini mushrooms, spinach in the sauce",
+  title:"Spaghetti with Sausage, Mushrooms, and Spinach",
+  desc:"Italian sausage stretched with mushrooms, and enough spinach wilted into the sauce that nobody at the table notices.",
+  base:4, unitLabel:"servings",
+  ing:[
+    {id:"1", a:12, u:"oz", n:"spaghetti (whole-wheat or chickpea)"},
+    {id:"2", a:0.75, u:"lb", n:"Italian sausage, casings removed"},
+    {id:"3", a:8, u:"oz", n:"cremini mushrooms, sliced"},
+    {id:"4", a:5, u:"oz", n:"baby spinach"},
+    {id:"5", a:28, u:"oz", n:"crushed tomatoes"},
+    {id:"6", a:1, u:"", n:"yellow onion, diced"},
+    {id:"7", a:4, u:"", n:"garlic cloves, minced"},
+    {id:"8", a:2, u:"tbsp", n:"tomato paste"},
+    {id:"9", a:1, u:"tbsp", n:"olive oil"},
+    {id:"10", a:1, u:"tsp", n:"dried oregano"},
+    {id:"11", a:0.5, u:"tsp", n:"red pepper flakes"},
+    {id:"12", a:1, u:"tsp", n:"kosher salt"},
+    {id:"13", a:0.5, u:"cup", n:"grated parmesan"},
+    {id:"14", a:0.25, u:"cup", n:"fresh basil, torn"}
+  ],
+  steps:[
+    {t:"Brown the sausage", s:400, b:"Heat {9} in a wide pot over medium-high. Add {2} and break it into small pieces with a wooden spoon. Cook 6–7 minutes without stirring much — you want browned crust on the meat, not gray crumbles. Leave the fat in the pot."},
+    {t:"Brown the mushrooms", s:420, b:"Add {3} to the sausage fat and spread them in an even layer. Don't stir for 4 minutes — they'll release water first, then brown once it cooks off. Season with a pinch of salt and cook 3–4 more minutes until deeply golden."},
+    {t:"Aromatics and paste", s:330, b:"Add {6} and cook 4 minutes until softened. Stir in {7}, {8}, {10}, and {11} and cook 90 seconds — toasting the paste until it darkens builds a lot of depth for almost no effort."},
+    {t:"Simmer the sauce", s:1200, b:"Pour in {5} and {12}. Bring to a simmer, then drop the heat and let it go 20 minutes uncovered, stirring now and then. Start the pasta water now."},
+    {t:"Cook the pasta", s:540, b:"Salt the boiling water heavily and cook {1} to one minute short of the package time. Reserve a cup of pasta water before draining."},
+    {t:"Wilt the spinach", s:90, b:"Add {4} to the sauce in two handfuls, stirring until each disappears. It looks like far too much and collapses to almost nothing in 90 seconds."},
+    {t:"Combine", s:60, b:"Add the drained pasta directly to the sauce with a splash of the reserved water. Toss hard over medium heat for a minute until the sauce clings instead of pooling. Finish with {13} and {14}."}
+  ],
+  notes:[
+    "The mushrooms are doing real work here. They take on the sausage fat and read as meat, which is why three-quarters of a pound feeds four comfortably.",
+    "Whole-wheat spaghetti is the easy upgrade. Chickpea pasta pushes protein and fiber further but has a firmer bite some kids reject."
+  ]
+},
+{
+  key:"fri", dayName:"Friday", accent:"var(--fri)",
+  dish:"Turkey &amp; Bean Tacos", side:"Blistered peppers, cabbage, the last of the crema",
+  title:"Turkey and Black Bean Tacos",
+  desc:"Cleanup night. It uses the cabbage, the crema, and the cilantro you already bought, and the beans are the only legume on the whole board.",
+  base:4, unitLabel:"servings",
+  ing:[
+    {id:"1", a:1, u:"lb", n:"ground turkey (93% lean)"},
+    {id:"2", a:15, u:"oz", n:"black beans, drained and rinsed"},
+    {id:"3", a:2, u:"", n:"bell peppers, sliced"},
+    {id:"4", a:0.5, u:"", n:"yellow onion, sliced"},
+    {id:"5", a:12, u:"", n:"corn tortillas"},
+    {id:"6", a:2, u:"tbsp", n:"neutral oil"},
+    {id:"7", a:2, u:"tsp", n:"chili powder"},
+    {id:"8", a:1.5, u:"tsp", n:"ground cumin"},
+    {id:"9", a:1, u:"tsp", n:"smoked paprika"},
+    {id:"10", a:1, u:"tsp", n:"garlic powder"},
+    {id:"11", a:0.5, u:"tsp", n:"dried oregano"},
+    {id:"12", a:1, u:"tsp", n:"kosher salt"},
+    {id:"13", a:0.33, u:"cup", n:"water or chicken broth"},
+    {id:"14", a:1, u:"", n:"lime, juiced"},
+    {id:"15", a:2, u:"cup", n:"shredded green cabbage"},
+    {id:"16", a:0.75, u:"cup", n:"cilantro crema (from Monday)"},
+    {id:"17", a:0.25, u:"cup", n:"cilantro, chopped"},
+    {id:"18", a:0.5, u:"cup", n:"cotija or queso fresco, crumbled"}
+  ],
+  steps:[
+    {t:"Mix the spice blend", b:"Combine {7}, {8}, {9}, {10}, {11}, and {12} in a small bowl. Mixing it ahead means you're not measuring six things into a hot pan."},
+    {t:"Blister the peppers", s:300, b:"Heat 1 tbsp of {6} in a large skillet over high. Add {3} and {4} and leave them alone for 3 minutes until they blister and blacken at the edges. Toss and cook 2 more, then move to a plate and season with salt."},
+    {t:"Brown the turkey", s:400, b:"Add the rest of {6} to the same pan over medium-high. Add {1} and break it up. Cook 6–7 minutes until no pink remains and some of it starts to brown — turkey is lean, so don't rush past the browning or it'll taste flat."},
+    {t:"Season and add beans", s:300, b:"Sprinkle the spice blend over the meat and stir 30 seconds until fragrant. Add {13} and {2}, then simmer 4–5 minutes until the liquid mostly cooks off and everything is glossy. Finish with {14} off the heat."},
+    {t:"Set up the toppings", b:"Toss {15} with a squeeze of lime and a pinch of salt — same as Monday. Have {16}, {17}, and {18} out and ready."},
+    {t:"Warm the tortillas", s:180, b:"Heat {5} directly over a gas burner for 20 seconds a side, or in a dry skillet for 30. Stack them in a clean towel as you go so they steam and stay pliable. Cold tortillas crack; warm ones don't."},
+    {t:"Build", b:"Turkey and beans first, then peppers, then cabbage. Drizzle with crema and finish with cilantro and cheese. Let everyone build their own — the girls can skip whatever they're not in the mood for."}
+  ],
+  notes:[
+    "Use turkey if it's ground. If the frozen poultry is chicken thighs, thaw them, season the same way, roast at 425°F for 25 minutes, and shred. Better texture than ground chicken, which turns to paste.",
+    "Out of crema by Friday? The blend takes two minutes to remake — sour cream, cilantro, lime, garlic, cumin."
+  ]
+}
+];
+
+/* ---------- number formatting ---------- */
+const GLYPHS=[[1/8,"⅛"],[1/4,"¼"],[1/3,"⅓"],[3/8,"⅜"],[1/2,"½"],[5/8,"⅝"],[2/3,"⅔"],[3/4,"¾"],[7/8,"⅞"]];
+function fmtAmount(n){
+  if(n<=0) return "0";
+  if(n<0.09) return "a pinch";
+  const whole=Math.floor(n+1e-9), frac=n-whole;
+  if(frac<0.055) return String(whole);
+  let g=null, best=1;
+  for(const [v,ch] of GLYPHS){ const d=Math.abs(frac-v); if(d<best){best=d;g=ch;} }
+  if(best<0.055) return (whole>0?whole:"")+g;
+  return String(Math.round(n*10)/10);
+}
+function qtyText(ing,mult){
+  const a=fmtAmount(ing.a*mult);
+  return ing.u ? a+" "+ing.u : a;
+}
+function fmtClock(sec){
+  const m=Math.floor(sec/60), s=sec%60;
+  return m+":"+String(s).padStart(2,"0");
+}
+function durLabel(sec){
+  if(sec<60) return sec+" sec";
+  const m=Math.round(sec/60);
+  return m+" min";
+}
+
+/* ---------- dateline ---------- */
+(function(){
+  const now=new Date();
+  const d=now.getDay();
+  const toMon=(d===0?1:(d===1?0:8-d));
+  const mon=new Date(now); mon.setDate(now.getDate()+toMon);
+  const fri=new Date(mon); fri.setDate(mon.getDate()+4);
+  const M={month:"short",day:"numeric"};
+  const a=mon.toLocaleDateString("en-US",M), b=fri.toLocaleDateString("en-US",M);
+  document.getElementById("dateline").textContent="Week of "+a+" — "+b;
+})();
+
+/* ---------- build the rail ---------- */
+const rail=document.getElementById("rail");
+WEEK.forEach(r=>{
+  const btn=document.createElement("a");
+  btn.className="day";
+  btn.href="#"+r.key;
+  btn.style.setProperty("--accent",r.accent);
+  btn.innerHTML=
+    '<span class="day-name">'+r.dayName+'</span>'+
+    '<span class="day-dish">'+r.dish+'</span>'+
+    '<span class="day-side">'+r.side+'</span>';
+  rail.appendChild(btn);
+});
+
+/* ---------- build the recipes ---------- */
+const host=document.getElementById("recipes");
+
+WEEK.forEach(r=>{
+  const sec=document.createElement("section");
+  sec.className="recipe";
+  sec.id=r.key;
+  sec.style.setProperty("--accent",r.accent);
+
+  const ingHTML=r.ing.map(i=>
+    '<li class="ing"><label class="ing" style="border:0;padding:0;width:100%">'+
+      '<input type="checkbox" aria-label="Have '+i.n.replace(/"/g,"&quot;")+'">'+
+      '<span class="ing-text"><span class="qty" data-q="'+i.id+'">'+qtyText(i,1)+'</span> '+i.n+'</span>'+
+    '</label></li>'
+  ).join("");
+
+  const stepsHTML=r.steps.map(s=>{
+    const body=s.b.replace(/\{(\d+)\}/g,(m,id)=>{
+      const ing=r.ing.find(x=>x.id===id);
+      if(!ing) return m;
+      return '<span class="qty" data-q="'+id+'">'+qtyText(ing,1)+'</span> '+ing.n;
+    });
+    const timer=s.s ? '<button class="timer" data-sec="'+s.s+'">Start '+durLabel(s.s)+'</button>' : '';
+    return '<li class="st"><span class="st-n"></span><h4 class="st-title">'+s.t+'</h4>'+
+           '<div class="st-body"><p>'+body+'</p></div>'+timer+'</li>';
+  }).join("");
+
+  const notesHTML=r.notes.map(n=>'<p>'+n+'</p>').join("");
+
+  sec.innerHTML=
+    '<span class="r-tag">'+r.dayName+'</span>'+
+    '<h3 class="r-title">'+r.title+'</h3>'+
+    '<p class="r-desc">'+r.desc+'</p>'+
+    '<div class="serves">'+
+      '<span class="serves-label">Makes</span>'+
+      '<button class="step-btn" data-dir="-1" aria-label="Fewer servings">&minus;</button>'+
+      '<span class="serves-n">'+r.base+'</span>'+
+      '<button class="step-btn" data-dir="1" aria-label="More servings">+</button>'+
+      '<span class="serves-label">'+r.unitLabel+'</span>'+
+    '</div>'+
+    '<div class="cols">'+
+      '<div><h4 class="sub">Ingredients</h4><ul class="ing-list">'+ingHTML+'</ul></div>'+
+      '<div><h4 class="sub">Method</h4><ol class="step-list">'+stepsHTML+'</ol></div>'+
+      '<div class="notes">'+notesHTML+'</div>'+
+    '</div>';
+
+  host.appendChild(sec);
+
+  /* --- serving stepper --- */
+  let servings=r.base;
+  const nEl=sec.querySelector(".serves-n");
+  const minus=sec.querySelector('[data-dir="-1"]');
+  const plus=sec.querySelector('[data-dir="1"]');
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function render(){
+    const mult=servings/r.base;
+    nEl.textContent=servings;
+    minus.disabled=servings<=1;
+    plus.disabled=servings>=16;
+    sec.querySelectorAll("[data-q]").forEach(el=>{
+      const ing=r.ing.find(x=>x.id===el.dataset.q);
+      if(!ing) return;
+      const next=qtyText(ing,mult);
+      if(el.textContent===next) return;
+      el.textContent=next;
+      if(reduce) return;
+      el.classList.add("tick");
+      setTimeout(()=>el.classList.remove("tick"),380);
+    });
+  }
+  minus.addEventListener("click",()=>{ if(servings>1){servings--;render();} });
+  plus.addEventListener("click",()=>{ if(servings<16){servings++;render();} });
+
+  /* --- step timers --- */
+  sec.querySelectorAll(".timer").forEach(btn=>{
+    const total=+btn.dataset.sec;
+    let left=total, tick=null;
+    btn.addEventListener("click",()=>{
+      if(tick){ clearInterval(tick); tick=null; left=total;
+        btn.className="timer"; btn.textContent="Start "+durLabel(total); return; }
+      btn.classList.remove("done");
+      btn.classList.add("running");
+      btn.textContent=fmtClock(left);
+      tick=setInterval(()=>{
+        left--;
+        if(left<=0){
+          clearInterval(tick); tick=null; left=total;
+          btn.className="timer done"; btn.textContent="Time";
+          return;
+        }
+        btn.textContent=fmtClock(left);
+      },1000);
+    });
+  });
+});
+</script>
+</body>
+</html>
