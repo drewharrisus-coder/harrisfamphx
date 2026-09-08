@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Baltray to Portrush — Ireland 2026</title>
+<meta name="theme-color" content="#16261F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ireland '26">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16261F;
+  --ink-soft:#3E5348;
+  --paper:#E3E0CE;
+  --paper-lift:#EDEBDD;
+  --gorse:#D9A118;
+  --sea:#2E5B63;
+  --heather:#6B4F70;
+  --stone:#A8A797;
+  --rule:rgba(22,38,31,.16);
+  --rule-soft:rgba(22,38,31,.08);
+  --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --tabh:64px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  padding-bottom:calc(var(--tabh) + env(safe-area-inset-bottom));
+  overflow-x:hidden;
+}
+a{color:var(--sea)}
+:focus-visible{outline:2.5px solid var(--sea);outline-offset:3px;border-radius:2px}
+
+/* ---------- masthead ---------- */
+.mast{
+  position:sticky;top:0;z-index:40;
+  background:var(--ink);color:var(--paper);
+  padding:calc(8px + env(safe-area-inset-top)) 18px 8px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  border-bottom:1px solid rgba(227,224,206,.18);
+}
+.mast h1{
+  font-family:var(--serif);
+  font-variation-settings:'SOFT' 30,'WONK' 1,'opsz' 40;
+  font-weight:600;font-size:16px;letter-spacing:.005em;margin:0;line-height:1.2;
+}
+.mast .cur{
+  font-weight:700;font-size:13px;letter-spacing:.06em;
+  display:flex;align-items:center;gap:7px;white-space:nowrap;
+}
+.cur .sym{
+  background:var(--gorse);color:var(--ink);
+  width:22px;height:22px;border-radius:50%;
+  display:grid;place-items:center;font-size:13px;font-weight:700;
+  font-family:var(--serif);font-variation-settings:'opsz' 20;
+}
+.cur .lbl{color:rgba(227,224,206,.7);font-weight:500;font-size:11px;letter-spacing:.1em}
+
+/* ---------- shell ---------- */
+.wrap{max-width:640px;margin:0 auto;padding:0 18px}
+.panel{display:none;animation:in .22s ease-out both}
+.panel.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.panel{animation:none}*{transition:none!important}}
+
+h2.sec{
+  font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 60;
+  font-weight:600;font-size:26px;line-height:1.15;margin:30px 0 4px;letter-spacing:-.01em;
+}
+h2.sec:first-child{margin-top:22px}
+.sub{color:var(--ink-soft);font-size:14px;margin:0 0 16px;max-width:62ch}
+p{max-width:66ch}
+
+/* ---------- today hero ---------- */
+.hero{
+  background:var(--ink);color:var(--paper);
+  margin:0 -18px;padding:26px 18px 24px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;right:-56px;bottom:-72px;
+  width:210px;height:210px;border-radius:50%;
+  border:1.5px solid rgba(217,161,24,.28);
+}
+.hero .kick{
+  font-size:12px;letter-spacing:.16em;font-weight:600;
+  color:var(--gorse);margin:0 0 10px;
+}
+.hero .course{
+  font-family:var(--serif);font-variation-settings:'SOFT' 40,'WONK' 1,'opsz' 144;
+  font-weight:500;font-size:clamp(34px,10vw,50px);line-height:.98;
+  margin:0 0 12px;letter-spacing:-.025em;position:relative;z-index:1;
+}
+.hero .meta{font-size:15px;color:rgba(227,224,206,.82);margin:0;position:relative;z-index:1}
+.hero .meta strong{color:var(--paper);font-weight:600}
+.hero .tee{
+  display:inline-block;margin-top:14px;
+  border:1px solid rgba(217,161,24,.5);border-radius:2px;
+  padding:5px 11px;font-size:13px;font-weight:600;color:var(--gorse);
+  position:relative;z-index:1;
+}
+.hero .jump{
+  margin-top:18px;display:flex;gap:9px;flex-wrap:wrap;position:relative;z-index:1;
+}
+.hero .jump button{
+  background:none;border:1px solid rgba(227,224,206,.34);color:var(--paper);
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  padding:7px 13px;border-radius:2px;cursor:pointer;
+}
+.hero .jump button:hover{border-color:var(--gorse);color:var(--gorse)}
+
+.countdown{
+  background:var(--gorse);color:var(--ink);
+  margin:0 -18px;padding:11px 18px;
+  font-size:14px;font-weight:600;text-align:center;
+}
+
+/* ---------- scorecard-style blocks ---------- */
+.card{
+  background:var(--paper-lift);
+  border:1px solid var(--rule);
+  padding:16px 16px 14px;margin:0 0 12px;
+}
+.card h3{
+  font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 40;
+  font-weight:600;font-size:19px;margin:0 0 3px;line-height:1.2;
+}
+.card p{margin:0 0 8px;font-size:14.5px;color:var(--ink-soft)}
+.card p:last-child{margin-bottom:0}
+
+.rows{border-top:1px solid var(--rule);margin-top:12px}
+.row{
+  display:flex;justify-content:space-between;gap:14px;
+  padding:8px 0;border-bottom:1px solid var(--rule-soft);
+  font-size:14px;align-items:baseline;
+}
+.row .k{color:var(--ink-soft);flex:1}
+.row .v{font-weight:600;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .v.warn{color:#9A3B1E}
+
+.flag{
+  display:inline-block;background:var(--gorse);color:var(--ink);
+  font-size:11px;font-weight:700;letter-spacing:.05em;
+  padding:2px 7px;border-radius:2px;margin-left:6px;vertical-align:2px;
+}
+.flag.sea{background:var(--sea);color:var(--paper)}
+.flag.red{background:#9A3B1E;color:var(--paper)}
+
+/* ---------- day list ---------- */
+.day{
+  display:flex;gap:15px;padding:15px 0;
+  border-bottom:1px solid var(--rule);
+  cursor:pointer;align-items:flex-start;width:100%;
+  background:none;border-left:0;border-right:0;border-top:0;
+  text-align:left;font-family:inherit;color:inherit;
+}
+.day .num{
+  font-family:var(--serif);font-variation-settings:'opsz' 40,'WONK' 1;
+  font-weight:400;font-size:34px;line-height:.85;color:var(--stone);
+  min-width:42px;font-variant-numeric:lining-nums;
+}
+.day.now .num{color:var(--gorse)}
+.day .body{flex:1;min-width:0}
+.day .date{font-size:12px;letter-spacing:.09em;color:var(--ink-soft);font-weight:600;margin-bottom:2px}
+.day .t{
+  font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 36;
+  font-weight:600;font-size:19px;line-height:1.2;margin-bottom:3px;
+}
+.day .d{font-size:13.5px;color:var(--ink-soft)}
+
+/* ---------- course index ---------- */
+.cidx{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  width:100%;padding:14px 0;border:0;border-bottom:1px solid var(--rule);
+  background:none;text-align:left;font-family:inherit;color:inherit;cursor:pointer;
+}
+.cidx .nm{
+  font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 36;
+  font-weight:600;font-size:19px;line-height:1.2;
+}
+.cidx .sm{font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+.cidx .ar{color:var(--stone);font-size:20px;font-family:var(--serif)}
+
+/* ---------- course detail ---------- */
+.back{
+  background:none;border:0;padding:16px 0 4px;cursor:pointer;
+  font-family:inherit;font-size:14px;font-weight:600;color:var(--sea);
+}
+.chead{padding:4px 0 18px;border-bottom:2px solid var(--ink)}
+.chead .nm{
+  font-family:var(--serif);font-variation-settings:'SOFT' 40,'WONK' 1,'opsz' 144;
+  font-weight:500;font-size:clamp(30px,8.5vw,42px);line-height:1;
+  letter-spacing:-.025em;margin:0 0 8px;
+}
+.chead .stats{display:flex;flex-wrap:wrap;gap:0 18px;font-size:13px;color:var(--ink-soft);font-weight:500}
+.chead .stats b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+
+.lore{
+  font-family:var(--serif);font-variation-settings:'SOFT' 20,'opsz' 14;
+  font-size:17px;line-height:1.62;margin:20px 0;color:var(--ink);
+}
+.lore em{font-style:italic}
+
+h4.mini{
+  font-size:12px;letter-spacing:.14em;font-weight:700;
+  color:var(--sea);margin:26px 0 10px;
+}
+.hole{padding:11px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px}
+.hole b{
+  font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 24;
+  font-weight:600;font-size:16px;
+}
+.hole span{color:var(--ink-soft);display:block;margin-top:2px}
+
+.tees{
+  background:var(--sea);color:var(--paper);padding:14px 16px;margin:18px 0;
+  font-size:14.5px;line-height:1.5;
+}
+.tees b{font-weight:700}
+
+/* ---------- bounties ---------- */
+.tier{margin:22px 0 8px;display:flex;align-items:baseline;gap:9px}
+.tier .nm{font-size:12px;letter-spacing:.14em;font-weight:700}
+.tier .pt{font-size:12px;color:var(--ink-soft);font-weight:600}
+.t-bronze .nm{color:#8A6234}
+.t-silver .nm{color:#5D6B6E}
+.t-gold .nm{color:#9A7412}
+.t-black .nm{color:var(--ink)}
+.t-legend .nm{color:var(--heather)}
+
+.bty{
+  display:flex;gap:12px;align-items:flex-start;width:100%;
+  padding:11px 0;border:0;border-bottom:1px solid var(--rule-soft);
+  background:none;text-align:left;font-family:inherit;color:inherit;
+  cursor:pointer;font-size:14.5px;line-height:1.45;
+}
+.bty .box{
+  width:20px;height:20px;flex:0 0 20px;margin-top:1px;
+  border:1.5px solid var(--stone);border-radius:2px;
+  display:grid;place-items:center;font-size:13px;font-weight:700;color:transparent;
+}
+.bty[aria-pressed="true"] .box{background:var(--gorse);border-color:var(--gorse);color:var(--ink)}
+.bty[aria-pressed="true"] .txt{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--stone)}
+.bty .txt{flex:1}
+.bty .p{font-weight:700;font-variant-numeric:tabular-nums;color:var(--stone);font-size:13px}
+.bty[aria-pressed="true"] .p{color:var(--gorse)}
+
+.tally{
+  background:var(--ink);color:var(--paper);padding:16px 18px;margin:0 -18px 4px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.tally .n{
+  font-family:var(--serif);font-variation-settings:'opsz' 60,'WONK' 1;
+  font-weight:500;font-size:40px;line-height:1;color:var(--gorse);
+  font-variant-numeric:lining-nums;
+}
+.tally .l{font-size:13px;color:rgba(227,224,206,.75);text-align:right;line-height:1.35}
+
+.brd{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px}
+.brd .v{font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ---------- guide ---------- */
+details{border-bottom:1px solid var(--rule);padding:2px 0}
+summary{
+  cursor:pointer;padding:15px 0;list-style:none;
+  font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 36;
+  font-weight:600;font-size:19px;display:flex;justify-content:space-between;align-items:center;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';color:var(--stone);font-weight:400;font-size:22px}
+details[open] summary::after{content:'–'}
+details .in{padding:0 0 18px}
+details .in p{font-size:14.5px;color:var(--ink-soft);margin:0 0 11px}
+details .in p strong{color:var(--ink)}
+
+.tel{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:11px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;align-items:baseline;
+}
+.tel .k{color:var(--ink-soft)}
+.tel a{font-weight:600;text-decoration:none;white-space:nowrap}
+.tel .todo{color:var(--stone);font-weight:600;font-size:13px}
+
+.skip{border-left:3px solid #9A3B1E;padding:2px 0 2px 14px;margin:14px 0}
+.skip p{margin:0 0 7px;font-size:14.5px}
+.skip p:last-child{margin:0}
+
+.note{font-size:13px;color:var(--stone);margin:26px 0 8px;line-height:1.5}
+
+/* ---------- bottom tabs ---------- */
+.tabs{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:var(--ink);
+  display:grid;grid-template-columns:repeat(5,1fr);
+  padding-bottom:env(safe-area-inset-bottom);
+  border-top:1px solid rgba(227,224,206,.15);
+}
+.tabs button{
+  background:none;border:0;cursor:pointer;font-family:var(--sans);
+  color:rgba(227,224,206,.55);font-size:11px;font-weight:600;letter-spacing:.03em;
+  height:var(--tabh);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+}
+.tabs button .ic{font-size:17px;line-height:1;font-family:var(--serif);font-variation-settings:'opsz' 24}
+.tabs button.on{color:var(--gorse)}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <h1>Baltray to Portrush</h1>
+  <div class="cur"><span class="lbl" id="curLbl"></span><span class="sym" id="curSym">€</span></div>
+</header>
+
+<main>
+
+<!-- ============ TODAY ============ -->
+<section class="panel on" id="p-today">
+  <div id="cdBar"></div>
+  <div class="wrap">
+    <div class="hero" id="hero"></div>
+  </div>
+  <div class="wrap" id="todayBody"></div>
+</section>
+
+<!-- ============ DAYS ============ -->
+<section class="panel" id="p-days">
+  <div class="wrap">
+    <div id="dayList"></div>
+    <div id="dayDetail"></div>
+  </div>
+</section>
+
+<!-- ============ COURSES ============ -->
+<section class="panel" id="p-courses">
+  <div class="wrap">
+    <div id="courseList"></div>
+    <div id="courseDetail"></div>
+  </div>
+</section>
+
+<!-- ============ BOUNTIES ============ -->
+<section class="panel" id="p-bounty">
+  <div class="wrap">
+    <div class="tally">
+      <div class="n" id="btyTotal">0</div>
+      <div class="l">points claimed<br><span id="btyCount">0 of 0 bounties</span></div>
+    </div>
+    <h2 class="sec">Bounty board</h2>
+    <p class="sub">Call Gold and above out loud before you play the shot — one witness. Black and Legend need a photo. Settle at the bar.</p>
+    <div id="btyBoard"></div>
+    <h2 class="sec">Trip bounties</h2>
+    <p class="sub">Live all nine days, claimable once.</p>
+    <div id="btyTrip"></div>
+    <p class="note">Claims are saved on this phone only — nothing syncs between the four of you. One man reads the board each night and that settles it.</p>
+  </div>
+</section>
+
+<!-- ============ GUIDE ============ -->
+<section class="panel" id="p-guide">
+  <div class="wrap" id="guideBody"></div>
+</section>
+
+</main>
+
+<nav class="tabs" id="tabs">
+  <button data-t="today" class="on"><span class="ic">☘</span>Today</button>
+  <button data-t="days"><span class="ic">9</span>Days</button>
+  <button data-t="courses"><span class="ic">⚑</span>Courses</button>
+  <button data-t="bounty"><span class="ic">★</span>Bounties</button>
+  <button data-t="guide"><span class="ic">§</span>Guide</button>
+</nav>
+
+<script>
+/* ================= storage (degrades gracefully) ================= */
+const mem={};
+const S={
+  get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??null}},
+  set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
+};
+
+/* ================= data ================= */
+const COURSES={
+corballis:{
+  name:"Corballis Links", short:"Corballis", cur:"€", day:1,
+  founded:"1971", arch:"Eddie Hackett", par:"Par 65", yards:"≈4,900 yds", rank:"Public links",
+  lore:"Booked separately as the warm-up, and exactly the right call. Corballis is a proper little links laid out over Donabate's dunes — firm, quirky and mercifully short, with none of the ceremony of what's coming. You will be twenty hours awake and swinging like it. Nobody cares. Get the jet lag out of your legs, find out whether the wind is a rumour or a fact, and go eat in Malahide.",
+  holes:[
+    ["Everywhere","Short does not mean easy. The greens are small and the ground is firm — this is your first lesson in the ball running out twice as far as it does in Phoenix."],
+    ["The dunes","No caddies here, so this is where you learn to read a links line yourselves. Take the practice seriously; it pays at Ardglass on Monday."]
+  ],
+  tees:"Play it forward and enjoy it. This round is calibration, not competition — everyone should be finding the middle of the club, not grinding out a number.",
+  fees:[["Booked separately","confirm details"],["Caddies","not available"]],
+  wind:"Exposed but low-lying. Whatever's blowing here is roughly what you'll get at Royal Dublin tomorrow."
+},
+"royal-dublin":{
+  name:"Royal Dublin", short:"Royal Dublin", cur:"€", day:2,
+  founded:"1885", arch:"H.S. Colt (1920 redesign)", par:"Par 72", yards:"7,200+ yds", rank:"Ireland's 2nd oldest club",
+  lore:"Laid out on Bull Island in Dublin Bay, three miles from the city centre and reached by a wooden bridge — a nature reserve full of seabirds with a championship links running through it. Classic out-and-back routing, which means nine holes with the wind and nine into it, and no hiding from either. It has hosted the Irish Open more than once and lengthened by over 400 yards in recent years.",
+  holes:[
+    ["The out-and-back routing","You get the wind behind you going out. Do not let the front nine convince you that you've figured this course out — the walk home is a different game entirely."],
+    ["The 18th","The famous finisher: a dogleg where the bold line cuts across out-of-bounds and the safe line leaves a long way in. Decide on the tee, not halfway through the swing."],
+    ["Bull Island","Firm, sandy ground and small greens. Bump-and-run beats the high wedge nine times out of ten."]
+  ],
+  tees:"Everyone can play a middle set here — it's the gentlest championship test of the trip and a fair first real links round.",
+  fees:[["Senior caddie","€80 — tip included"],["Standard caddie","€60 — tip included"],["Golf cart","€50"],["Electric trolley","€20"],["Pull cart","€4"],["Club rental","€60"],["Shoes","€5"]],
+  wind:"Dublin Bay, generally off the sea. Prevailing southwest means help going out, grind coming home."
+},
+ardglass:{
+  name:"Ardglass", short:"Ardglass", cur:"£", day:3,
+  founded:"1896", arch:"MacAfee / Jones / Kearney", par:"Par 70", yards:"<6,300 yds", rank:"World's oldest clubhouse",
+  lore:"You tee off in front of a 15th-century castle wall with four ships' cannons pointing your way. The clubhouse is a fortified warehouse whose construction began no later than 1405 — the oldest building in the world used as a golf clubhouse, later a family home with an extension added around 1788. There is a warm-up net inside the castle walls. The Irish Sea is visible from all eighteen tees and greens and in play on eight holes, and on a clear day you can see the Isle of Man. It is not long and it will still get you.",
+  holes:[
+    ["1st — the opening tee shot","Straight out along the coastline with the sea immediately in play and the harbour entrance beside you. The whole of Ireland is to your right. Aim there."],
+    ["2nd — Howd's Hole","167-yard par 3 across a rocky inlet to a green that looks the size of a postage stamp from the tee. The signature hole and the one that decides whether your round starts well."],
+    ["The first six","The most dramatic opening stretch in Irish golf, running along the clifftops with only a line of jagged rock between you and the sea. Take the extra club; do not take the aggressive line."],
+    ["11th and 12th","The 11th is a demanding par 4 that punishes anything wayward. The 12th par 3 is among the most photographed holes in Ireland, with the Mournes behind it."]
+  ],
+  tees:"Short enough that everyone can play the same tees comfortably. This is the most fun round of the week — treat it that way.",
+  fees:[["Senior caddie","£70 — tip included"],["Golf cart","£35"],["Electric trolley","£20"],["Pull trolley","£5"],["Club rental","£60 — balls included"]],
+  wind:"Clifftop and fully exposed, capable of wreaking havoc from any quarter. Firm fairways and small greens make yardage-based golf close to impossible here. Play the ground."
+},
+"royal-county-down":{
+  name:"Royal County Down", short:"Royal County Down", cur:"£", day:4,
+  founded:"1889", arch:"Old Tom Morris, Vardon, Colt, Steel", par:"Par 71", yards:"7,037 yds · SSS 74", rank:"Ranked No. 1 in the world",
+  lore:"A Scottish schoolteacher laid out the first nine. Old Tom Morris was then paid four guineas to extend it, and eighteen holes were ready in 1890. Harry Vardon modified it in 1908, the same year the club received royal patronage; Harry Colt created the fourth and ninth in the 1920s; Donald Steel modernised the closing stretch a century later. Herbert Warren Wind called it <em>the sternest examination in golf</em> he had ever taken. Dundrum Bay is to your east, the Mountains of Mourne to the south, and gorse-covered dunes everywhere in between. There is no lovelier place in golf, and it will take your lunch money.",
+  holes:[
+    ["The opening nine","Widely called the finest opening nine anywhere. It is also relentless — blind tee shots over ridges, bunkers with eyebrows of dense marram grass, and greens that are surprisingly flat as if to apologise for the rest."],
+    ["9th — the photograph","A blind tee shot up and over a ridge, then a walk to a peak some sixty feet above the fairway where the panorama takes in Slieve Donard, the Mournes and the Irish Sea. Have the camera ready. Then hit the second shot."],
+    ["The bunkers","Not sand traps — hazards. Marram and heather over the lips, and getting out sideways in one is a genuinely good result. Take the medicine early."],
+    ["16th","Donald Steel's short par 4. Reachable, tempting, and the fastest way to a big number on the back nine."]
+  ],
+  tees:"<b>Do not all play the championship tees.</b> 7,037 yards at a scratch rating of 74 is a professional test. The 7.4 can have a go from the blues; everyone else should move up a set, and the 21 should move up two. This is the walk that decides how the back half of your week feels.",
+  fees:[["Senior caddie","£75 — tip NOT included"],["Fore-caddie (group min)","£110 — tip NOT included"],["Electric trolley","£25"],["Pull trolley","£8"],["Club hire","£60"],["Buggies","NOT permitted"]],
+  bench:"Irish Open 2015: Søren Kjeldsen won at 2-under in wet, windy conditions.",
+  wind:"The routing darts back and forth so you never settle into one wind direction. Expect a different problem on every hole."
+},
+castlerock:{
+  name:"Castlerock", short:"Castlerock", cur:"£", day:5,
+  founded:"1901", arch:"Ben Sayers, Harry Colt, Martin Hawtree", par:"Par 73", yards:"≈6,750 yds", rank:"Mussenden Links",
+  lore:"Named for the clifftop temple next door — the same Mussenden Temple you're driving to after the round. Ben Sayers, the North Berwick clubmaker, extended it to eighteen holes and insisted its links would equal Troon, North Berwick and Sandwich. Harry Colt tuned it in 1925 while he was working up the road at Portrush, and Martin Hawtree reworked six holes in 2017–18. Set where the River Bann meets the Atlantic, with Donegal to the west and, on a clear day, the Isle of Islay to the north.",
+  holes:[
+    ["1st","Only 348 yards, but the prevailing wind pushes everything toward out-of-bounds right and there's a plateau green waiting. A par here is a good start."],
+    ["4th — Leg o' Mutton","The famous one. A 200-yard par 3 with a burn down the left, a railway line down the right and a raised, bunker-ringed green. There is no bail-out. Take enough club and commit."],
+    ["9th","A tough par 3 with the green ringed by dunes. Short is dead; long is worse."],
+    ["15th — Homewards","A blind par 5 that rewards putting the tee shot in the right place. Ask the caddie, then trust him."],
+    ["17th and 18th","The 17th is a downwind par 5 and your best birdie chance coming home. The 18th doglegs in front of the clubhouse to a double-tiered green — know which tier before you hit."]
+  ],
+  tees:"A par 73 that plays every bit of its length in wind. Middle tees for everyone except the low man.",
+  fees:[["Senior caddie","£60 — tip included"],["Golf carts","£45"],["Electric trolley","£25"],["Pull trolley","£8"],["Club rental","£50"]],
+  wind:"Open to the Atlantic at the Bann estuary. The 4th is the wind test of the day — it plays two clubs different depending on the direction."
+},
+"royal-portrush":{
+  name:"Royal Portrush", short:"Royal Portrush", cur:"£", day:6,
+  founded:"1888", arch:"Harry Colt (1929), Martin Ebert (2015–18)", par:"Par 71", yards:"7,344 yds (2019 Open)", rank:"Dunluce Links · Open venue",
+  lore:"The only club to have hosted the Open outside mainland Great Britain, and it has done it three times — Max Faulkner in 1951, Shane Lowry by six shots in 2019, and again in July 2025. Harry Colt's 1929 routing is the bones; Martin Ebert added five new greens, eight tees, ten bunkers and two entirely new holes on land taken from the old Valley course before 2019. Built on bluffs above the North Atlantic, and lusher and wilder than its Scottish cousins. This is the round the trip is built around.",
+  holes:[
+    ["1st — Hughie's","Out-of-bounds flanking both sides of the landing area. This is where Rory McIlroy's 2019 Open came apart on the very first swing. Three-wood or long iron. Accuracy, not ego."],
+    ["5th — White Rocks","372-yard par 4 diving toward the sea, theoretically drivable, with out-of-bounds directly behind the green. In 2019 it gave up four eagles and 111 birdies — and thirteen doubles or worse."],
+    ["6th — Harry Colt's","A 194-yard clifftop par 3 that uses gravity rather than sand, with natural contours funnelling anything loose into collection areas."],
+    ["7th and 8th","Ebert's new holes on the old Valley land — a genuine three-shot par 5 and a 430-yard par 4 where the left side must be avoided at all costs."],
+    ["16th — Calamity Corner","236 yards, all carry across a chasm to a green perched on the diagonal. The highest point on the property, so the wind does what it likes. In 2019 only 41% of the field found the green. The right miss is catastrophic; the grassy hollows left are a safe haven and a tricky up-and-down. Aim left and mean it."],
+    ["17th and 18th — Purgatory, Babington's","The 17th drops downhill and can catapult a drive a long way. The 18th is the finish you'll talk about at dinner."]
+  ],
+  tees:"Play a set forward of the championship tees. All four of you. 7,344 yards is what the best players in the world faced, and there is no glory in it — Calamity plays 236 from the back and that alone will ruin an afternoon.",
+  fees:[["Senior caddie","£70 — tip NOT included"],["Battery caddy car","£15 — no self-drive carts"],["Bag carriers","£20"],["Club hire","£35"]],
+  bench:"2019 Open: Shane Lowry won by six. 1951: Max Faulkner. Third Open staged here in July 2025.",
+  warn:"The club reserves the right to allocate a fore-caddie or an individual caddie to groups booked in morning times that have NOT pre-booked a caddie. Decide as a group before you arrive.",
+  wind:"Clifftop and exposed in every direction. Calamity sits at the high point and is the most wind-affected shot of the entire trip."
+},
+portstewart:{
+  name:"Portstewart", short:"Portstewart", cur:"£", day:7,
+  founded:"1894", arch:"Willie Park Jr., Des Giffin (1992)", par:"Par 72", yards:"7,004 yds", rank:"Strand Course · Irish Open venue",
+  lore:"The best front nine in Ireland, and arguably one of the best in the world — and it was designed by a local maths teacher. The club bought a wild stretch of duneland called Thistly Hollow in the 1980s and handed it to member Des Giffin, a schoolteacher at the Coleraine grammar school with no design experience whatsoever. He routed seven new holes through the big dunes and they opened in 1992. Jon Rahm won the 2017 Irish Open here at 24-under, a tournament record, six shots clear, and called it one of the most beautiful courses he had ever seen.",
+  holes:[
+    ["1st — Tubber Patrick","From an elevated tee you look out across the dunes to the beach and the Atlantic, then the fairway falls away far below. If there is a better view from a first tee anywhere, it takes some finding."],
+    ["2nd through 8th","Giffin's holes. They wind between enormous dunes that seclude you completely — you can play seven holes without seeing another group. Every one of them is a highlight."],
+    ["4th — Thistly Hollow","The par 5 that gave the land its name. Winds through the dunes and demands you commit to a line off the tee."],
+    ["5th — Rifle Range","So named because it was used for shooting practice during the Second World War."],
+    ["6th — Five Penny Piece","A short par 3 proving distance isn't everything — elevated green, fully exposed, and club selection is a genuine guess when the coastal wind is up."],
+    ["The back nine","Flatter and more open, running down toward the River Bann. Holes 10–15 were recently redesigned to real acclaim. Don't switch off — the scoring happens here."]
+  ],
+  tees:"7,004 yards through big dunes is a long walk. Middle tees, and do not play the tips — the locals will tell you the same.",
+  fees:[["Senior caddie","£70 — tip included"],["Golf cart (with caddy driver)","£100"],["Electric trolley","£25"],["Pull trolley","£7"],["Club hire","£45"]],
+  bench:"2017 Irish Open: Jon Rahm, 24-under, won by six — a tournament record.",
+  wind:"The dunes shelter you on the front nine, which is deceptive. The back nine is open and you'll suddenly find the wind you forgot about."
+},
+"county-louth":{
+  name:"County Louth", short:"Baltray", cur:"€", day:8,
+  founded:"1892", arch:"Tom Simpson & Molly Gourlay (1938)", par:"Par 72", yards:"7,031 yds", rank:"Irish Open 2004 & 2009",
+  lore:"Known to everyone as Baltray. Tom Simpson and Molly Gourlay redesigned it in 1938 across 190 acres at the mouth of the Boyne, and it has barely changed since. Simpson routed it in two loops so that no two holes run in the same direction — except the 12th and 13th, which both run along the sea — meaning the wind is a new problem on every tee. He used roughly fifty bunkers and let the terrain do the rest. Shane Lowry won the 2009 Irish Open here as an amateur. A fitting last round: subtle rather than sensational, and there isn't a weak hole on it.",
+  holes:[
+    ["The routing","No two holes in the same direction. You never get comfortable, and you never get a run of the same wind. This is the whole design idea."],
+    ["3rd","A par 5 to a punchbowl green — one of the best putting surfaces on a course known for them."],
+    ["14th — the signature","A short par 4 of barely 330 yards, downhill from an elevated tee through the dunes, bending right to a small green with the Irish Sea to the left. Drivable, and entirely capable of costing you six while you wonder what you did wrong."],
+    ["15th","The shortest par 3 on the course at around 130 yards, rising to an undulating green ringed by dunes with a false front. Gorgeous, and it will take your ball."],
+    ["16th","The most intimidating drive of the day — a sharp dogleg with three bunkers on the corner and rolling rough down the right."]
+  ],
+  tees:"Last round, tired legs, eight days of links in the bank. Play whatever tees make it fun.",
+  fees:[["Senior caddie","€60 — tip included"],["Buggy","€50"],["Electric trolley","€25"],["Pull trolley","€8"],["Hire clubs","€80 / €100 — 6 balls and tees"]],
+  bench:"Irish Open 2004 and 2009 — Shane Lowry won in 2009 as an amateur.",
+  wind:"Estuary and sea. Because of the routing, expect crosswind on most holes rather than a straight helper or hurt."
+}
+};
+
+const BOUNTIES={
+corballis:[
+  ["bronze","Finish the round without falling asleep standing up",1],
+  ["bronze","Make contact on the first swing in Ireland",1],
+  ["bronze","No lost ball on the front nine",1],
+  ["silver","Beat your handicap on any three-hole stretch",2],
+  ["silver","Land a putt from off the green",2],
+  ["silver","Get up and down from a greenside dune",2],
+  ["gold","Break 90 on twenty hours of no sleep",4],
+  ["gold","Birdie anything",4],
+  ["black","Level par or better on either nine",8],
+  ["legend","Break 80 off the plane",15],
+  ["neg","Ask what time it is at home — minus 1",-1],
+  ["neg","Fall asleep in the van on the way back — minus 1",-1]
+],
+"royal-dublin":[
+  ["bronze","Keep it in play off the 1st tee",1],
+  ["bronze","Out of a pot bunker in one",1],
+  ["bronze","Spot a seabird nobody can name",1],
+  ["silver","Par a hole into the wind on the way home",2],
+  ["silver","Play a deliberate low runner and pull it off",2],
+  ["silver","Two-putt from off the front of a green",2],
+  ["gold","Take the bold line on the 18th and find the fairway",4],
+  ["gold","Break 85",4],
+  ["gold","Beat the low man on any single hole",4],
+  ["black","Par the 18th",8],
+  ["legend","Level par or better on the inward nine",15],
+  ["neg","Ball out of bounds on 18 — minus 2",-2],
+  ["neg","Say the front nine was easy — minus 1",-1]
+],
+ardglass:[
+  ["bronze","Survive the opening five with a ball in your pocket",1],
+  ["bronze","Photograph the castle wall from the 1st tee",1],
+  ["bronze","See the Isle of Man, or claim you did",1],
+  ["silver","Carry the inlet on the 2nd in one",2],
+  ["silver","Par any of the first six",2],
+  ["silver","Hit a shot from the warm-up net inside the castle",2],
+  ["gold","Par the 2nd — Howd's Hole",4],
+  ["gold","No lost ball to the sea all day",4],
+  ["gold","Par the 12th",4],
+  ["black","Birdie any clifftop hole",8],
+  ["black","Break 80",8],
+  ["legend","Par the entire opening six",15],
+  ["neg","Ball into the Irish Sea — minus 2",-2],
+  ["neg","Try to play a yardage instead of the ground — minus 1",-1]
+],
+"royal-county-down":[
+  ["bronze","Finish the round",1],
+  ["bronze","Out of a marram-lipped bunker in one",1],
+  ["bronze","Find your ball after a blind tee shot",1],
+  ["silver","Par any hole on the opening nine",2],
+  ["silver","Take your photo from the peak on 9",2],
+  ["silver","Two-putt from forty feet",2],
+  ["gold","Par the 9th",4],
+  ["gold","Beat Kjeldsen's 2-under on any single hole relative to par",4],
+  ["gold","Break 95 from the correct tees",4],
+  ["black","Birdie anything at County Down",8],
+  ["black","Level par or better on any three-hole stretch",8],
+  ["legend","Beat 74 — the standard scratch",15],
+  ["neg","Blame the blind shot out loud — minus 1",-1],
+  ["neg","Refuse the caddie's line and pay for it — minus 2",-2]
+],
+castlerock:[
+  ["bronze","Clear the burn on the 4th",1],
+  ["bronze","Keep it inside the railway line all day",1],
+  ["bronze","No three-putts on the front nine",1],
+  ["silver","Par the 1st",2],
+  ["silver","Find the correct tier on 18",2],
+  ["silver","Birdie chance inside ten feet on the 17th",2],
+  ["gold","Par the 4th — Leg o' Mutton",4],
+  ["gold","Birdie the 17th",4],
+  ["gold","Break 90",4],
+  ["black","Birdie the 4th",8],
+  ["black","Par the blind 15th",8],
+  ["legend","Par or better on every par 3",15],
+  ["neg","Ball on the railway line — minus 2",-2],
+  ["neg","Wrong tier on 18 and three-putt — minus 1",-1]
+],
+"royal-portrush":[
+  ["bronze","Find the fairway on Hughie's",1],
+  ["bronze","Out of a bunker first try",1],
+  ["bronze","Make a putt over fifteen feet",1],
+  ["silver","Par either of the new holes — 7th or 8th",2],
+  ["silver","Up and down from off the green",2],
+  ["silver","Reach the collection area on Harry Colt's and get up and down",2],
+  ["gold","Hit the green at Calamity Corner",4],
+  ["gold","Birdie anything at Portrush",4],
+  ["gold","Break 90 on an Open venue",4],
+  ["black","Par Calamity Corner",8],
+  ["black","Par White Rocks with the OB behind",8],
+  ["legend","Birdie any par 3 on the Dunluce",15],
+  ["neg","OB off the 1st, like Rory — minus 3",-3],
+  ["neg","Miss Calamity right — minus 2",-2],
+  ["neg","Say this wind is ridiculous — minus 1",-1]
+],
+portstewart:[
+  ["bronze","Stand on the 1st tee and say nothing for ten seconds",1],
+  ["bronze","No lost ball through the dune holes",1],
+  ["bronze","Find the fairway on Tubber Patrick",1],
+  ["silver","Par any of Giffin's seven — holes 2 through 8",2],
+  ["silver","Hit the green on Five Penny Piece",2],
+  ["silver","Beat your handicap over the front nine",2],
+  ["gold","Par the 4th — Thistly Hollow",4],
+  ["gold","Level par or better on any three holes of the front nine",4],
+  ["gold","Break 88",4],
+  ["black","Birdie anything on the front nine",8],
+  ["black","Par the 1st, 4th and 6th in the same round",8],
+  ["legend","Beat Rahm's score on any single hole relative to par, twice",15],
+  ["neg","Switch off on the back nine and post a big one — minus 2",-2],
+  ["neg","Take the tips because someone dared you — minus 1",-1]
+],
+"county-louth":[
+  ["bronze","Finish the eighth round of the trip",1],
+  ["bronze","Keep it dry down the 12th and 13th",1],
+  ["bronze","Two-putt the punchbowl on 3",1],
+  ["silver","Par the 15th",2],
+  ["silver","Find the fairway on the 16th dogleg",2],
+  ["silver","Correctly read the wind on three consecutive tees",2],
+  ["gold","Drive the 14th green",4],
+  ["gold","Par the 14th",4],
+  ["gold","Break your best score of the trip",4],
+  ["black","Birdie the 14th",8],
+  ["black","Level par or better on the inward nine",8],
+  ["legend","Beat Lowry's amateur reputation — break 75",15],
+  ["neg","Six on the 14th after driving it close — minus 2",-2],
+  ["neg","Mention the flight home before the 18th green — minus 1",-1]
+]
+};
+
+const TRIP_BOUNTIES=[
+  ["gold","Hole out from a fairway bunker",4],
+  ["gold","Birdie on three different courses",4],
+  ["gold","Beat the low man outright on any single hole",4],
+  ["silver","Guinness at all four bases",2],
+  ["silver","Get a caddie to say something worth repeating at dinner",2],
+  ["silver","Play a shot with the ball above your feet in a dune and survive",2],
+  ["black","Par every course's signature hole at least once",8],
+  ["black","Break 90 on three different links",8],
+  ["legend","Hole out from off the green twice in one round",15],
+  ["legend","Beat your handicap on an Open venue",15],
+  ["neg","Lose a headcover to the wind — minus 1",-1],
+  ["neg","Leave a club on a green and need to go back — minus 2",-2],
+  ["neg","Complain about the rain on more than three courses — minus 3",-3]
+];
+
+const TIERS={
+  bronze:["BRONZE","1 pt","t-bronze"],
+  silver:["SILVER","2 pts","t-silver"],
+  gold:["GOLD","4 pts","t-gold"],
+  black:["BLACK","8 pts","t-black"],
+  legend:["LEGEND","15 pts","t-legend"],
+  neg:["PENALTIES","points off","t-black"]
+};
+
+const DAYS=[
+{n:1,date:"Sat 12 September",dow:"Saturday",cur:"€",
+ title:"Arrive Dublin · Corballis",course:"corballis",
+ hotel:"Grand Hotel Malahide",hotelNote:"Check-in from 15:00. Luggage storage available if you arrive early. Breakfast 07:00–10:30 Sat/Sun; grab-and-go before 07:00 if booked at reception the night before.",
+ drive:"Dublin Airport → Hertz → Donabate, about 20 minutes",
+ stop:"Malahide village",stopNote:"Nothing ambitious. You'll be twenty hours awake. Eat in the village, don't drive into Dublin.",
+ brief:"Land, collect the minibus, play the warm-up round, check in. That's the whole day and it's enough."},
+{n:2,date:"Sun 13 September",dow:"Sunday",cur:"€",
+ title:"Royal Dublin",course:"royal-dublin",
+ hotel:"Grand Hotel Malahide",hotelNote:"Second night. Breakfast 07:00–10:30.",
+ drive:"Malahide → Bull Island, about 20 minutes",
+ stop:"Howth Cliff Walk",stopNote:"About 15 minutes from the course. Take the shorter green loop — one to two hours — then seafood in the harbour. The Bloody Stream is by the DART station; the Abbey Tavern has traditional music.",
+ brief:"Compact day. Round, cliff walk, harbour dinner. If someone wants the Book of Kells they go solo before the round — it opens at 09:00, and the Long Room is partly emptied for restoration right now."},
+{n:3,date:"Mon 14 September",dow:"Monday",cur:"£",
+ title:"Transfer north · Ardglass",course:"ardglass",
+ hotel:"Slieve Donard Hotel, Newcastle",hotelNote:"Check-in from 15:00, checkout 11:00. Breakfast 07:30–10:00 in the Oak Restaurant; continental from 06:30.",
+ drive:"Malahide → Ardglass, just under two hours. You cross into Northern Ireland with no checkpoint — but the speed limits switch from km/h to mph without announcement.",
+ stop:"Downpatrick",stopNote:"15 minutes on from Ardglass. Down Cathedral and St Patrick's grave, 30 minutes. Denvir's is a 17th-century coaching inn if you want a stop. This is the bail-out if the day runs long — drop it without guilt.",
+ brief:"Currency changes today. Pull sterling at a bank ATM once you're across, and stop paying in euro."},
+{n:4,date:"Tue 15 September",dow:"Tuesday",cur:"£",
+ title:"Royal County Down",course:"royal-county-down",tee:"Before 14:00",
+ hotel:"Slieve Donard Hotel, Newcastle",hotelNote:"The course is a nine-iron from the hotel. Leisure centre, spa and the Percy French bar are all on site.",
+ drive:"Walk. It's next door.",
+ stop:"Tollymore Forest Park",stopNote:"Ten minutes from the hotel. River trail, ancient stone bridges, Mourne foothills, small entry fee. An hour, and the best value-per-minute stop of the trip. Works in the rain — you're under trees.",
+ brief:"The hardest walk of the week on day four of eight. Book the spa for the evening. This is the single best recovery decision available to you."},
+{n:5,date:"Wed 16 September",dow:"Wednesday",cur:"£",
+ title:"Castlerock · transfer to the coast",course:"castlerock",
+ hotel:"Bayview Hotel, Portballintrae",hotelNote:"Three nights. One mile from Bushmills, ten minutes from the Causeway and Dunluce. The Porthole Bar looks out at the Atlantic.",
+ drive:"Newcastle → Castlerock, about two hours. Castlerock → Portballintrae, 25 minutes.",
+ stop:"Mussenden Temple & Downhill Demesne",stopNote:"Practically next door to the golf club — the championship course is named for it. Open 24 hours, £10 parking. Go straight from the round for golden hour. Best photo of the week for zero added driving.",
+ brief:"The best pairing of the trip. Belfast is the casualty — Titanic Belfast needs two to three hours and today is the only day it fits. Let it go rather than wrecking this."},
+{n:6,date:"Thu 17 September",dow:"Thursday",cur:"£",
+ title:"Royal Portrush · Dunluce Links",course:"royal-portrush",
+ hotel:"Bayview Hotel, Portballintrae",hotelNote:"Second night.",
+ drive:"Portballintrae → Portrush, about ten minutes.",
+ stop:"Dunluce Castle & Old Bushmills",stopNote:"Dunluce is five minutes from the course and takes 45 minutes — cliff-edge ruin, closes mid-afternoon. Bushmills is a mile from the hotel and closes at 17:00, so both only work with a morning tee. Book the distillery ahead; consider a premium tasting over the standard tour.",
+ brief:"The round the trip is built around. Note the club's fore-caddie policy — decide as a group before you arrive."},
+{n:7,date:"Fri 18 September",dow:"Friday",cur:"£",
+ title:"Portstewart · Strand Course",course:"portstewart",
+ hotel:"Bayview Hotel, Portballintrae",hotelNote:"Last night on the coast.",
+ drive:"Portballintrae → Portstewart, about fifteen minutes.",
+ stop:"Giant's Causeway",stopNote:"Ten minutes from the hotel. Go after 16:00 — the coach crowds are gone and the late light on the columns is the whole point. Blue trail down, red clifftop trail back, or the £1 shuttle if the legs are finished. Lunch at Harry's Shack on the strand after the round.",
+ brief:"Save the Causeway for this evening. It's the right end to your last day on the north coast."},
+{n:8,date:"Sat 19 September",dow:"Saturday",cur:"€",
+ title:"Baltray · Brú na Bóinne",course:"county-louth",
+ hotel:"Carlton Dublin Airport Hotel",hotelNote:"Free 24-hour airport shuttle, free parking, 15 minutes from the city centre.",
+ drive:"Portballintrae → Baltray, about two and a half hours. Baltray → Brú na Bóinne, 25 minutes. Then 45 minutes to the hotel.",
+ stop:"Brú na Bóinne (Newgrange & Knowth)",stopNote:"Older than the pyramids. Book a timed ticket now for an early-afternoon slot — it runs on shuttle buses from the visitor centre and last admissions are well before closing. Walk-ups get turned away.",
+ brief:"Back into euro today. Spend your sterling before you leave Northern Ireland. Settle the bounty board at the Carlton bar tonight."},
+{n:9,date:"Sun 20 September",dow:"Sunday",cur:"€",
+ title:"Home",course:null,
+ hotel:"—",hotelNote:"",
+ drive:"Fuel up before returning the minibus to Hertz — the rate excludes fuel.",
+ stop:"Dublin Airport",stopNote:"US preclearance means you clear American customs here, and the Sunday morning queue can be brutal. Buy Fast Track in advance. Settle the M50 toll online if you used it and Hertz didn't add a tag.",
+ brief:"Leave more time than you think."}
+];
+</script>
+
+<script>
+/* ================= rendering ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/&(?![a-z]+;)/g,"&amp;").replace(/</g,"&lt;");
+
+/* --- trip clock --- */
+const TRIP_START=new Date(2026,8,12);
+function tripDay(){
+  const now=new Date(), t=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const d=Math.round((t-TRIP_START)/864e5)+1;
+  return d;
+}
+function activeDay(){
+  const d=tripDay();
+  if(d<1) return DAYS[0];
+  if(d>9) return DAYS[8];
+  return DAYS[d-1];
+}
+function daysUntil(){return Math.round((TRIP_START-new Date(new Date().toDateString()))/864e5)}
+
+/* --- currency chip --- */
+function paintCurrency(){
+  const d=activeDay();
+  $("#curSym").textContent=d.cur;
+  $("#curLbl").textContent=d.cur==="£"?"STERLING":"EURO";
+}
+
+/* --- today --- */
+function renderToday(){
+  const d=activeDay(), until=daysUntil();
+  const bar=$("#cdBar");
+  if(until>0){
+    bar.innerHTML=`<div class="wrap"><div class="countdown">${until} day${until===1?"":"s"} until you tee it up at Corballis</div></div>`;
+  }else{bar.innerHTML="";}
+
+  const c=d.course?COURSES[d.course]:null;
+  $("#hero").innerHTML=`
+    <p class="kick">DAY ${d.n} · ${esc(d.date.toUpperCase())}</p>
+    <h2 class="course">${esc(c?c.name:"Home")}</h2>
+    <p class="meta">${esc(d.hotel)}${c?` &nbsp;·&nbsp; <strong>${c.cur}</strong>`:""}</p>
+    ${d.tee?`<span class="tee">Tee: ${esc(d.tee)}</span>`:c?`<span class="tee">Tee time — add when confirmed</span>`:""}
+    <div class="jump">
+      ${c?`<button data-go="course:${d.course}">Course notes</button>`:""}
+      ${c?`<button data-go="bounty">Bounty board</button>`:""}
+      <button data-go="day:${d.n}">Full day</button>
+    </div>`;
+
+  $("#todayBody").innerHTML=`
+    <div class="card" style="margin-top:18px">
+      <h3>The plan</h3>
+      <p>${esc(d.brief)}</p>
+    </div>
+    <div class="card">
+      <h3>${esc(d.stop)}</h3>
+      <p>${esc(d.stopNote)}</p>
+    </div>
+    <div class="card">
+      <h3>Getting there</h3>
+      <p>${esc(d.drive)}</p>
+    </div>
+    ${c?feeCard(c):""}
+    <p class="note">Emergencies: 999 or 112 — both work in the Republic and Northern Ireland. Full contact list in Guide.</p>`;
+}
+
+function feeCard(c){
+  return `<div class="card">
+    <h3>Caddies &amp; rentals</h3>
+    <div class="rows">${c.fees.map(f=>
+      `<div class="row"><span class="k">${esc(f[0])}</span><span class="v${/NOT included|NOT permitted|not available/.test(f[1])?" warn":""}">${esc(f[1])}</span></div>`
+    ).join("")}</div>
+    ${c.warn?`<p style="margin-top:12px;color:#9A3B1E;font-weight:500">${esc(c.warn)}</p>`:""}
+  </div>`;
+}
+
+/* --- days --- */
+function renderDays(){
+  const cur=tripDay();
+  $("#dayList").innerHTML=`<h2 class="sec">Nine days</h2>
+    <p class="sub">Eight rounds, four bases, two currencies.</p>`+
+    DAYS.map(d=>`<button class="day${d.n===cur?" now":""}" data-day="${d.n}">
+      <span class="num">${d.n}</span>
+      <span class="body">
+        <span class="date">${esc(d.date.toUpperCase())} · ${d.cur}</span>
+        <span class="t">${esc(d.title)}</span>
+        <span class="d">${esc(d.hotel)}</span>
+      </span>
+    </button>`).join("");
+  $("#dayDetail").innerHTML="";
+}
+
+function renderDay(n){
+  const d=DAYS[n-1], c=d.course?COURSES[d.course]:null;
+  $("#dayList").innerHTML="";
+  $("#dayDetail").innerHTML=`
+    <button class="back" data-back="days">← All days</button>
+    <div class="chead">
+      <h2 class="nm">Day ${d.n}</h2>
+      <div class="stats"><span>${esc(d.date)}</span><span><b>${d.cur}</b> ${d.cur==="£"?"sterling":"euro"}</span></div>
+    </div>
+    <p class="lore">${esc(d.brief)}</p>
+    ${c?`<div class="card"><h3>${esc(c.name)}</h3>
+      <p>${esc(c.par)} · ${esc(c.yards)} · ${esc(c.rank)}</p>
+      ${d.tee?`<p><strong>Tee: ${esc(d.tee)}</strong></p>`:`<p><strong>Tee time — add when confirmed</strong></p>`}
+      <p><button class="back" style="padding:0" data-go="course:${d.course}">Read the course notes →</button></p>
+    </div>`:""}
+    <div class="card"><h3>${esc(d.hotel)}</h3><p>${esc(d.hotelNote||"—")}</p></div>
+    <div class="card"><h3>Driving</h3><p>${esc(d.drive)}</p></div>
+    <div class="card"><h3>${esc(d.stop)}</h3><p>${esc(d.stopNote)}</p></div>
+    ${c?feeCard(c):""}`;
+  window.scrollTo(0,0);
+}
+
+/* --- courses --- */
+function renderCourses(){
+  $("#courseList").innerHTML=`<h2 class="sec">Eight links</h2>
+    <p class="sub">Read tomorrow's course the night before. That's the ritual.</p>`+
+    Object.entries(COURSES).map(([k,c])=>`
+      <button class="cidx" data-course="${k}">
+        <span><span class="nm">${esc(c.name)}</span><span class="sm">Day ${c.day} · ${esc(c.par)} · ${esc(c.rank)}</span></span>
+        <span class="ar">→</span>
+      </button>`).join("");
+  $("#courseDetail").innerHTML="";
+}
+
+function renderCourse(k){
+  const c=COURSES[k];
+  $("#courseList").innerHTML="";
+  $("#courseDetail").innerHTML=`
+    <button class="back" data-back="courses">← All courses</button>
+    <div class="chead">
+      <h2 class="nm">${esc(c.name)}</h2>
+      <div class="stats">
+        <span>Day <b>${c.day}</b></span><span>Founded <b>${esc(c.founded)}</b></span>
+        <span><b>${esc(c.par)}</b></span><span><b>${esc(c.yards)}</b></span>
+      </div>
+      <div class="stats" style="margin-top:6px"><span>${esc(c.arch)}</span></div>
+    </div>
+    <p class="lore">${c.lore}</p>
+    ${c.bench?`<div class="card"><h3>The benchmark</h3><p>${esc(c.bench)}</p></div>`:""}
+    <h4 class="mini">HOLES THAT DECIDE IT</h4>
+    ${c.holes.map(h=>`<div class="hole"><b>${esc(h[0])}</b><span>${esc(h[1])}</span></div>`).join("")}
+    <h4 class="mini">WIND</h4>
+    <p style="font-size:14.5px;color:var(--ink-soft)">${esc(c.wind)}</p>
+    <div class="tees"><b>Which tees:</b> ${c.tees}</div>
+    ${feeCard(c)}
+    <h4 class="mini">BOUNTY BOARD</h4>
+    ${bountyBlock(k)}`;
+  window.scrollTo(0,0);
+}
+
+/* --- bounties --- */
+function claimed(id){return S.get("b:"+id)==="1"}
+function toggle(id){S.set("b:"+id,claimed(id)?"0":"1")}
+
+function bountyBlock(key){
+  const list=key==="trip"?TRIP_BOUNTIES:BOUNTIES[key];
+  const groups={};
+  list.forEach((b,i)=>{(groups[b[0]]=groups[b[0]]||[]).push([b,i])});
+  return Object.keys(TIERS).filter(t=>groups[t]).map(t=>{
+    const[nm,pt,cls]=TIERS[t];
+    return `<div class="tier ${cls}"><span class="nm">${nm}</span><span class="pt">${pt}</span></div>`+
+      groups[t].map(([b,i])=>{
+        const id=key+":"+i, on=claimed(id);
+        return `<button class="bty" data-bty="${id}" aria-pressed="${on}">
+          <span class="box">✓</span>
+          <span class="txt">${esc(b[1])}</span>
+          <span class="p">${b[2]>0?"+":""}${b[2]}</span>
+        </button>`;
+      }).join("");
+  }).join("");
+}
+
+function renderBounties(){
+  $("#btyBoard").innerHTML=Object.entries(COURSES).map(([k,c])=>
+    `<details><summary>${esc(c.name)}</summary><div class="in">${bountyBlock(k)}</div></details>`
+  ).join("");
+  $("#btyTrip").innerHTML=bountyBlock("trip");
+  tally();
+}
+
+function tally(){
+  let pts=0,n=0,tot=0;
+  const all={...BOUNTIES,trip:TRIP_BOUNTIES};
+  for(const[k,list]of Object.entries(all)){
+    list.forEach((b,i)=>{
+      tot++;
+      if(claimed(k+":"+i)){pts+=b[2]; if(b[2]>0)n++;}
+    });
+  }
+  $("#btyTotal").textContent=pts;
+  $("#btyCount").textContent=`${n} claimed of ${tot} bounties`;
+}
+
+/* --- guide --- */
+function renderGuide(){
+  $("#guideBody").innerHTML=`
+  <h2 class="sec">Guide</h2>
+  <p class="sub">The things that are painful to look up on the road.</p>
+
+  <details open><summary>Contacts</summary><div class="in">
+    <div class="tel"><span class="k">Emergency (both jurisdictions)</span><a href="tel:112">999 / 112</a></div>
+    <div class="tel"><span class="k">Eileen Boyle · SWING</span><a href="tel:+353667125733">+353 66 71 25733</a></div>
+    <div class="tel"><span class="k">SWING email</span><a href="mailto:eileen@swinggolfireland.com">eileen@swing…</a></div>
+    <div class="tel"><span class="k">Booking reference</span><span class="todo">A09046</span></div>
+    <div class="tel"><span class="k">Castlerock Golf Club</span><a href="tel:+442870848314">+44 28 7084 8314</a></div>
+    <div class="tel"><span class="k">Hertz Dublin Airport</span><span class="todo">add at pickup</span></div>
+    <div class="tel"><span class="k">Grand Hotel Malahide</span><span class="todo">add</span></div>
+    <div class="tel"><span class="k">Slieve Donard</span><span class="todo">add</span></div>
+    <div class="tel"><span class="k">Bayview Hotel</span><span class="todo">add</span></div>
+    <div class="tel"><span class="k">Carlton Dublin Airport</span><span class="todo">add</span></div>
+    <div class="tel"><span class="k">Royal Dublin / Ardglass / RCD</span><span class="todo">add</span></div>
+    <div class="tel"><span class="k">Portrush / Portstewart / Baltray</span><span class="todo">add</span></div>
+    <p style="margin-top:14px">Fill the blanks before you fly. These are the numbers you'll want when something goes wrong and nobody has signal to search.</p>
+  </div></details>
+
+  <details><summary>Money</summary><div class="in">
+    <p><strong>Two currencies.</strong> Euro for Days 1, 2, 8 and 9. Sterling for Days 3 through 7. Spend your Northern Irish banknotes before you cross back — they're sterling, but shops elsewhere sometimes balk at them.</p>
+    <p><strong>Always decline dynamic currency conversion.</strong> When a terminal or ATM offers to charge you in dollars, say no and pay in euro or sterling. That single habit saves more than everything else combined — the markup runs 3–7%.</p>
+    <p><strong>Bank ATMs only.</strong> AIB, Bank of Ireland, PTSB in the Republic; Danske, Bank of Ireland, AIB in the north. Avoid Euronet machines and every airport exchange counter.</p>
+    <p><strong>Cash target: roughly £450 and €200 each</strong> if you take caddies at all eight. Pull it in two or three withdrawals, not eight.</p>
+    <p><strong>Tips are the variable.</strong> Royal County Down and Portrush quote caddie fees <em>excluding</em> the tip — budget another £20–25 each there. Everywhere else the quoted fee includes a tip minimum.</p>
+    <p><strong>VAT:</strong> the UK ended its retail export refund scheme, so pro shop purchases in Northern Ireland aren't refundable. Buy the big-ticket sweaters on the Republic side.</p>
+  </div></details>
+
+  <details><summary>Driving in Ireland</summary><div class="in">
+    <p><strong>Left side, driver on the right.</strong> The minibus is wider than it feels. Give yourself room on the Antrim coast road.</p>
+    <p><strong>Speed limits change units at the border.</strong> km/h in the Republic, mph in Northern Ireland, and the signs change with no announcement. This catches everyone at least once.</p>
+    <p><strong>M50 tolling is barrier-free.</strong> No booths — you pay online by 8pm the next day or Hertz passes on penalties. Ask for a toll tag at pickup and remove the problem entirely.</p>
+    <p><strong>Fuel is excluded from the rate.</strong> Confirm petrol or diesel at pickup. Sold in litres, priced in two currencies depending which side you're on.</p>
+    <p><strong>No border checkpoint.</strong> You'll cross without noticing. Your phone will tell you before the road does.</p>
+    <p><strong>Parking:</strong> pay-and-display in towns, and the National Trust coastal sites charge — Downhill Demesne is around £10.</p>
+  </div></details>
+
+  <details><summary>Pubs &amp; food</summary><div class="in">
+    <p><strong>Malahide, Days 1–2.</strong> Gibney's is the village institution. Duffy's as backup, and Ryan's Bar is inside your hotel. In Howth after the cliff walk: The Bloody Stream by the DART station, or the Abbey Tavern for traditional music.</p>
+    <p><strong>Newcastle, Days 3–4.</strong> The Percy French is attached to the Slieve Donard and the path of least resistance after County Down. The Oak Restaurant is the proper dinner — book Monday night. Mourne Seafood in nearby Dundrum is worth the drive. Denvir's in Downpatrick if you take that stop.</p>
+    <p><strong>North coast, Days 5–7.</strong> Your densest cluster. The Harbour Bar in Portrush is the one — repeatedly named among the best bars in Ireland. The Ramore complex next door covers casual dining. Harry's Shack on Portstewart Strand for lunch after that round. The Bushmills Inn for one proper dinner, a mile from your hotel. Sweeney's in Portballintrae is walkable from the Bayview.</p>
+    <p><strong>Ardglass clubhouse.</strong> Eat lunch there. It's a 15th-century tower house and the oldest clubhouse in golf.</p>
+    <p>Confirm hours before you go — small coastal places change their trading times off-season.</p>
+  </div></details>
+
+  <details><summary>Sightseeing</summary><div class="in">
+    <p><strong>Brú na Bóinne</strong> — Day 8, 25 min from Baltray. Book a timed ticket. Three hours for the full Newgrange-and-Knowth ticket.</p>
+    <p><strong>Howth Cliff Walk</strong> — Day 2, 15 min from Royal Dublin. Green loop, 1–2 hrs, free.</p>
+    <p><strong>Tollymore Forest Park</strong> — Day 4, 10 min from the Slieve Donard. One hour, small fee, rain-friendly.</p>
+    <p><strong>Mussenden Temple &amp; Downhill Demesne</strong> — Day 5, next to Castlerock GC. Open 24 hrs, £10 parking. Under an hour. Go at golden hour.</p>
+    <p><strong>Giant's Causeway</strong> — Day 7, 10 min from the Bayview. Go after 16:00. Two hours with the clifftop loop.</p>
+    <p><strong>Dunluce Castle</strong> — Day 6, 5 min from Portrush. 45 minutes. Closes mid-afternoon.</p>
+    <p><strong>Old Bushmills</strong> — Day 6, one mile from the hotel. Closes 17:00. Book ahead; consider the premium tasting over the standard tour.</p>
+    <p><strong>Downpatrick</strong> — Day 3, optional. Down Cathedral and St Patrick's grave, 30 minutes. First thing to drop if the day runs long.</p>
+    <div class="skip">
+      <p><strong>Skip: the Dark Hedges.</strong> Storm damage thinned the tunnel, parking is a mess, and it no longer looks like the photo that made it famous.</p>
+      <p><strong>Skip: Belfast.</strong> Titanic Belfast needs 2–3 hours and only Day 5 fits, which would wreck the Castlerock-and-Mussenden pairing. Let it go.</p>
+      <p><strong>Skip: Temple Bar.</strong> Tourist tax.</p>
+    </div>
+  </div></details>
+
+  <details><summary>The competition</summary><div class="in">
+    <p><strong>Not settled yet</strong> — waiting on the fourth handicap. Lock the number before you fly and agree in advance it doesn't get renegotiated mid-trip.</p>
+    <p><strong>The Cup.</strong> Team matches across the eight rounds, format varying by course. Portrush worth double; Baltray singles worth double.</p>
+    <p><strong>Order of Merit.</strong> Net Stableford, best six of eight rounds count.</p>
+    <p><strong>The Bounty Board.</strong> Its own standing — see the Bounties tab.</p>
+    <p><strong>Handicap mechanics.</strong> Four-ball better ball at 85% off the low man. Individual Stableford at 95%. Recalculate course handicap at every club from that day's scorecard. Net double bogey max — pick up and keep moving.</p>
+    <p><strong>No stroke play anywhere.</strong> Stableford means a blow-up hole costs zero and nobody holds up the group behind.</p>
+    <p>Fill this section in once the format's agreed.</p>
+  </div></details>
+
+  <p class="note">Built for four men, nine days and two currencies. Everything here is stored on your own phone — nothing syncs, nothing logs in, and it works with the phone in airplane mode once you've opened it. Add to Home Screen.</p>`;
+}
+
+/* ================= routing ================= */
+function show(tab){
+  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
+  $("#p-"+tab).classList.add("on");
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===tab));
+  window.scrollTo(0,0);
+}
+
+document.addEventListener("click",e=>{
+  const tab=e.target.closest("#tabs button");
+  if(tab){
+    const t=tab.dataset.t;
+    if(t==="days")renderDays();
+    if(t==="courses")renderCourses();
+    show(t); return;
+  }
+  const go=e.target.closest("[data-go]");
+  if(go){
+    const v=go.dataset.go;
+    if(v.startsWith("course:")){renderCourses();renderCourse(v.split(":")[1]);show("courses");}
+    else if(v.startsWith("day:")){renderDays();renderDay(+v.split(":")[1]);show("days");}
+    else show(v);
+    return;
+  }
+  const dbtn=e.target.closest("[data-day]");
+  if(dbtn){renderDay(+dbtn.dataset.day);return;}
+  const cbtn=e.target.closest("[data-course]");
+  if(cbtn){renderCourse(cbtn.dataset.course);return;}
+  const back=e.target.closest("[data-back]");
+  if(back){back.dataset.back==="days"?renderDays():renderCourses();window.scrollTo(0,0);return;}
+  const b=e.target.closest("[data-bty]");
+  if(b){
+    toggle(b.dataset.bty);
+    const on=claimed(b.dataset.bty);
+    document.querySelectorAll(`[data-bty="${b.dataset.bty}"]`).forEach(el=>el.setAttribute("aria-pressed",on));
+    tally();
+    return;
+  }
+});
+
+/* ================= boot ================= */
+paintCurrency();
+renderToday();
+renderDays();
+renderCourses();
+renderBounties();
+renderGuide();
+
+/* ---------------------------------------------------------------
+   TO MAKE THIS FULLY OFFLINE (10 minutes at deploy time):
+
+   1. Save this file as index.html
+   2. Add manifest.json alongside it:
+      {"name":"Ireland 2026","short_name":"Ireland '26","start_url":"./",
+       "display":"standalone","background_color":"#E3E0CE",
+       "theme_color":"#16261F","icons":[]}
+      and in <head>:  <link rel="manifest" href="manifest.json">
+   3. Add sw.js alongside it:
+      const C='ire-v1';
+      self.addEventListener('install',e=>e.waitUntil(
+        caches.open(C).then(c=>c.addAll(['./','./index.html','./manifest.json']))));
+      self.addEventListener('fetch',e=>e.respondWith(
+        caches.match(e.request).then(r=>r||fetch(e.request))));
+   4. Register it — add before </body>:
+      <script>if('serviceWorker'in navigator)
+        navigator.serviceWorker.register('sw.js');<\/script>
+
+   Bump 'ire-v1' to 'ire-v2' whenever you push a content change,
+   or the guys will keep seeing the old version.
+--------------------------------------------------------------- */
+</script>
+</body>
+</html>
