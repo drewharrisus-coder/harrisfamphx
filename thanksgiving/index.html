@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thanksgiving 2026 — Harris Family</title>
+<meta name="theme-color" content="#2B1E16">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Thanksgiving">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2B1E16; --ink-soft:#5A4636; --paper:#F3EADB; --lift:#FBF6EC;
+  --pumpkin:#C4612A; --cran:#8E2F3C; --sage:#5E7253; --gold:#C99A3B; --stone:#B3A48E;
+  --rule:rgba(43,30,22,.16); --rule-soft:rgba(43,30,22,.08);
+  --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --tabh:64px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;
+  padding-bottom:calc(var(--tabh) + 70px + env(safe-area-inset-bottom));overflow-x:hidden}
+a{color:var(--cran)}
+:focus-visible{outline:2.5px solid var(--pumpkin);outline-offset:3px;border-radius:2px}
+button{font-family:inherit}
+
+.mast{position:sticky;top:0;z-index:40;background:var(--ink);color:var(--paper);
+  padding:calc(9px + env(safe-area-inset-top)) 18px 9px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.mast h1{font-family:var(--serif);font-variation-settings:'SOFT' 30,'WONK' 1,'opsz' 40;font-weight:600;font-size:16px;margin:0;line-height:1.2}
+.mast h1 a{color:inherit;text-decoration:none}
+.mast .cd{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--gold);white-space:nowrap}
+
+.wrap{max-width:680px;margin:0 auto;padding:0 18px}
+.panel{display:none;animation:in .22s ease-out both}
+.panel.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.panel{animation:none}*{transition:none!important}}
+
+h2.sec{font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 60;font-weight:600;font-size:26px;line-height:1.15;margin:30px 0 4px;letter-spacing:-.01em}
+.sub{color:var(--ink-soft);font-size:14px;margin:0 0 14px;max-width:62ch}
+
+.hero{background:var(--ink);color:var(--paper);margin:0 -18px;padding:26px 18px 24px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:-60px;bottom:-80px;width:230px;height:230px;border-radius:50%;border:1.5px solid rgba(196,97,42,.35)}
+.hero::before{content:'';position:absolute;right:-20px;bottom:-40px;width:150px;height:150px;border-radius:50%;border:1.5px solid rgba(201,154,59,.25)}
+.kick{font-size:12px;letter-spacing:.16em;font-weight:600;color:var(--gold);margin:0 0 10px;text-transform:uppercase}
+.hero .big{font-family:var(--serif);font-variation-settings:'SOFT' 40,'WONK' 1,'opsz' 144;font-weight:500;font-size:clamp(36px,10vw,54px);line-height:.98;margin:0 0 12px;letter-spacing:-.025em;position:relative;z-index:1}
+.hero .meta{font-size:15px;color:rgba(243,234,219,.82);margin:0;position:relative;z-index:1}
+.hero .meta strong{color:var(--paper)}
+.menu{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;position:relative;z-index:1}
+.menu button{background:none;border:1px solid rgba(243,234,219,.32);color:var(--paper);font-size:13px;font-weight:500;padding:7px 12px;border-radius:2px;cursor:pointer}
+.menu button:hover{border-color:var(--gold);color:var(--gold)}
+
+.card{background:var(--lift);border:1px solid var(--rule);padding:16px;margin:0 0 12px}
+.card h3{font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 40;font-weight:600;font-size:19px;margin:0 0 4px;line-height:1.2}
+.card p{margin:0 0 8px;font-size:14.5px;color:var(--ink-soft)}
+.card p:last-child{margin-bottom:0}
+
+.now{border-left:5px solid var(--pumpkin)}
+.now .lbl{font-size:11px;letter-spacing:.14em;font-weight:700;color:var(--pumpkin);text-transform:uppercase}
+
+/* settings */
+.set{display:grid;gap:14px}
+.set label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.stepper{display:flex;align-items:center;gap:0;border:1px solid var(--rule);background:#fff;width:max-content}
+.stepper button{width:44px;height:44px;border:0;background:none;font-size:22px;cursor:pointer;color:var(--ink)}
+.stepper button:hover{background:var(--paper)}
+.stepper output{min-width:92px;text-align:center;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
+select{font-family:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--rule);background:#fff;color:var(--ink);border-radius:0}
+.seg{display:flex;border:1px solid var(--rule);width:max-content;background:#fff}
+.seg button{border:0;background:none;padding:10px 14px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink-soft)}
+.seg button.on{background:var(--ink);color:var(--paper)}
+
+.rows .row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed var(--rule);font-size:14.5px;align-items:baseline}
+.rows .row:last-child{border-bottom:0}
+.rows .k{color:var(--ink-soft)}
+.rows .v{font-weight:600;text-align:right}
+
+/* oven board */
+.board{margin-top:8px}
+.bar{position:relative;height:30px;background:var(--rule-soft);margin:8px 0 4px}
+.bar span{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;overflow:hidden;white-space:nowrap}
+.bar .heat{background:repeating-linear-gradient(45deg,var(--stone),var(--stone) 4px,#c9bba5 4px,#c9bba5 8px);color:var(--ink)}
+.bar .t325{background:var(--pumpkin)}
+.bar .t400{background:var(--cran)}
+.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.olist{margin:10px 0 0;padding:0;list-style:none;font-size:14px}
+.olist li{display:flex;gap:10px;padding:5px 0}
+.olist .tm{min-width:118px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* checklists */
+.prog{height:6px;background:var(--rule-soft);margin:6px 0 14px}
+.prog i{display:block;height:100%;background:var(--sage);transition:width .3s}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:9px 14px;font-size:13.5px;font-weight:600;cursor:pointer;border-radius:2px}
+.btn.ghost{background:none;color:var(--ink)}
+.btn.sm{padding:6px 10px;font-size:12.5px}
+.aisle{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--cran);margin:20px 0 6px;padding-bottom:5px;border-bottom:2px solid var(--cran)}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px solid var(--rule-soft);cursor:pointer}
+.chk input{appearance:none;-webkit-appearance:none;flex:0 0 22px;width:22px;height:22px;border:2px solid var(--ink-soft);margin:1px 0 0;border-radius:3px;cursor:pointer;display:grid;place-items:center;background:#fff}
+.chk input:checked{background:var(--sage);border-color:var(--sage)}
+.chk input:checked::after{content:'';width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.chk .txt{flex:1;min-width:0}
+.chk .nm{font-weight:600}
+.chk .q{font-weight:700;color:var(--pumpkin);font-variant-numeric:tabular-nums}
+.chk .for{display:block;font-size:12.5px;color:var(--ink-soft)}
+.chk.done .nm,.chk.done .q{text-decoration:line-through;color:var(--stone)}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;padding:1px 6px;border-radius:2px;vertical-align:1px;margin-left:4px;text-transform:uppercase}
+.tag.t1{background:#E9D7C2;color:var(--ink)}
+.tag.t2{background:#DCE3D3;color:#34452B}
+.tag.opt{background:none;border:1px solid var(--stone);color:var(--ink-soft)}
+
+/* recipes */
+.chips{display:flex;gap:7px;overflow-x:auto;padding:16px 18px 4px;margin:0 -18px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;border:1px solid var(--rule);background:var(--lift);padding:8px 13px;font-size:13.5px;font-weight:600;cursor:pointer;border-radius:999px;color:var(--ink)}
+.chips button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.rhead{margin:18px 0 10px}
+.rhead h2{font-family:var(--serif);font-variation-settings:'SOFT' 30,'WONK' 1,'opsz' 100;font-weight:600;font-size:32px;line-height:1.05;margin:0 0 6px;letter-spacing:-.015em}
+.rsrc{font-size:13px;color:var(--ink-soft)}
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:14px 0}
+.glance div{background:var(--ink);color:var(--paper);padding:10px 12px}
+.glance b{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.glance span{font-size:14px;font-weight:500}
+.scaler{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 0 4px;font-size:13.5px;color:var(--ink-soft)}
+.ing h4,.meth h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:18px 0 6px}
+.ing ul{list-style:none;margin:0;padding:0}
+.ing li{padding:7px 0;border-bottom:1px dashed var(--rule);font-size:15px}
+.ing li b{color:var(--pumpkin);font-variant-numeric:tabular-nums}
+.meth ol{list-style:none;counter-reset:s;margin:0;padding:0}
+.meth li{counter-increment:s;position:relative;padding:10px 0 10px 40px;border-bottom:1px solid var(--rule-soft);font-size:15px}
+.meth li::before{content:counter(s);position:absolute;left:0;top:8px;font-family:var(--serif);font-variation-settings:'opsz' 40;font-size:24px;color:var(--stone);font-weight:500;line-height:1}
+.when{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:1px 6px;border-radius:2px;margin-right:6px;vertical-align:1px}
+.tbtn{display:inline-flex;align-items:center;gap:4px;margin-left:6px;border:1px solid var(--pumpkin);background:none;color:var(--pumpkin);font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;cursor:pointer;vertical-align:1px;white-space:nowrap}
+.tbtn:hover{background:var(--pumpkin);color:#fff}
+.note{background:#F1E1CB;border-left:4px solid var(--gold);padding:11px 13px;font-size:14px;margin:14px 0}
+
+/* timeline */
+.day{margin:26px 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.day h3{font-family:var(--serif);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 60;font-weight:600;font-size:24px;margin:0}
+.day .dt{font-size:12px;letter-spacing:.12em;font-weight:700;color:var(--cran);text-transform:uppercase}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--rule);margin-left:6px}
+.tl li{position:relative;padding:10px 0 12px 22px;cursor:pointer}
+.tl li::before{content:'';position:absolute;left:-7px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--ink-soft)}
+.tl li.done::before{background:var(--sage);border-color:var(--sage)}
+.tl li.done .h,.tl li.done .b{color:var(--stone)}
+.tl li.done .h{text-decoration:line-through}
+.tl li.cur{background:linear-gradient(90deg,rgba(196,97,42,.13),transparent)}
+.tl li.cur::before{background:var(--pumpkin);border-color:var(--pumpkin);box-shadow:0 0 0 5px rgba(196,97,42,.2)}
+.tl .tm{font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--pumpkin);font-variant-numeric:tabular-nums}
+.tl .h{font-weight:700;font-size:15.5px;line-height:1.3}
+.tl .b{font-size:14px;color:var(--ink-soft);margin-top:2px}
+.dish{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:2px;margin-left:6px;vertical-align:2px;color:#fff}
+.d-turkey{background:var(--pumpkin)}.d-dressing{background:#8A6A3B}.d-gravy{background:#6B4A33}.d-mashed{background:#9A8A5F}.d-beans{background:var(--sage)}.d-oven{background:var(--cran)}.d-prep{background:var(--stone);color:var(--ink)}.d-dinner{background:var(--ink)}
+
+/* tabs + timers */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--ink);display:flex;height:calc(var(--tabh) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom)}
+.tabs button{flex:1;background:none;border:0;color:rgba(243,234,219,.6);font-size:11.5px;font-weight:600;letter-spacing:.06em;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;text-transform:uppercase}
+.tabs button svg{width:22px;height:22px}
+.tabs button.on{color:var(--gold)}
+.timers{position:fixed;left:0;right:0;bottom:calc(var(--tabh) + env(safe-area-inset-bottom));z-index:45;display:flex;gap:8px;overflow-x:auto;padding:8px 12px;pointer-events:none}
+.timers:empty{display:none}
+.tmr{pointer-events:auto;flex:0 0 auto;background:var(--lift);border:1.5px solid var(--ink);padding:6px 8px 6px 12px;display:flex;gap:10px;align-items:center;box-shadow:0 4px 14px rgba(43,30,22,.18);font-size:13px}
+.tmr .l{font-weight:600;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tmr .c{font-weight:700;font-variant-numeric:tabular-nums;color:var(--pumpkin)}
+.tmr button{border:0;background:none;font-size:18px;cursor:pointer;color:var(--ink-soft);padding:0 4px}
+.tmr.ring{background:var(--pumpkin);border-color:var(--pumpkin);color:#fff;animation:ring 1s infinite}
+.tmr.ring .c,.tmr.ring button{color:#fff}
+@keyframes ring{50%{transform:scale(1.05)}}
+.toast{position:fixed;left:50%;top:70px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;font-size:14px;z-index:60;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+.foot{font-size:12.5px;color:var(--ink-soft);margin:34px 0 10px;line-height:1.6}
+
+@media print{
+  .tabs,.timers,.mast,.tools,.chips,.tbtn,.scaler,.menu{display:none!important}
+  body{background:#fff;padding:0}
+  .panel{display:block!important}
+  .hero{background:#fff;color:#000}
+  .card,.glance div{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header class="mast">
+  <h1><a href="/">harrisfamphx</a> · Thanksgiving</h1>
+  <span class="cd" id="cd"></span>
+</header>
+
+<main class="wrap">
+
+<!-- ================= PLAN ================= -->
+<section class="panel on" id="p-plan">
+  <div class="hero">
+    <p class="kick">Thursday · November 26, 2026</p>
+    <p class="big">Thanksgiving<br>at the Harrises'</p>
+    <p class="meta" id="heroMeta"></p>
+    <div class="menu" id="heroMenu"></div>
+  </div>
+
+  <div id="nowCard"></div>
+
+  <h2 class="sec">The setup</h2>
+  <p class="sub">Change these and every quantity, shopping amount, and clock time on the page updates.</p>
+  <div class="card set">
+    <div><label>Turkey weight</label>
+      <div class="stepper"><button data-w="-1" aria-label="Lighter">−</button><output id="wOut"></output><button data-w="1" aria-label="Heavier">+</button></div></div>
+    <div><label for="dinnerSel">Dinner on the table</label><select id="dinnerSel"></select></div>
+    <div><label>Guests (including us)</label>
+      <div class="stepper"><button data-g="-1" aria-label="Fewer">−</button><output id="gOut"></output><button data-g="1" aria-label="More">+</button></div></div>
+    <div><label>Dressing fat</label><div class="seg" id="fatSeg"><button data-fat="butter">Butter</button><button data-fat="bacon">Bacon</button></div></div>
+  </div>
+
+  <h2 class="sec">Key dates</h2>
+  <div class="card rows" id="keyDates"></div>
+
+  <h2 class="sec">Thursday oven board</h2>
+  <p class="sub">One oven does it all. The turkey has it until it comes out to rest, then it goes up to 400°F for the dressing and potatoes.</p>
+  <div class="card board" id="ovenBoard"></div>
+
+  <h2 class="sec">Gear check</h2>
+  <p class="sub">Confirm these by the weekend before.</p>
+  <div class="card" id="gear"></div>
+
+  <h2 class="sec">Food safety, quickly</h2>
+  <div class="card">
+    <p><strong>Thaw in the fridge only</strong>, never on the counter. If it's still icy Wednesday, put it breast-down in a sink of cold water, about 30 min per pound, and change the water every 30 min.</p>
+    <p><strong>165°F</strong> in the thickest part of the thigh and the center of the breast. The dressing has raw egg and giblets, so it should reach 165°F in the center too.</p>
+    <p><strong>Leftovers go in the fridge within 2 hours.</strong> Eat within 3–4 days, or freeze.</p>
+  </div>
+</section>
+
+<!-- ================= SHOP ================= -->
+<section class="panel" id="p-shop">
+  <h2 class="sec">Shopping list</h2>
+  <p class="sub" id="shopSub"></p>
+  <div class="prog"><i id="shopProg"></i></div>
+  <div class="tools">
+    <div class="seg" id="tripSeg"><button data-trip="all">All</button><button data-trip="1">Trip 1</button><button data-trip="2">Trip 2</button></div>
+    <button class="btn ghost sm" id="copyBtn">Copy list</button>
+    <button class="btn ghost sm" id="hideBtn">Hide checked</button>
+    <button class="btn ghost sm" id="resetShop">Reset</button>
+  </div>
+  <div id="shopList"></div>
+</section>
+
+<!-- ================= RECIPES ================= -->
+<section class="panel" id="p-recipes">
+  <div class="chips" id="rChips"></div>
+  <div id="recipe"></div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="panel" id="p-time">
+  <h2 class="sec">The game plan</h2>
+  <p class="sub">Tap a step to check it off. On Thanksgiving, the current step lights up. Tap ⏱ to start a kitchen timer.</p>
+  <div class="tools"><button class="btn ghost sm" id="printBtn">Print the plan</button><button class="btn ghost sm" id="resetSteps">Uncheck all</button></div>
+  <div id="timeline"></div>
+</section>
+
+<p class="foot">Recipes: turkey from <a href="https://tastesbetterfromscratch.com/easy-no-fuss-thanksgiving-turkey/" target="_blank" rel="noopener">Tastes Better From Scratch</a>; green beans from <a href="https://www.delish.com/cooking/recipe-ideas/a42109789/green-beans-almondine-recipe/" target="_blank" rel="noopener">Delish</a>; dressing, gravy, and mashed potatoes from the family cookbook (Poultry &amp; Dressings, pp. 181–183). Method text is rewritten for this plan. Checkmarks and timers are saved on this device.</p>
+</main>
+
+<div class="timers" id="timers"></div>
+<div class="toast" id="toast"></div>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="plan" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-6 8 6v8a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1z"/></svg>Plan</button>
+  <button data-tab="shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7h14l-1.5 11a2 2 0 01-2 1.7h-7a2 2 0 01-2-1.7z"/><path d="M9 7a3 3 0 016 0"/></svg>Shop</button>
+  <button data-tab="recipes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h11a1 1 0 011 1v16l-3-2-3 2-3-2-3 2V4a1 1 0 011-1z"/><path d="M9 8h6M9 12h6"/></svg>Recipes</button>
+  <button data-tab="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>Timeline</button>
+</nav>
+
+<script>
+(function(){
+'use strict';
+/* ---------- storage ---------- */
+function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+var S=load('tg26',null)||{};
+S.weight=S.weight||16; S.dinner=S.dinner||16*60; S.guests=S.guests||10; S.fat=S.fat||'butter';
+S.scale=S.scale||{}; S.touched=S.touched||{}; S.shop=S.shop||{}; S.steps=S.steps||{};
+S.trip=S.trip||'all'; S.hide=!!S.hide; S.recipe=S.recipe||'turkey';
+function persist(){save('tg26',S)}
+
+/* ---------- time helpers ---------- */
+var qs=new URLSearchParams(location.search);
+function NOW(){return qs.get('now')?new Date(qs.get('now')):new Date()}
+var THX=new Date(2026,10,26);
+function clock(m){m=((Math.round(m)%1440)+1440)%1440;var h=Math.floor(m/60),mm=m%60,ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+(mm<10?'0':'')+mm+' '+ap}
+function dur(m){m=Math.round(m);var h=Math.floor(m/60),r=m%60;return h?(h+' hr'+(r?' '+r+' min':'')):r+' min'}
+var DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dayStr(d){return DN[d.getDay()]+', '+MN[d.getMonth()]+' '+d.getDate()}
+function partOfDay(d){var h=d.getHours();return h<12?'morning':h<17?'afternoon':'evening'}
+
+/* ---------- quantities ---------- */
+var FR=[[0,''],[.25,'¼'],[1/3,'⅓'],[.5,'½'],[2/3,'⅔'],[.75,'¾'],[1,'']];
+function fq(n){if(n==null)return '';var w=Math.floor(n+1e-9),f=n-w,best=FR[0];FR.forEach(function(x){if(Math.abs(x[0]-f)<Math.abs(best[0]-f))best=x});if(best[0]===1){w++;best=FR[0]}return (w?w:'')+(w&&best[1]?' ':'')+best[1]||'0'}
+function pl(n,s,p){return n===1?s:(p||s+'s')}
+
+function defScale(id){var g=S.guests;if(id==='mashed')return Math.max(1,Math.ceil(g/6*2)/2);if(id==='beans')return Math.max(1,Math.ceil(g/4*2)/2);if(id==='dressing')return g>12?1.5:1;return 1}
+function sc(id){return S.touched[id]?S.scale[id]:defScale(id)}
+function roast(){var w=S.weight;return {mid:Math.round(w*14),lo:Math.round(w*13),hi:Math.round(w*15)}}
+function T(){var D=S.dinner,R=roast().mid,out=D-75;return {D:D,out:out,in:Math.floor((out-R)/5)*5}}
+function thawStart(){var hrs=S.weight/5*24+24;return new Date(new Date(2026,10,25,12,0).getTime()-hrs*3600e3)}
+
+/* ---------- recipes ---------- */
+function R_(){
+  var t=T(),r=roast(),w=S.weight,ts=thawStart();
+  return [
+  {id:'turkey',name:'Herb-Butter Roast Turkey',short:'Turkey',src:'Tastes Better From Scratch',url:'https://tastesbetterfromscratch.com/easy-no-fuss-thanksgiving-turkey/',
+   yield:w+' lb bird · roughly '+Math.round(w/1.5)+' servings with leftovers',scalable:false,
+   glance:[['Thaw starts',dayStr(ts)],['Prep','40 min'],['Roast at 325°F',dur(r.lo)+'–'+dur(r.hi)],['Rest','45–60 min']],
+   groups:[
+    ['Bird & cavity',[[1,'','turkey, '+w+' lb, fully thawed'],[1,'','yellow onion, peeled and quartered'],[1,'','lemon, quartered'],[1,'','apple (any kind), quartered'],[null,'','fresh rosemary, thyme, and sage (one small pack each); chop some for the butter, the rest goes in the cavity'],[null,'','salt and pepper for the cavity']]],
+    ['Herb butter',[[1,'cup','unsalted butter (2 sticks), room temperature'],[4,'','garlic cloves, minced'],[1,'Tbsp','fresh rosemary, chopped'],[1,'Tbsp','fresh thyme, chopped'],[.5,'Tbsp','fresh sage, chopped'],[1,'tsp','kosher salt'],[.5,'tsp','black pepper']]],
+    ['Optional',[[null,'','4–5 celery ribs + 4 carrots, roughly chopped, to lift the bird if you use a disposable pan']]]],
+   note:'The original recipe leaves the butter and garlic amounts to taste. These are ours: enough to go under the skin and coat the outside of a 15–18 lb bird.',
+   steps:[
+    ['Fri/Sat','Thaw in the fridge on a sheet pan to catch drips: 24 hours for every 5 lb, plus a spare day. For a '+w+' lb bird, that means starting <b>'+dayStr(ts)+' '+partOfDay(ts)+'</b>.'],
+    ['Wed','Pull out the neck and giblet bag. The neck and gizzard go into the gravy stock; the liver and heart go into the dressing.'],
+    ['Wed','Make the herb butter by mixing the softened butter, garlic, chopped herbs, salt, and pepper. Refrigerate it, and save the leftover herb sprigs for the cavity.'],
+    ['Thu','About an hour before roasting, take the turkey and the herb butter out of the fridge.',60],
+    ['Thu','Set a rack so the turkey will sit in the middle of the oven and preheat to <b>325°F</b>.'],
+    ['Thu','Pat the turkey very dry with paper towels. Don’t rinse it.'],
+    ['Thu','Salt and pepper the cavity, then fill it with the onion, lemon, apple, and herb sprigs.'],
+    ['Thu','Work your fingers under the breast skin to loosen it and spread a few tablespoons of herb butter underneath.'],
+    ['Thu','Tuck the wing tips under the bird and tie the legs together with kitchen twine.'],
+    ['Thu','Set it on a rack in the roasting pan (on the vegetables, if you’re using a disposable pan). Microwave the rest of the butter about 30 seconds to soften it, then brush it over the whole outside.'],
+    ['Thu','Roast at 325°F, about 13–15 min per pound, so <b>'+dur(r.lo)+'–'+dur(r.hi)+'</b> here. Our plan budgets '+dur(r.mid)+', putting it in at <b>'+clock(t.in)+'</b>.',r.mid],
+    ['Thu','Check it about halfway through. Once the skin is golden brown, tent the breast loosely with foil.'],
+    ['Thu','It’s done at 165°F in the thickest part of the thigh and the center of the breast. You can pull it when the breast reads about 160°F; it keeps climbing while it rests.'],
+    ['Thu','Rest it tented with foil. The source says at least 20–30 min and the old cookbook says 30–60. We rest it about 50 min while the dressing bakes. Save every drop of drippings for the gravy.']],
+   tips:['No brining or basting needed with this method.','Convection oven? Start checking after about 2 hours, since it runs faster.','If it’s done early, keep it tented with a couple of clean kitchen towels over the foil. A big bird stays hot for over an hour.']},
+
+  {id:'dressing',name:'Moist Bread Dressing',short:'Dressing',src:'Family cookbook, p. 181 (“Moist Dressing for Turkey Weighing 15 to 18 Pounds”)',
+   yield:'Serves about 10–12',scalable:true,base:11,
+   glance:[['Tuesday','Dry bread, 40 min at 275°F'],['Wednesday','Slice veg, chop parsley'],['Thursday','40 min hands-on'],['Bake at 400°F','about 45 min']],
+   groups:[['Ingredients',[[.5,'lb',S.fat==='bacon'?'bacon, cut into small pieces (or ½ lb butter)':'butter, 2 sticks per ½ lb (or ½ lb bacon, cut small)'],[2,'cups','onions, sliced thin (about 2 medium)'],[2,'cups','celery, sliced thin crosswise (about 4 ribs)'],[1,'lb','sliced white bread, toasted golden and thoroughly dried'],[1,'Tbsp','dried sage or poultry seasoning, about'],[1,'Tbsp','salt, more or less'],[.25,'tsp','black or white pepper'],[.5,'cup','parsley, chopped medium-fine'],[3,'','eggs'],[null,'','turkey liver and heart (from the giblet bag), chopped fine']]],
+           ['For baking',[[4,'Tbsp','melted butter to drizzle over the top, plus a little extra if the mix looks dry']]]],
+   note:'We bake this on the side instead of stuffing the bird. The cookbook recommends the same thing for big turkeys: the bird roasts faster and the breast stays juicier.',
+   steps:[
+    ['Tue','Lay the bread slices right on the oven racks at <b>275°F</b> for 30–40 min, flipping a few times, until golden and completely dry. Let them cool and store loosely covered.',35],
+    ['Wed','Slice the onions and celery and chop the parsley. Bag each separately and refrigerate.'],
+    ['Thu','In a large skillet, melt the butter (or fry the bacon slowly until medium-crisp). Add the chopped liver and heart and cook about 5 min.',5],
+    ['Thu','Add the onions and celery, cover, and let them steam about 15 min, until tender.',15],
+    ['Thu','Meanwhile, put the dried bread in a big bowl and cover it with cold water until it swells. Then press the water out until the bread is very fluffy.'],
+    ['Thu','Pour the vegetable mixture over the bread. Season with the salt, pepper, sage, and parsley.'],
+    ['Thu','Add the eggs last and toss lightly with two forks. If it seems dry, add a little more melted butter. Taste and adjust.'],
+    ['Thu','Spread it in a buttered 9×13 (or similar heatproof dish), cover, and set aside.'],
+    ['Thu','Once the turkey is out, drizzle melted butter over the top and bake uncovered at <b>400°F</b> for about 45 min, until it’s brown and crusty and 165°F in the center.',45]],
+   tips:['Mix with forks, not a spoon. It keeps the dressing light instead of pasty.','Going with bacon? Pour off some of the grease if there’s more than about ½ cup.']},
+
+  {id:'gravy',name:'Glazy Gravy',short:'Gravy',src:'Family cookbook, p. 183 (“Glazy Gravy for Roasted Turkey”)',
+   yield:'About 5 cups',scalable:false,
+   glance:[['Wednesday','Stock: 2–3 hr simmer'],['Thursday','15 min to finish'],['Bonus','Glazes the turkey']],
+   groups:[['Stock (Wednesday)',[[null,'','turkey neck and gizzard'],[1,'','celery stalk, cut up'],[1,'','carrot, cut up'],[.25,'cup','parsley'],[.5,'tsp','MSG (Accent), optional'],[1,'','small onion, cut up'],[1,'','bay leaf'],[6,'cups','cold water'],[1,'Tbsp','salt']]],
+           ['Finish (Thursday)',[[null,'','pan drippings from the turkey'],[1.5,'Tbsp','cornstarch per cup of liquid (about ½ cup total)'],[2,'Tbsp','cool water per cup of liquid, to dissolve the cornstarch'],[null,'','gravy coloring (Kitchen Bouquet), optional, for darker gravy']]]],
+   steps:[
+    ['Wed','Put the neck, gizzard, celery, carrot, parsley, MSG, onion, bay leaf, cold water, and salt in a medium saucepan.'],
+    ['Wed','Cover and simmer gently for several hours (plan on 2–3), until the gizzard is tender.',150],
+    ['Wed','Strain, cool, and refrigerate. You can chop the gizzard meat and add it back to the gravy if you like it.'],
+    ['Thu','When the turkey comes out, warm the stock. Pour most of the fat out of the roasting pan, leaving about 1 Tbsp for each cup of gravy (about 5 Tbsp).'],
+    ['Thu','Add the stock to the drippings and scrape up the browned bits. Set the pan across two burners or pour everything into a saucepan. Measure the liquid.'],
+    ['Thu','For each cup, stir 1½ Tbsp cornstarch into 2 Tbsp cool water and whisk it in. Cook until thick, then simmer until it turns clear, about 5 min.',5],
+    ['Thu','Too thick? Thin it with a splash of stock or water. Taste and season.'],
+    ['Thu','Just before serving, brush the carved turkey with a little gravy so it looks glossy.']],
+   tips:['A fat separator makes the skimming step easy.','Pour any juice from the carving board into the gravy.']},
+
+  {id:'mashed',name:'Fluffy Mashed Potatoes',short:'Potatoes',src:'Family cookbook (“Fluffy Mashed Potatoes”)',
+   yield:'Serves',scalable:true,base:6,
+   glance:[['Steam','30–45 min'],['Mash','20 min'],['Bake','about 15 min'],['Make-ahead','Up to 1½ hr']],
+   groups:[['Ingredients',[[2,'lb','medium potatoes, all about the same size (russet or Yukon Gold)'],[.5,'cup','very hot milk, or more'],[1,'tsp','baking powder'],[2,'tsp','salt'],[2,'Tbsp','butter, plus a little for the dish']]]],
+   note:'The cookbook bakes the make-ahead version at 350°F. Ours shares the oven with the dressing at 400°F, so start checking at 10–12 min.',
+   steps:[
+    ['Thu','Scrub the potatoes well. Steam them whole in a covered pot over about 1 inch of boiling water for 30–45 min, until very soft.',40],
+    ['Thu','Drain, peel, and put them back over very low heat for a minute or two to dry out.'],
+    ['Thu','Beat with an electric mixer for several minutes, adding the hot milk a little at a time.'],
+    ['Thu','Add the baking powder and salt and beat a few minutes more, until light and fluffy.'],
+    ['Thu','Butter a medium baking dish and spread in about ⅔ of the potatoes. Pipe the rest on top with a large star tip (or swirl with a spoon), dot with the butter, and cover.'],
+    ['Thu','Bake uncovered next to the dressing for about 15 min, until hot. For golden tops, finish with 1–2 min under the broiler.',15]],
+   tips:['Serving right away instead? Skip the dish, fold in the butter gently, and serve hot.','A disposable piping bag with a large star tip is cheap and makes these look fancy.']},
+
+  {id:'beans',name:'Green Beans Almondine',short:'Green Beans',src:'Delish',url:'https://www.delish.com/cooking/recipe-ideas/a42109789/green-beans-almondine-recipe/',
+   yield:'Serves',scalable:true,base:4,
+   glance:[['Wednesday','Trim + blanch, 15 min'],['Thursday','10 min in the skillet']],
+   groups:[['Ingredients',[[1,'lb','haricots verts (thin French green beans), trimmed'],[3,'Tbsp','unsalted butter'],[.5,'cup','raw sliced almonds'],[1,'','shallot, finely chopped'],[2,'','garlic cloves, finely chopped'],[1,'','lemon (zest)'],[2,'tsp','fresh lemon juice'],[null,'','kosher salt and black pepper']]]],
+   note:'Delish’s page wouldn’t open from here. The ingredients match their published list; the method is the standard blanch-and-sauté approach, adjusted so the blanching happens Wednesday. Glance at the original link if you want their exact steps.',
+   steps:[
+    ['Wed','Bring a big pot of well-salted water to a boil. Cook the beans for 2–3 min, until bright green and crisp-tender.',3],
+    ['Wed','Move them straight into a bowl of ice water. Drain, pat dry, and refrigerate wrapped in paper towels.'],
+    ['Thu','In a large skillet over medium heat, melt the butter. Add the almonds and stir until golden, 3–4 min.',4],
+    ['Thu','Add the shallot and garlic and cook 1–2 min, until fragrant.'],
+    ['Thu','Add the beans and toss until heated through, 3–4 min.'],
+    ['Thu','Take the pan off the heat. Add the lemon zest and juice, then salt and pepper to taste.']],
+   tips:['More than about 1½ lb of beans won’t fit one skillet. Cook in two batches or use a wide Dutch oven.']}
+  ];
+}
+
+/* ---------- shopping ---------- */
+function shopItems(){
+  var d=sc('dressing'),m=sc('mashed'),b=sc('beans'),bacon=S.fat==='bacon';
+  var butterT=16+(bacon?0:16*d)+4*d+3*b+2*m+2, sticks=Math.ceil(butterT/8), lbs=Math.ceil(sticks/4);
+  var onions=1+Math.ceil(2*d), ribs=Math.ceil(4*d)+1, lemons=1+Math.ceil(b), garlic=4+Math.ceil(2*b), almondsC=.5*b;
+  var eggs=Math.ceil(3*d), parsleyBunch=Math.max(1,Math.ceil((.5*d+.25)/.9));
+  var items=[
+   ['Meat','turkey','Turkey (frozen)',S.weight+' lb (15–18 lb range)','Turkey · buy before '+dayStr(thawStart())+' to thaw in time',1],
+   ['Produce','potatoes','Russet or Yukon Gold potatoes, medium and evenly sized',fq(2*m)+' lb','Mashed potatoes',1],
+   ['Produce','onions','Yellow onions',onions+' medium + 1 small','Turkey cavity, dressing, gravy stock',1],
+   ['Produce','beans','Haricots verts (thin French green beans)',fq(b)+' lb','Green beans · buy close to Wednesday',2],
+   ['Produce','celery','Celery',Math.ceil(ribs/8)+' '+pl(Math.ceil(ribs/8),'bunch','bunches'),'Dressing ('+Math.ceil(4*d)+' ribs), gravy stock (1 rib)',2],
+   ['Produce','carrots','Carrots','1 small bag','Gravy stock (+4 for the pan bed if using a disposable pan)',2],
+   ['Produce','lemons','Lemons',lemons+'','Turkey cavity (1), green beans ('+Math.ceil(b)+')',2],
+   ['Produce','apple','Apple, any kind','1','Turkey cavity',2],
+   ['Produce','shallots','Shallots',Math.ceil(b)+'','Green beans',2],
+   ['Produce','garlic','Garlic','1 head','Herb butter (4 cloves), green beans ('+Math.ceil(2*b)+')',1],
+   ['Produce','parsley','Flat-leaf parsley',parsleyBunch+' large '+pl(parsleyBunch,'bunch','bunches'),'Dressing (½ cup), gravy stock (¼ cup)',2],
+   ['Produce','herbs','Fresh rosemary, thyme, and sage','1 small pack each (~0.75 oz)','Turkey herb butter + cavity',2],
+   ['Dairy & eggs','butter','Unsalted butter',sticks+' sticks (buy '+lbs+' lb)','Herb butter, dressing, green beans, potatoes',1],
+   ['Dairy & eggs','eggs','Eggs',eggs+' ('+(eggs>6?'1 dozen':'½ dozen')+')','Dressing',2],
+   ['Dairy & eggs','milk','Whole milk','about '+fq(.5*m+.25)+' cup','Mashed potatoes',2],
+   ['Bakery','bread','Sliced white sandwich bread',fq(d)+' lb ('+Math.ceil(d*16/20)+' × 20-oz loaf)','Dressing · toast it Tuesday',1],
+   ['Pantry','almonds','Raw sliced almonds',fq(almondsC)+' cup (~'+Math.ceil(almondsC*3.2)+' oz)','Green beans',1],
+   ['Pantry','cornstarch','Cornstarch','1 box (you need ~½ cup)','Gravy',1],
+   ['Pantry','bakingpowder','Baking powder','have '+fq(m)+' tsp','Mashed potatoes',1],
+   ['Pantry','sage','Dried sage or poultry seasoning','1 jar (1 Tbsp)','Dressing',1],
+   ['Pantry','bay','Bay leaves','1 leaf','Gravy stock',1],
+   ['Pantry','salt','Kosher salt + black pepper','check stock','Everything',1],
+   ['Pantry','msg','MSG (Accent)','½ tsp','Gravy stock · optional',1,true],
+   ['Pantry','kb','Gravy coloring (Kitchen Bouquet)','small bottle','Gravy · optional',1,true],
+   ['Supplies','twine','Kitchen twine','1 roll','Tying the legs',1],
+   ['Supplies','foil','Heavy-duty foil','1 roll','Tenting the turkey',1],
+   ['Supplies','thermo','Instant-read thermometer','check it works','Turkey + dressing doneness',1],
+   ['Supplies','pan','Roasting pan with rack (or disposable pan)','1','Turkey',1],
+   ['Supplies','piping','Piping bag + large star tip','1','Potatoes · optional',1,true],
+   ['Supplies','separator','Fat separator','1','Gravy · optional but handy',1,true]
+  ];
+  if(bacon)items.splice(1,0,['Meat','bacon','Bacon',fq(.5*d)+' lb','Dressing (instead of butter)',1]);
+  return items.map(function(x){return {aisle:x[0],id:x[1],name:x[2],q:x[3],f:x[4],trip:x[5],opt:!!x[6]}});
+}
+
+var GEAR=[['g-pan','Roasting pan + rack'],['g-therm','Instant-read thermometer (test it)'],['g-9x13','9×13 baking dish (dressing)'],['g-med','Medium baking dish (potatoes)'],['g-sauce','Medium saucepan with lid (stock)'],['g-steam','Large pot with lid for steaming potatoes'],['g-skillet','Large skillet (dressing base + green beans)'],['g-mixer','Electric mixer'],['g-board','Carving board + sharp knife'],['g-boat','Gravy boat + serving dishes']];
+
+/* ---------- timeline ---------- */
+function preDays(){
+  var ts=thawStart();
+  return [
+   {k:'pre',title:'Before the week',dt:'Thaw & shop',items:[
+    ['p1','Shop trip 1','Turkey, butter, bread, potatoes, onions, garlic, almonds, pantry, and supplies. Buy the turkey by '+dayStr(ts)+'.','prep'],
+    ['p2','Turkey into the fridge',dayStr(ts)+' '+partOfDay(ts)+'. Keep it in its wrapper on a rimmed sheet pan on the bottom shelf.','turkey'],
+    ['p3','Gear check','Go through the gear list on the Plan tab.','prep']]},
+   {k:'mon',title:'Monday',dt:'Nov 23',items:[
+    ['m1','Shop trip 2 (Mon or Tue)','Fresh stuff: herbs, parsley, haricots verts, celery, carrots, lemons, apple, shallots, eggs, milk.','prep'],
+    ['m2','Clear fridge space','You’ll need room for the turkey, a pot of stock, and prepped bags.','prep']]},
+   {k:'tue',title:'Tuesday',dt:'Nov 24',items:[
+    ['t1','Toast & dry the bread','275°F on the oven racks, 30–40 min, flipping a few times, until golden and bone-dry. Cool and store loosely covered.','dressing',35],
+    ['t2','Pick up anything missed','Check the Shop tab for unchecked items.','prep']]},
+   {k:'wed',title:'Wednesday',dt:'Nov 25 · prep day',items:[
+    ['w1','Confirm the turkey is thawed','The cavity should be soft with no ice. Still frozen? Use the cold-water method (see Plan).','turkey'],
+    ['w2','Giblets out','Neck and gizzard go to the stock. Liver and heart go in a covered container in the fridge for the dressing.','turkey'],
+    ['w3','Simmer the gravy stock','Neck, gizzard, celery, carrot, parsley, MSG, onion, bay leaf, 6 cups water, 1 Tbsp salt. Covered, gentle simmer for 2–3 hr. Strain, cool, refrigerate.','gravy',150],
+    ['w4','Make the herb butter','Butter, garlic, chopped rosemary, thyme, sage, salt, pepper. Refrigerate. Save the leftover sprigs.','turkey'],
+    ['w5','Dressing veg','Slice 2 cups onions and 2 cups celery, chop ½ cup parsley. Bag separately.','dressing'],
+    ['w6','Blanch the green beans','Trim, boil 2–3 min in salted water, ice bath, dry, refrigerate in paper towels.','beans',3],
+    ['w7','Pat the turkey dry (optional)','Leave it unwrapped on a rack in the fridge overnight. Drier skin browns better.','turkey'],
+    ['w8','Stage the serving dishes','Set out every platter and bowl with a sticky note for what goes in it. Set the table.','prep']]}
+  ];
+}
+function thuSteps(){
+  var t=T(),r=roast(),w=S.weight,D=t.D;
+  var a=[
+   ['c0',t.in-90,'Clear the decks','Empty the dishwasher, clear the counters, and set out the roasting pan, rack, twine, thermometer, and foil.','prep'],
+   ['c1',t.in-60,'Turkey out of the fridge','Leave it on the counter about an hour to take the chill off. Take the herb butter out to soften too.','turkey',60],
+   ['c2',t.in-45,'Preheat oven to 325°F','Set the rack so the bird sits in the middle of the oven.','oven'],
+   ['c3',t.in-40,'Prep the bird','Pat it dry, then season and fill the cavity. Butter under the breast skin, tuck the wings, tie the legs, set it on the rack, and brush the outside with the rest of the butter.','turkey'],
+   ['c4',t.in,'Turkey in at 325°F','Budgeting '+dur(r.mid)+' (range '+dur(r.lo)+'–'+dur(r.hi)+' for '+w+' lb). The thermometer decides, not the clock.','turkey',r.mid],
+   ['c5',t.in+Math.round(r.mid/2),'Halfway check','Once the skin is golden, tent the breast loosely with foil.','turkey'],
+   ['c6',D-165,'Start steaming the potatoes','Scrub and steam whole in a covered pot over about 1 inch of boiling water, 30–45 min, until very soft.','mashed',40],
+   ['c7',D-160,'Dressing base','Melt the butter (or crisp the bacon), cook the chopped liver and heart 5 min, then add the onions and celery. Cover and steam about 15 min.','dressing',15],
+   ['c8',D-135,'Assemble the dressing','Soak the bread in cold water and press it until fluffy. Pour the veg over it, season, add the eggs last, and toss with two forks. Spread in a buttered 9×13 and cover.','dressing'],
+   ['c9',D-115,'Mash the potatoes','Drain, peel, dry, and beat with hot milk, baking powder, and salt until fluffy. Spread ⅔ in a buttered dish, pipe the rest on top, dot with butter, and cover.','mashed'],
+   ['c10',D-100,'Warm the stock; table check','Put Wednesday’s stock on low. Anyone not cooking: drinks, ice, candles, kids’ plates.','prep'],
+   ['c11',D-90,'Green bean prep','Chop the shallot and garlic, zest and juice the lemon, and measure out the almonds and butter.','beans'],
+   ['c12',t.out-Math.round(w*1.5),'Start checking the turkey’s temperature','You want 165°F in the thickest part of the thigh and 160–165°F in the center of the breast.','turkey'],
+   ['c13',t.out,'Turkey out; oven to 400°F','Move it to a board and tent loosely with foil to rest. Pour the drippings into a fat separator.','oven'],
+   ['c14',D-65,'Dressing in at 400°F','Uncover, drizzle the top with melted butter, and bake about 45 min, until brown and crusty.','dressing',45],
+   ['c15',D-60,'Make the gravy','Skim the fat, leaving about 1 Tbsp per cup. Add the stock and measure. Whisk in 1½ Tbsp cornstarch (dissolved in 2 Tbsp cool water) per cup and simmer until thick and clear, about 5 min. Hold on low.','gravy',5],
+   ['c16',D-35,'Potatoes in, next to the dressing','Uncovered, about 15 min. Optional: 1–2 min under the broiler at the end.','mashed',15],
+   ['c17',D-30,'Finish the green beans','Toast the almonds in butter until golden, add the shallot and garlic, then the beans until hot. Off the heat, add lemon, salt, and pepper.','beans',10],
+   ['c18',D-25,'Carve the turkey','Pour any juices from the board into the gravy.','turkey'],
+   ['c19',D-20,'Dressing and potatoes out; oven off','Check that the dressing reads 165°F in the center.','oven'],
+   ['c20',D-10,'Glaze and plate','Brush the carved turkey with a little gravy for shine. Gravy into the boat, everything to the table.','gravy'],
+   ['c21',D,'Dinner','Sit down. You did it.','dinner'],
+   ['c22',D+90,'Leftovers in the fridge','Within 2 hours. Pull the turkey off the bone into shallow containers.','prep']
+  ];
+  return a.map(function(x){return {k:x[0],t:x[1],h:x[2],b:x[3],dish:x[4],timer:x[5]}}).sort(function(p,q){return p.t-q.t});
+}
+
+/* ---------- render: plan ---------- */
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+function renderPlan(){
+  var t=T(),r=roast(),ts=thawStart();
+  $('wOut').textContent=S.weight+' lb';
+  $('gOut').textContent=S.guests;
+  $('dinnerSel').value=S.dinner;
+  [].forEach.call($('fatSeg').children,function(b){b.classList.toggle('on',b.dataset.fat===S.fat)});
+  $('heroMeta').innerHTML='Dinner at <strong>'+clock(t.D)+'</strong> · '+S.guests+' at the table · '+S.weight+' lb turkey in at <strong>'+clock(t.in)+'</strong>';
+  $('heroMenu').innerHTML=R_().map(function(x){return '<button data-goto="'+x.id+'">'+esc(x.short)+'</button>'}).join('');
+  var rows=[
+   ['Turkey into the fridge to thaw',dayStr(ts)+' '+partOfDay(ts)],
+   ['Shop trip 1 (turkey, pantry, staples)','by '+dayStr(new Date(ts.getTime()-864e5*(ts.getHours()<12?1:0)))],
+   ['Shop trip 2 (fresh produce, dairy)','Mon Nov 23 or Tue Nov 24'],
+   ['Toast the bread','Tue Nov 24'],
+   ['Prep day: stock, butter, beans, veg','Wed Nov 25'],
+   ['Turkey out of the fridge','Thu '+clock(t.in-60)],
+   ['Turkey in the oven','Thu '+clock(t.in)],
+   ['Turkey out to rest','Thu '+clock(t.out)],
+   ['Dinner','Thu '+clock(t.D)]];
+  $('keyDates').innerHTML=rows.map(function(x){return '<div class="row"><span class="k">'+x[0]+'</span><span class="v">'+x[1]+'</span></div>'}).join('');
+  // oven board
+  var s0=t.in-45,s1=t.D-20,span=s1-s0,pct=function(a){return ((a-s0)/span*100).toFixed(2)+'%'},wd=function(a,b){return ((b-a)/span*100).toFixed(2)+'%'};
+  var segs=[[s0,t.in,'heat','Preheat'],[t.in,t.out,'t325','Turkey · 325°F'],[t.out,t.D-65,'heat','↑400'],[t.D-65,s1,'t400','Dressing · 400°F']];
+  var bar='<div class="bar">'+segs.map(function(g){return '<span class="'+g[2]+'" style="left:'+pct(g[0])+';width:'+wd(g[0],g[1])+'">'+((g[1]-g[0])/span>.2?g[3]:'')+'</span>'}).join('')+'</div>';
+  var bar2='<div class="bar" style="height:20px;background:none"><span class="t400" style="left:'+pct(t.D-35)+';width:'+wd(t.D-35,s1)+';opacity:.75"></span></div>';
+  $('ovenBoard').innerHTML=bar+bar2+'<div class="ticks"><span>'+clock(s0)+'</span><span>'+clock(t.out)+'</span><span>'+clock(s1)+'</span></div>'+
+   '<ul class="olist">'+[[clock(s0),'Preheat to 325°F'],[clock(t.in)+' – '+clock(t.out),'Turkey roasting'],[clock(t.out),'Turkey out, oven up to 400°F'],[clock(t.D-65)+' – '+clock(s1),'Dressing (45 min)'],[clock(t.D-35)+' – '+clock(s1),'Potatoes alongside (15 min)'],[clock(s1),'Oven off']].map(function(x){return '<li><span class="tm">'+x[0]+'</span><span>'+x[1]+'</span></li>'}).join('')+'</ul>';
+  $('gear').innerHTML=GEAR.map(function(g){var on=!!S.shop[g[0]];return '<label class="chk'+(on?' done':'')+'"><input type="checkbox" data-shop="'+g[0]+'"'+(on?' checked':'')+'><span class="txt"><span class="nm">'+g[1]+'</span></span></label>'}).join('');
+  renderNow();
+}
+
+function renderNow(){
+  var n=NOW(),el=$('nowCard'),cd=$('cd');
+  var dd=Math.ceil((THX-new Date(n.getFullYear(),n.getMonth(),n.getDate()))/864e5);
+  cd.textContent=dd>1?dd+' days to go':dd===1?'Tomorrow':dd===0?'Today':'Hope it was great';
+  if(dd!==0){el.innerHTML='';return}
+  var m=n.getHours()*60+n.getMinutes(),st=thuSteps(),cur=null,nxt=null;
+  st.forEach(function(s){if(s.t<=m)cur=s;else if(!nxt)nxt=s});
+  var h='<div class="card now" style="margin-top:14px">';
+  if(cur)h+='<div class="lbl">Now · since '+clock(cur.t)+'</div><h3>'+esc(cur.h)+'</h3><p>'+esc(cur.b)+'</p>';
+  if(nxt)h+='<div class="lbl" style="margin-top:8px">Up next · '+clock(nxt.t)+' (in '+dur(nxt.t-m)+')</div><h3>'+esc(nxt.h)+'</h3>';
+  if(!cur&&nxt)h=h.replace('<div class="lbl" style="margin-top:8px">','<div class="lbl">');
+  el.innerHTML=h+'<p style="margin-top:8px"><a href="#" data-tab-link="time">Open the full timeline →</a></p></div>';
+}
+
+/* ---------- render: shop ---------- */
+function renderShop(){
+  var it=shopItems(),done=0,html='',aisle='';
+  var vis=it.filter(function(x){return S.trip==='all'||String(x.trip)===S.trip});
+  vis.forEach(function(x){if(S.shop[x.id])done++});
+  $('shopSub').textContent=S.guests+' guests · '+S.weight+' lb turkey. Trip 1 = the weekend before (turkey and anything that keeps). Trip 2 = Mon/Tue (fresh stuff).';
+  $('shopProg').style.width=(vis.length?done/vis.length*100:0)+'%';
+  [].forEach.call($('tripSeg').children,function(b){b.classList.toggle('on',b.dataset.trip===S.trip)});
+  $('hideBtn').textContent=S.hide?'Show checked':'Hide checked';
+  vis.forEach(function(x){
+    var on=!!S.shop[x.id];if(S.hide&&on)return;
+    if(x.aisle!==aisle){aisle=x.aisle;html+='<div class="aisle">'+aisle+'</div>'}
+    html+='<label class="chk'+(on?' done':'')+'"><input type="checkbox" data-shop="'+x.id+'"'+(on?' checked':'')+'><span class="txt"><span class="nm">'+esc(x.name)+'</span> <span class="q">'+esc(x.q)+'</span>'+
+      '<span class="tag t'+x.trip+'">Trip '+x.trip+'</span>'+(x.opt?'<span class="tag opt">optional</span>':'')+'<span class="for">'+esc(x.f)+'</span></span></label>';
+  });
+  $('shopList').innerHTML=html||'<p class="sub" style="margin-top:20px">All checked off. Nice.</p>';
+}
+
+/* ---------- render: recipes ---------- */
+function renderRecipes(){
+  var all=R_(),r=all.filter(function(x){return x.id===S.recipe})[0]||all[0];
+  $('rChips').innerHTML=all.map(function(x){return '<button data-recipe="'+x.id+'" class="'+(x.id===r.id?'on':'')+'">'+esc(x.short)+'</button>'}).join('');
+  var k=r.scalable?sc(r.id):1;
+  var h='<div class="rhead"><h2>'+esc(r.name)+'</h2><div class="rsrc">'+(r.url?'<a href="'+r.url+'" target="_blank" rel="noopener">'+esc(r.src)+'</a>':esc(r.src))+'</div></div>';
+  h+='<div class="glance">'+r.glance.map(function(g){return '<div><b>'+esc(g[0])+'</b><span>'+esc(g[1])+'</span></div>'}).join('')+'</div>';
+  if(r.scalable){
+    var opts=[1,1.5,2,2.5,3];if(opts.indexOf(k)<0)opts.push(k);opts.sort(function(a,b){return a-b});
+    h+='<div class="scaler"><span><b style="color:var(--ink)">'+(r.yield==='Serves'?'Serves '+Math.round(r.base*k):r.yield)+'</b> · batch</span><div class="seg">'+
+      opts.map(function(o){return '<button data-scale="'+o+'" class="'+(o===k?'on':'')+'">'+fq(o)+'×</button>'}).join('')+'</div>'+
+      (S.touched[r.id]?'<button class="btn ghost sm" data-autoscale="1">Auto from guests</button>':'<span>auto-sized for '+S.guests+' guests</span>')+'</div>';
+  } else h+='<div class="scaler"><b style="color:var(--ink)">'+esc(r.yield)+'</b></div>';
+  if(r.note)h+='<div class="note">'+r.note+'</div>';
+  h+='<div class="ing">'+r.groups.map(function(g){return '<h4>'+esc(g[0])+'</h4><ul>'+g[1].map(function(i){
+      var q=i[0]==null?'':fq(i[0]*k);return '<li>'+(q?'<b>'+q+(i[1]?' '+i[1]:'')+'</b> ':'')+esc(i[2])+'</li>'}).join('')+'</ul>'}).join('')+'</div>';
+  h+='<div class="meth"><h4>Method</h4><ol>'+r.steps.map(function(s){
+      return '<li><span class="when">'+s[0]+'</span>'+s[1]+(s[2]?'<button class="tbtn" data-timer="'+s[2]+'" data-label="'+esc(r.short)+'">⏱ '+dur(s[2])+'</button>':'')+'</li>'}).join('')+'</ol></div>';
+  if(r.tips&&r.tips.length)h+='<div class="ing"><h4>Tips</h4><ul>'+r.tips.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></div>';
+  $('recipe').innerHTML=h;
+}
+
+/* ---------- render: timeline ---------- */
+function renderTimeline(){
+  var n=NOW(),isDay=n.getFullYear()===2026&&n.getMonth()===10&&n.getDate()===26,m=n.getHours()*60+n.getMinutes();
+  var h='';
+  preDays().forEach(function(d){
+    h+='<div class="day"><h3>'+d.title+'</h3><span class="dt">'+d.dt+'</span></div><ul class="tl">'+d.items.map(function(x){
+      var on=!!S.steps[x[0]];return '<li data-step="'+x[0]+'" class="'+(on?'done':'')+'"><div class="h">'+esc(x[1])+'<span class="dish d-'+x[3]+'">'+x[3]+'</span></div><div class="b">'+esc(x[2])+
+      (x[4]?'<button class="tbtn" data-timer="'+x[4]+'" data-label="'+esc(x[1])+'">⏱ '+dur(x[4])+'</button>':'')+'</div></li>'}).join('')+'</ul>';
+  });
+  var st=thuSteps(),curK=null;
+  if(isDay)st.forEach(function(s){if(s.t<=m)curK=s.k});
+  h+='<div class="day"><h3>Thanksgiving</h3><span class="dt">Thu Nov 26 · dinner '+clock(S.dinner)+'</span></div><ul class="tl">'+st.map(function(s){
+    var on=!!S.steps[s.k];return '<li data-step="'+s.k+'" class="'+(on?'done':'')+(s.k===curK?' cur':'')+'"><div class="tm">'+clock(s.t)+'</div><div class="h">'+esc(s.h)+'<span class="dish d-'+s.dish+'">'+(s.dish==='mashed'?'potatoes':s.dish)+'</span></div><div class="b">'+esc(s.b)+
+    (s.timer?'<button class="tbtn" data-timer="'+s.timer+'" data-label="'+esc(s.h)+'">⏱ '+dur(s.timer)+'</button>':'')+'</div></li>'}).join('')+'</ul>';
+  $('timeline').innerHTML=h;
+}
+
+function renderAll(){renderPlan();renderShop();renderRecipes();renderTimeline()}
+
+/* ---------- timers ---------- */
+var timers=load('tg26_timers',[]),actx=null;
+function audio(){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume()}catch(e){}}
+function beep(){if(!actx)return;try{[0,.35,.7].forEach(function(d){var o=actx.createOscillator(),g=actx.createGain();o.frequency.value=880;o.connect(g);g.connect(actx.destination);g.gain.setValueAtTime(.0001,actx.currentTime+d);g.gain.exponentialRampToValueAtTime(.4,actx.currentTime+d+.02);g.gain.exponentialRampToValueAtTime(.0001,actx.currentTime+d+.28);o.start(actx.currentTime+d);o.stop(actx.currentTime+d+.3)})}catch(e){}}
+function startTimer(label,min){audio();timers.push({id:Date.now(),l:label,end:Date.now()+min*6e4,rang:false});save('tg26_timers',timers);toast('Timer started: '+label+' ('+dur(min)+')');renderTimers()}
+function fmtLeft(ms){var s=Math.max(0,Math.ceil(ms/1e3)),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+(m<10?'0':''):'')+m+':'+(x<10?'0':'')+x}
+function renderTimers(){
+  var n=Date.now();
+  $('timers').innerHTML=timers.map(function(t){var left=t.end-n,done=left<=0;
+    return '<div class="tmr'+(done?' ring':'')+'"><span class="l">'+esc(t.l)+'</span><span class="c">'+(done?'Done!':fmtLeft(left))+'</span><button data-kill="'+t.id+'" aria-label="Clear timer">×</button></div>'}).join('');
+}
+setInterval(function(){
+  var n=Date.now(),ch=false;
+  timers.forEach(function(t){if(!t.rang&&n>=t.end){t.rang=true;ch=true;beep();try{navigator.vibrate&&navigator.vibrate([400,200,400,200,400])}catch(e){}toast('⏰ '+t.l)}});
+  if(ch)save('tg26_timers',timers);
+  timers.forEach(function(t){if(t.rang&&n-t.end<60e3&&(Math.floor((n-t.end)/1e3)%8===0))beep()});
+  if(timers.length)renderTimers();
+},1000);
+setInterval(function(){renderNow();if(document.querySelector('#p-time.on'))renderTimeline()},60e3);
+
+var tt;function toast(s){var el=$('toast');el.textContent=s;el.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){el.classList.remove('on')},2400)}
+
+/* ---------- events ---------- */
+var dsel=$('dinnerSel');
+for(var mm=12*60;mm<=19*60;mm+=30){var o=document.createElement('option');o.value=mm;o.textContent=clock(mm);dsel.appendChild(o)}
+dsel.addEventListener('change',function(){S.dinner=+dsel.value;persist();renderAll()});
+
+function showTab(n){
+  [].forEach.call(document.querySelectorAll('.panel'),function(p){p.classList.toggle('on',p.id==='p-'+n)});
+  [].forEach.call($('tabs').children,function(b){b.classList.toggle('on',b.dataset.tab===n)});
+  if(n==='time')renderTimeline();
+  window.scrollTo(0,0);try{history.replaceState(null,'','#'+n)}catch(e){}
+}
+
+document.addEventListener('click',function(e){
+  var el=e.target.closest('[data-tab],[data-w],[data-g],[data-fat],[data-goto],[data-recipe],[data-scale],[data-autoscale],[data-trip],[data-timer],[data-kill],[data-step],[data-tab-link]');
+  if(!el)return;
+  var d=el.dataset;
+  if(d.timer){e.stopPropagation();e.preventDefault();startTimer(d.label,+d.timer);return}
+  if(d.tab){showTab(d.tab)}
+  else if(d.tabLink){e.preventDefault();showTab(d.tabLink)}
+  else if(d.w){S.weight=Math.min(24,Math.max(10,S.weight+ +d.w));persist();renderAll()}
+  else if(d.g){S.guests=Math.min(30,Math.max(2,S.guests+ +d.g));persist();renderAll()}
+  else if(d.fat){S.fat=d.fat;persist();renderAll()}
+  else if(d.goto){S.recipe=d.goto;persist();renderRecipes();showTab('recipes')}
+  else if(d.recipe){S.recipe=d.recipe;persist();renderRecipes();window.scrollTo(0,0)}
+  else if(d.scale){S.scale[S.recipe]=+d.scale;S.touched[S.recipe]=true;persist();renderRecipes();renderShop()}
+  else if(d.autoscale){S.touched[S.recipe]=false;persist();renderRecipes();renderShop()}
+  else if(d.trip){S.trip=d.trip;persist();renderShop()}
+  else if(d.kill){timers=timers.filter(function(t){return String(t.id)!==d.kill});save('tg26_timers',timers);renderTimers()}
+  else if(d.step){S.steps[d.step]=!S.steps[d.step];persist();el.classList.toggle('done',S.steps[d.step])}
+});
+document.addEventListener('change',function(e){
+  var k=e.target.dataset&&e.target.dataset.shop;if(!k)return;
+  S.shop[k]=e.target.checked;persist();
+  var lab=e.target.closest('.chk');if(lab)lab.classList.toggle('done',e.target.checked);
+  if(S.hide&&e.target.checked)setTimeout(renderShop,350);else{
+    var vis=shopItems().filter(function(x){return S.trip==='all'||String(x.trip)===S.trip}),done=vis.filter(function(x){return S.shop[x.id]}).length;
+    $('shopProg').style.width=(vis.length?done/vis.length*100:0)+'%';}
+});
+$('hideBtn').onclick=function(){S.hide=!S.hide;persist();renderShop()};
+$('resetShop').onclick=function(){if(!confirmLite('resetShop'))return;shopItems().forEach(function(x){delete S.shop[x.id]});persist();renderShop()};
+$('resetSteps').onclick=function(){if(!confirmLite('resetSteps'))return;S.steps={};persist();renderTimeline()};
+$('printBtn').onclick=function(){window.print()};
+$('copyBtn').onclick=function(){
+  var it=shopItems().filter(function(x){return !S.shop[x.id]&&(S.trip==='all'||String(x.trip)===S.trip)}),a='',out='Thanksgiving shopping'+(S.trip!=='all'?' (Trip '+S.trip+')':'')+'\n';
+  it.forEach(function(x){if(x.aisle!==a){a=x.aisle;out+='\n'+a.toUpperCase()+'\n'}out+='☐ '+x.name+': '+x.q+(x.opt?' (optional)':'')+'\n'});
+  var done=function(){toast('Copied. Paste it into Notes or a text.')};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(out).then(done,function(){fallbackCopy(out);done()});else{fallbackCopy(out);done()}
+};
+function fallbackCopy(s){var t=document.createElement('textarea');t.value=s;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(t)}
+var armed={};function confirmLite(k){if(armed[k]){armed[k]=false;return true}armed[k]=true;toast('Tap again to confirm');setTimeout(function(){armed[k]=false},3000);return false}
+
+renderAll();renderTimers();
+function fromHash(){var h0=(location.hash||'').slice(1);if(['plan','shop','recipes','time'].indexOf(h0)>=0)showTab(h0)}
+fromHash();window.addEventListener('hashchange',fromHash);
+})();
+</script>
+</body>
+</html>
