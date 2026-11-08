@@ -281,7 +281,7 @@ function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}ca
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 
 var S=load('tg26',null)||{};
-S.weight=S.weight||16; S.dinner=S.dinner||16*60; S.guests=S.guests||10; S.fat=S.fat||'butter';
+S.weight=S.weight||16; if(!S.v2){S.dinner=14*60;S.v2=1} S.dinner=S.dinner||14*60; S.guests=S.guests||10; S.fat=S.fat||'butter';
 S.scale=S.scale||{}; S.touched=S.touched||{}; S.shop=S.shop||{}; S.steps=S.steps||{};
 S.trip=S.trip||'all'; S.hide=!!S.hide; S.recipe=S.recipe||'turkey';
 function persist(){save('tg26',S)}
