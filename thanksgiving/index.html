@@ -154,7 +154,7 @@ select{font-family:inherit;font-size:16px;padding:10px 12px;border:1px solid var
 .tl .h{font-weight:700;font-size:15.5px;line-height:1.3}
 .tl .b{font-size:14px;color:var(--ink-soft);margin-top:2px}
 .dish{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:2px;margin-left:6px;vertical-align:2px;color:#fff}
-.d-turkey{background:var(--pumpkin)}.d-dressing{background:#8A6A3B}.d-gravy{background:#6B4A33}.d-mashed{background:#9A8A5F}.d-beans{background:var(--sage)}.d-oven{background:var(--cran)}.d-prep{background:var(--stone);color:var(--ink)}.d-dinner{background:var(--ink)}
+.d-turkey{background:var(--pumpkin)}.d-dressing{background:#8A6A3B}.d-gravy{background:#6B4A33}.d-mashed{background:#9A8A5F}.d-beans{background:var(--sage)}.d-carrots{background:#D9822B}.d-oven{background:var(--cran)}.d-prep{background:var(--stone);color:var(--ink)}.d-dinner{background:var(--ink)}
 
 /* tabs + timers */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--ink);display:flex;height:calc(var(--tabh) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom)}
@@ -302,7 +302,7 @@ var FR=[[0,''],[.25,'¼'],[1/3,'⅓'],[.5,'½'],[2/3,'⅔'],[.75,'¾'],[1,'']];
 function fq(n){if(n==null)return '';var w=Math.floor(n+1e-9),f=n-w,best=FR[0];FR.forEach(function(x){if(Math.abs(x[0]-f)<Math.abs(best[0]-f))best=x});if(best[0]===1){w++;best=FR[0]}return (w?w:'')+(w&&best[1]?' ':'')+best[1]||'0'}
 function pl(n,s,p){return n===1?s:(p||s+'s')}
 
-function defScale(id){var g=S.guests;if(id==='mashed')return Math.max(1,Math.ceil(g/6*2)/2);if(id==='beans')return Math.max(1,Math.ceil(g/4*2)/2);if(id==='dressing')return g>12?1.5:1;return 1}
+function defScale(id){var g=S.guests;if(id==='mashed')return Math.max(1,Math.ceil(g/6*2)/2);if(id==='beans')return Math.max(1,Math.ceil(g/4*2)/2);if(id==='dressing')return g>12?1.5:1;if(id==='carrots')return Math.max(1,Math.ceil(g/8*2)/2);return 1}
 function sc(id){return S.touched[id]?S.scale[id]:defScale(id)}
 function roast(){var w=S.weight;return {mid:Math.round(w*14),lo:Math.round(w*13),hi:Math.round(w*15)}}
 function T(){var R=roast().mid;if(S.tin){var o=S.tin+R;return {D:Math.round((o+75)/5)*5,out:o,in:S.tin,anchored:true}}var D=S.dinner,out=D-75;return {D:D,out:out,in:Math.floor((out-R)/5)*5}}
@@ -397,7 +397,20 @@ function R_(){
     ['Thu','Add the shallot and garlic and cook 1–2 min, until fragrant.'],
     ['Thu','Add the beans and toss until heated through, 3–4 min.'],
     ['Thu','Take the pan off the heat. Add the lemon zest and juice, then salt and pepper to taste.']],
-   tips:['More than about 1½ lb of beans won’t fit one skillet. Cook in two batches or use a wide Dutch oven.']}
+   tips:['More than about 1½ lb of beans won’t fit one skillet. Cook in two batches or use a wide Dutch oven.']},
+
+  {id:'carrots',name:'Roasted Carrots with Herbs',short:'Carrots',src:'NYT Cooking',url:'https://cooking.nytimes.com/recipes/1014219-roasted-carrots',
+   yield:'Serves',scalable:true,base:6,
+   glance:[['Prep','15 min'],['Roast at 400°F','about 40 min'],['Serve','Hot or room temp']],
+   groups:[['Ingredients',[[2,'lb','carrots, peeled, cut lengthwise into quarters (or sixths if thick), then into 2-inch pieces'],[3,'Tbsp','extra-virgin olive oil'],[1,'tsp','fresh thyme leaves'],[null,'','salt and freshly ground pepper'],[.5,'tsp','dried oregano'],[3,'Tbsp','flat-leaf parsley, finely chopped']]]],
+   note:'NYT Cooking blocks access from here, so the ingredients come from a copy of their published list. The steps are written for our oven, which is already at 400°F for the dressing, so the carrots roast alongside it: covered first so they turn tender, then uncovered so they brown.',
+   steps:[
+    ['Thu','Line a sheet pan with foil. Toss the carrots on it with the olive oil, thyme, salt, and pepper, and spread them in one layer.'],
+    ['Thu','Cover tightly with a second sheet of foil, crimping the edges.'],
+    ['Thu','Roast at <b>400°F</b> next to the dressing, covered, about 20 min.',20],
+    ['Thu','Uncover, stir, and roast about 20 min more, until tender and browned at the edges.',20],
+    ['Thu','Toss with the parsley and oregano, and taste for salt.']],
+   tips:['These are just as good warm or at room temperature, so they can come out a few minutes early without a problem.','Three pans in the oven at once: dressing and carrots on separate racks, potatoes next to the dressing. If the potatoes won\u2019t fit, put them in when the carrots come out.']}
   ];
 }
 
@@ -424,6 +437,9 @@ function shopItems(){
    ['Dairy & eggs','eggs','Eggs',eggs+' ('+(eggs>6?'1 dozen':'½ dozen')+')','Dressing',2],
    ['Dairy & eggs','milk','Whole milk','about '+fq(.5*m+.25)+' cup','Mashed potatoes',2],
    ['Bakery','bread','Sliced white sandwich bread',fq(d)+' lb ('+Math.ceil(d*16/20)+' × 20-oz loaf)','Dressing · toast it Tuesday',1],
+   ['Produce','roastcarrots','Carrots for roasting (whole, not baby)',fq(2*sc('carrots'))+' lb','Roasted carrots · added today',2],
+   ['Pantry','evoo','Extra-virgin olive oil','have '+Math.ceil(3*sc('carrots'))+' Tbsp','Roasted carrots',1],
+   ['Pantry','oregano','Dried oregano','have '+fq(.5*sc('carrots'))+' tsp','Roasted carrots',1],
    ['Pantry','almonds','Raw sliced almonds',fq(almondsC)+' cup (~'+Math.ceil(almondsC*3.2)+' oz)','Green beans',1],
    ['Pantry','cornstarch','Cornstarch','1 box (you need ~½ cup)','Gravy',1],
    ['Pantry','bakingpowder','Baking powder','have '+fq(m)+' tsp','Mashed potatoes',1],
@@ -484,13 +500,17 @@ function thuSteps(){
    ['c8',D-135,'Assemble the dressing','Soak the bread in cold water and press it until fluffy. Pour the veg over it, season, add the eggs last, and toss with two forks. Spread in a buttered 9×13 and cover.','dressing'],
    ['c9',D-115,'Mash the potatoes','Drain, peel, dry, and beat with hot milk, baking powder, and salt until fluffy. Spread ⅔ in a buttered dish, pipe the rest on top, dot with butter, and cover.','mashed'],
    ['c10',D-100,'Warm the stock; table check','Put Wednesday’s stock on low. Anyone not cooking: drinks, ice, candles, kids’ plates.','prep'],
+   ['k1',D-100,'Prep the carrots','Peel and cut, toss on a foil-lined sheet pan with olive oil, thyme, salt, and pepper, then cover tightly with foil. Chop the parsley.','carrots'],
    ['c11',D-90,'Green bean prep','Chop the shallot and garlic, zest and juice the lemon, and measure out the almonds and butter.','beans'],
    ['c12',t.out-Math.round(w*1.5),'Start checking the turkey’s temperature','You want 165°F in the thickest part of the thigh and 160–165°F in the center of the breast.','turkey'],
    ['c13',t.out,'Turkey out; oven to 400°F','Move it to a board and tent loosely with foil to rest. Pour the drippings into a fat separator.','oven'],
    ['c14',D-65,'Dressing in at 400°F','Uncover, drizzle the top with melted butter, and bake about 45 min, until brown and crusty.','dressing',45],
    ['c15',D-60,'Make the gravy','Skim the fat, leaving about 1 Tbsp per cup. Add the stock and measure. Whisk in 1½ Tbsp cornstarch (dissolved in 2 Tbsp cool water) per cup and simmer until thick and clear, about 5 min. Hold on low.','gravy',5],
+   ['k2',D-65,'Carrots in at 400°F (covered)','Sheet pan on the second rack, alongside the dressing. Roast covered about 20 min.','carrots',20],
+   ['k3',D-45,'Uncover the carrots','Pull the foil, stir, and roast about 20 min more, until tender and browned at the edges.','carrots',20],
    ['c16',D-35,'Potatoes in, next to the dressing','Uncovered, about 15 min. Optional: 1–2 min under the broiler at the end.','mashed',15],
    ['c17',D-30,'Finish the green beans','Toast the almonds in butter until golden, add the shallot and garlic, then the beans until hot. Off the heat, add lemon, salt, and pepper.','beans',10],
+   ['k4',D-25,'Carrots out','Toss with parsley and oregano and taste for salt. Hot or room temperature are both fine.','carrots'],
    ['c18',D-25,'Carve the turkey','Pour any juices from the board into the gravy.','turkey'],
    ['c19',D-20,'Dressing and potatoes out; oven off','Check that the dressing reads 165°F in the center.','oven'],
    ['c20',D-10,'Glaze and plate','Brush the carved turkey with a little gravy for shine. Gravy into the boat, everything to the table.','gravy'],
@@ -530,7 +550,7 @@ function renderPlan(){
   var bar='<div class="bar">'+segs.map(function(g){return '<span class="'+g[2]+'" style="left:'+pct(g[0])+';width:'+wd(g[0],g[1])+'">'+((g[1]-g[0])/span>.2?g[3]:'')+'</span>'}).join('')+'</div>';
   var bar2='<div class="bar" style="height:20px;background:none"><span class="t400" style="left:'+pct(t.D-35)+';width:'+wd(t.D-35,s1)+';opacity:.75"></span></div>';
   $('ovenBoard').innerHTML=bar+bar2+'<div class="ticks"><span>'+clock(s0)+'</span><span>'+clock(t.out)+'</span><span>'+clock(s1)+'</span></div>'+
-   '<ul class="olist">'+[[clock(s0),'Preheat to 325°F'],[clock(t.in)+' – '+clock(t.out),'Turkey roasting'],[clock(t.out),'Turkey out, oven up to 400°F'],[clock(t.D-65)+' – '+clock(s1),'Dressing (45 min)'],[clock(t.D-35)+' – '+clock(s1),'Potatoes alongside (15 min)'],[clock(s1),'Oven off']].map(function(x){return '<li><span class="tm">'+x[0]+'</span><span>'+x[1]+'</span></li>'}).join('')+'</ul>';
+   '<ul class="olist">'+[[clock(s0),'Preheat to 325°F'],[clock(t.in)+' – '+clock(t.out),'Turkey roasting'],[clock(t.out),'Turkey out, oven up to 400°F'],[clock(t.D-65)+' – '+clock(s1),'Dressing (45 min)'],[clock(t.D-65)+' – '+clock(t.D-25),'Carrots, second rack (20 covered + 20 uncovered)'],[clock(t.D-35)+' – '+clock(s1),'Potatoes alongside (15 min)'],[clock(s1),'Oven off']].map(function(x){return '<li><span class="tm">'+x[0]+'</span><span>'+x[1]+'</span></li>'}).join('')+'</ul>';
   $('gear').innerHTML=GEAR.map(function(g){var on=!!S.shop[g[0]];return '<label class="chk'+(on?' done':'')+'"><input type="checkbox" data-shop="'+g[0]+'"'+(on?' checked':'')+'><span class="txt"><span class="nm">'+g[1]+'</span></span></label>'}).join('');
   renderNow();
 }
