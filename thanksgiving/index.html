@@ -207,7 +207,8 @@ select{font-family:inherit;font-size:16px;padding:10px 12px;border:1px solid var
   <div class="card set">
     <div><label>Turkey weight</label>
       <div class="stepper"><button data-w="-1" aria-label="Lighter">−</button><output id="wOut"></output><button data-w="1" aria-label="Heavier">+</button></div></div>
-    <div><label for="dinnerSel">Dinner on the table</label><select id="dinnerSel"></select></div>
+    <div><label for="tinSel">Turkey went into the oven at</label><select id="tinSel"></select></div>
+    <div id="dinnerWrap"><label for="dinnerSel">Dinner on the table</label><select id="dinnerSel"></select><p class="sub" id="dinnerCalc" style="margin:6px 0 0"></p></div>
     <div><label>Guests (including us)</label>
       <div class="stepper"><button data-g="-1" aria-label="Fewer">−</button><output id="gOut"></output><button data-g="1" aria-label="More">+</button></div></div>
     <div><label>Dressing fat</label><div class="seg" id="fatSeg"><button data-fat="butter">Butter</button><button data-fat="bacon">Bacon</button></div></div>
@@ -281,7 +282,7 @@ function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}ca
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 
 var S=load('tg26',null)||{};
-S.weight=S.weight||16; if(!S.v2){S.dinner=14*60;S.v2=1} S.dinner=S.dinner||14*60; S.guests=S.guests||10; S.fat=S.fat||'butter';
+S.weight=S.weight||16; if(!S.v2){S.dinner=14*60;S.v2=1} S.dinner=S.dinner||14*60; if(!S.v3){S.tin=9*60+15;S.v3=1} S.guests=S.guests||10; S.fat=S.fat||'butter';
 S.scale=S.scale||{}; S.touched=S.touched||{}; S.shop=S.shop||{}; S.steps=S.steps||{};
 S.trip=S.trip||'all'; S.hide=!!S.hide; S.recipe=S.recipe||'turkey';
 function persist(){save('tg26',S)}
@@ -304,7 +305,7 @@ function pl(n,s,p){return n===1?s:(p||s+'s')}
 function defScale(id){var g=S.guests;if(id==='mashed')return Math.max(1,Math.ceil(g/6*2)/2);if(id==='beans')return Math.max(1,Math.ceil(g/4*2)/2);if(id==='dressing')return g>12?1.5:1;return 1}
 function sc(id){return S.touched[id]?S.scale[id]:defScale(id)}
 function roast(){var w=S.weight;return {mid:Math.round(w*14),lo:Math.round(w*13),hi:Math.round(w*15)}}
-function T(){var D=S.dinner,R=roast().mid,out=D-75;return {D:D,out:out,in:Math.floor((out-R)/5)*5}}
+function T(){var R=roast().mid;if(S.tin){var o=S.tin+R;return {D:Math.round((o+75)/5)*5,out:o,in:S.tin,anchored:true}}var D=S.dinner,out=D-75;return {D:D,out:out,in:Math.floor((out-R)/5)*5}}
 function thawStart(){var hrs=S.weight/5*24+24;return new Date(new Date(2026,10,25,12,0).getTime()-hrs*3600e3)}
 
 /* ---------- recipes ---------- */
@@ -476,7 +477,7 @@ function thuSteps(){
    ['c1',t.in-60,'Turkey out of the fridge','Leave it on the counter about an hour to take the chill off. Take the herb butter out to soften too.','turkey',60],
    ['c2',t.in-45,'Preheat oven to 325°F','Set the rack so the bird sits in the middle of the oven.','oven'],
    ['c3',t.in-40,'Prep the bird','Pat it dry, then season and fill the cavity. Butter under the breast skin, tuck the wings, tie the legs, set it on the rack, and brush the outside with the rest of the butter.','turkey'],
-   ['c4',t.in,'Turkey in at 325°F','Budgeting '+dur(r.mid)+' (range '+dur(r.lo)+'–'+dur(r.hi)+' for '+w+' lb). The thermometer decides, not the clock.','turkey',r.mid],
+   ['c4',t.in,t.anchored?'Turkey went in at 325°F':'Turkey in at 325°F','Budgeting '+dur(r.mid)+' (range '+dur(r.lo)+'–'+dur(r.hi)+' for '+w+' lb). The thermometer decides, not the clock.','turkey',r.mid],
    ['c5',t.in+Math.round(r.mid/2),'Halfway check','Once the skin is golden, tent the breast loosely with foil.','turkey'],
    ['c6',D-165,'Start steaming the potatoes','Scrub and steam whole in a covered pot over about 1 inch of boiling water, 30–45 min, until very soft.','mashed',40],
    ['c7',D-160,'Dressing base','Melt the butter (or crisp the bacon), cook the chopped liver and heart 5 min, then add the onions and celery. Cover and steam about 15 min.','dressing',15],
@@ -507,7 +508,8 @@ function renderPlan(){
   var t=T(),r=roast(),ts=thawStart();
   $('wOut').textContent=S.weight+' lb';
   $('gOut').textContent=S.guests;
-  $('dinnerSel').value=S.dinner;
+  $('dinnerSel').value=S.dinner;$('tinSel').value=S.tin||'';
+  var tt0=T();$('dinnerSel').style.display=tt0.anchored?'none':'';$('dinnerCalc').innerHTML=tt0.anchored?'<strong style="color:var(--ink)">About '+clock(tt0.D)+'</strong>. Set by when the turkey went in. Switch the oven time to “Not in yet” to plan from a dinner time instead.':'';
   [].forEach.call($('fatSeg').children,function(b){b.classList.toggle('on',b.dataset.fat===S.fat)});
   $('heroMeta').innerHTML='Dinner at <strong>'+clock(t.D)+'</strong> · '+S.guests+' at the table · '+S.weight+' lb turkey in at <strong>'+clock(t.in)+'</strong>';
   $('heroMenu').innerHTML=R_().map(function(x){return '<button data-goto="'+x.id+'">'+esc(x.short)+'</button>'}).join('');
@@ -598,7 +600,7 @@ function renderTimeline(){
   });
   var st=thuSteps(),curK=null;
   if(isDay)st.forEach(function(s){if(s.t<=m)curK=s.k});
-  h+='<div class="day"><h3>Thanksgiving</h3><span class="dt">Thu Nov 26 · dinner '+clock(S.dinner)+'</span></div><ul class="tl">'+st.map(function(s){
+  h+='<div class="day"><h3>Thanksgiving</h3><span class="dt">Thu Nov 26 · dinner '+clock(T().D)+(T().anchored?' (turkey in at '+clock(T().in)+')':'')+'</span></div><ul class="tl">'+st.map(function(s){
     var on=!!S.steps[s.k];return '<li data-step="'+s.k+'" class="'+(on?'done':'')+(s.k===curK?' cur':'')+'"><div class="tm">'+clock(s.t)+'</div><div class="h">'+esc(s.h)+'<span class="dish d-'+s.dish+'">'+(s.dish==='mashed'?'potatoes':s.dish)+'</span></div><div class="b">'+esc(s.b)+
     (s.timer?'<button class="tbtn" data-timer="'+s.timer+'" data-label="'+esc(s.h)+'">⏱ '+dur(s.timer)+'</button>':'')+'</div></li>'}).join('')+'</ul>';
   $('timeline').innerHTML=h;
@@ -632,6 +634,8 @@ var tt;function toast(s){var el=$('toast');el.textContent=s;el.classList.add('on
 var dsel=$('dinnerSel');
 for(var mm=12*60;mm<=19*60;mm+=30){var o=document.createElement('option');o.value=mm;o.textContent=clock(mm);dsel.appendChild(o)}
 dsel.addEventListener('change',function(){S.dinner=+dsel.value;persist();renderAll()});
+var tsel=$('tinSel');(function(){var o=document.createElement('option');o.value='';o.textContent='Not in yet';tsel.appendChild(o);for(var m2=5*60;m2<=15*60;m2+=5){o=document.createElement('option');o.value=m2;o.textContent=clock(m2);tsel.appendChild(o)}})();
+tsel.addEventListener('change',function(){S.tin=tsel.value?+tsel.value:0;persist();renderAll()});
 
 function showTab(n){
   [].forEach.call(document.querySelectorAll('.panel'),function(p){p.classList.toggle('on',p.id==='p-'+n)});
